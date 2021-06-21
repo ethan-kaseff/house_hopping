@@ -18,8 +18,13 @@ class User(db.Model, UserMixin):
   spots = db.relationship("Spot", back_populates="user")
   bookings = db.relationship("Booking", back_populates="user")
   reviews = db.relationship("Review", back_populates="user")
-  sender = db.relationship("Message", back_populates='sender')
-  recipient = db.relationship("Message", back_populates='recipient')
+
+
+  user_sender = db.relationship("Message", foreign_keys="Message.user_id_sender", back_populates="sender")
+  user_recipient = db.relationship("Message", foreign_keys="Message.user_id_recipient", back_populates="recipient")
+
+
+
   @property
   def password(self):
     return self.hashed_password

@@ -16,3 +16,16 @@ class Spot(db.Model):
     bookings = db.relationship("Booking", back_populates="spot")
     images = db.relationship("Image", back_populates="spot")
     reviews = db.relationship("Review", back_populates="spot")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "description": self.description,
+            "description": self.description,
+            "location": self.location,
+            "pet_friendly": self.pet_friendly,
+            "private": self.private,
+            "available": self.available,
+            "user_id": self.user_id
+        }
