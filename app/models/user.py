@@ -6,8 +6,12 @@ class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key = True)
-  username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
+  first_name = db.Column(db.String(20), nullable = False)
+  last_name = db.Column(db.String(40), nullable = False)
+  birth_date = db.Column(db.Date, nullable = False)
+  about_me = db.Column(db.Text, nullable = False)
+  is_host = db.Column(db.Boolean, nullable = False)
   hashed_password = db.Column(db.String(255), nullable = False)
 
 
