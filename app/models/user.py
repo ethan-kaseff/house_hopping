@@ -13,8 +13,13 @@ class User(db.Model, UserMixin):
   about_me = db.Column(db.Text, nullable = False)
   is_host = db.Column(db.Boolean, nullable = False)
   hashed_password = db.Column(db.String(255), nullable = False)
+  profile_url = db.Column(db.Text)
 
-
+  spots = db.relationship("Spot", back_populates="user")
+  bookings = db.relationship("Booking", back_populates="user")
+  reviews = db.relationship("Review", back_populates="user")
+  sender = db.relationship("Message", back_populates='sender')
+  recipient = db.relationship("Message", back_populates='recipient')
   @property
   def password(self):
     return self.hashed_password
