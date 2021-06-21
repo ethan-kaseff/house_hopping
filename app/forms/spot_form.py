@@ -9,3 +9,4 @@ class SpotForm(FlaskForm):
     location = StringField('Location', validators=[DataRequired()])
     pet_friendly = BooleanField('Pet Friendly', validators=[])
     private = BooleanField('Private', validators=[DataRequired()])
+    available =  BooleanField('Private', validators=[])
