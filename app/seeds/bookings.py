@@ -10,14 +10,14 @@ def seed_bookings():
     booking1 = Booking(
         spot_id=1,
         user_id=2,
-        start_date=datetime.datetime(2021, 7, 1),
-        end_date=datetime.datetime(2021, 7, 5),
+        start_date="2021-07-01",
+        end_date="2021-07-05"
     )
     booking2 = Booking(
         spot_id=2,
         user_id=1,
-        start_date=datetime.datetime(2021, 7, 1),
-        end_date=datetime.datetime(2021, 7, 5),
+        start_date="2021-07-01",
+        end_date="2021-07-05",
     )
 
 
