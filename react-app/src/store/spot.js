@@ -1,20 +1,20 @@
 //createSpot is thunk for creating spot
 
 //constants
-const ADD_SPOT = "spot/ADD_SPOT";
-const LOAD_SPOT = "spot/LOAD_SPOT"
+const ADD_UPDATE_SPOT = "spot/ADD_UPDATE_SPOT";
+const DELETE_SPOT = "spot/DELETE_SPOT"
 
 //action creators
-const addSpot = (spot) => ({
-  type: ADD_SPOT,
+const addUpdateSpot = (spot) => ({
+  type: ADD_UPDATE_SPOT,
   payload: spot,
 });
 
+const deleteSpot = (spot) => ({
+  type:DELETE_SPOT,
+  payload:spot.id
+})
 
-const loadSpot = () => ({
-  type: LOAD_SPOT,
-  payload:spot,
-});
 
 
 
@@ -40,7 +40,7 @@ export const createSpot =
     if (data.errors) {
       return data;
     }
-    dispatch(addSpot(data));
+    dispatch(addUpdateSpot(data));
     return {};
   };
 
@@ -56,13 +56,56 @@ export const fetchSpot =(id) => async (dispatch) => {
     if (data.errors) {
       return data;
     }
-    dispatch(loadSpot(data));
-    return {};
+    dispatch(addUpdateSpot(data));
   };
 
 
 // Thunk for update
+export const updateSpotActionCreator =
+  (name, description, location, pet_friendly, pprivate, available, id) =>
+  async (dispatch) => {
+    const response = await fetch(`api/spots/:${id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        description,
+        location,
+        pet_friendly,
+        private: pprivate,
+        available,
+      }),
+    });
+
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+    dispatch(addUpdateSpot(data));
+
+  };
 // Thunk for delete
+export function deleteSpotActionCreator( id ) {
+    return async function (dispatch) {
+        const res = await fetch(`api/spots/:${id}`,
+            {
+                method: 'DELETE',
+                body: JSON.stringify({id}),
+            }
+        );
+        if (res.ok) {
+
+            const responseObject = await res.json();
+            // console.log(responseObject, '🙂')
+            dispatch(deleteSpot(responseObject));
+            return responseObject;
+        } else {
+            throw res;
+        }
+    }
+}
 
 
 //reducer
@@ -70,15 +113,23 @@ const initialState = {};
 
 export default function reducer(state = initialState, action) {
   let newState;
+
   switch (action.type) {
-    case LOAD_SPOT:
+
+
+
+    case ADD_UPDATE_SPOT:
       newState = { ...state };
       newState[action.payload.id] = action.payload;
       return newState;
-    case ADD_SPOT:
+
+
+
+    case DELETE_SPOT:
       newState = { ...state };
-      newState[action.payload.id] = action.payload;
+      delete newState[action.payload.id]
       return newState;
+
     default:
       return state;
   }
