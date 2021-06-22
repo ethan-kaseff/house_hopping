@@ -15,9 +15,6 @@ const deleteSpot = (spot) => ({
   payload:spot.id
 })
 
-
-
-
 //thuunks
 export const createSpot =
   (name, description, location, pet_friendly, pprivate, available) =>
