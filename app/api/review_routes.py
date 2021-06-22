@@ -26,13 +26,14 @@ def create_reviews():
 def update_delete_reviews(id):
     if request.method == "POST":
         form = ReviewForm()
-        review = Review(
-            count=form.data['count'],
-            content=form.data['content'],
-            user_id=1,
-            spot_id=2,
-        )
-        db.session.add(review)
+
+        review = Review.query.get(id)
+
+        review.count = form.data['count']
+        review.content = form.data['content']
+        review.user_id = 1
+        review.spot_id = 2
+
         db.session.commit()
         return review.to_dict()
     elif request.method == "DELETE":
