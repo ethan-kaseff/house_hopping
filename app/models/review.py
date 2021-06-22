@@ -11,3 +11,13 @@ class Review(db.Model):
     user = db.relationship("User", back_populates="reviews")
     images = db.relationship("Image", back_populates="review")
     spot = db.relationship("Spot", back_populates="reviews")
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "count": self.count,
+            "content": self.content,
+            "user_id": self.user_id,
+            "spot_id": self.spot_id,
+        }

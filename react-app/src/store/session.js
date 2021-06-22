@@ -1,8 +1,8 @@
-// constants 
+// constants
 const SET_USER = 'session/SET_USER'
 const REMOVE_USER = 'session/REMOVE_USER'
 
-// action creators 
+// action creators
 const setUser = (user) => ({
     type: SET_USER,
     payload: user
@@ -13,7 +13,7 @@ const removeUser = () => ({
 })
 
 
-// thunks 
+// thunks
 export const authenticate = () => async (dispatch) => {
     const response = await fetch ('/api/auth/', {
         headers: {
@@ -28,6 +28,7 @@ export const authenticate = () => async (dispatch) => {
 }
 
 export const login = (email, password) => async (dispatch) => {
+    console.log(email,password)
     const response  = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
@@ -74,7 +75,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 
 
 
-// reducer r 
+// reducer r
 const initialState = {}
 
 export default function reducer(state=initialState, action) {
