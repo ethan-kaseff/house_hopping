@@ -46,10 +46,16 @@ def update_delete_reviews(id):
 @review_routes.route('/user/<int:id>')
 def reviews_by_user(id):
     reviews = Review.query.filter(Review.user_id == id).all()
-    return [review.to_dict() for review in reviews]
+    reviewsDict = {}
+    for review in reviews:
+        reviewsDict[review.id] = review.to_dict()
+    return reviewsDict
 
 
 @review_routes.route('/spot/<int:id>')
 def reviews_by_spot(id):
     reviews = Review.query.filter(Review.spot_id == id).all()
-    return [review.to_dict() for review in reviews]
+    reviewsDict = {}
+    for review in reviews:
+        reviewsDict[review.id] = review.to_dict()
+    return reviewsDict
