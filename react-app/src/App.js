@@ -10,6 +10,7 @@ import User from "./components/User";
 import SpotForm from "./components/SpotForm";
 import { authenticate } from "./store/session";
 
+
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch();
