@@ -9,6 +9,11 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotForm from "./components/SpotForm";
 import { authenticate } from "./store/session";
+import {
+  createSpot,
+  fetchSpot,
+
+} from './store/spot'
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
