@@ -11,20 +11,22 @@ def seed_users():
     # demo = User(username='Demo', email='demo@aa.io',
     #             password='password')
     demo1 = User(
+        id=1,
         email='demo@aa.io',
         first_name='Demo',
         last_name='User',
-        birth_date= datetime.datetime(2018, 6, 1),
+        birth_date= "2018-06-01",
         about_me='junior dev',
         is_host=False,
         password='password',
         profile_url=''
     )
     demo2 = User(
-        email=fake.email,
+        id=2,
+        email=fake.email(),
         first_name=fake.first_name(),
         last_name=fake.last_name(),
-        birth_date= datetime.datetime(2018, 6, 1),
+        birth_date= "2018-06-01",
         about_me=fake.text(),
         is_host=False,
         password=fake.password(),

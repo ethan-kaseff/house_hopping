@@ -8,6 +8,7 @@ fake = Faker()
 def seed_spots():
 
     spot1 = Spot(
+        id=1,
         name='Cozy Downtown Couch',
         description='Best couch vibe in your gosh darn life! Great kitchen and laundry available.',
         location='Kansas City',
@@ -17,6 +18,7 @@ def seed_spots():
         user_id=1,
     )
     spot2 = Spot(
+        id=2,
         name='Haunted House 👻',
         description='The spookiest.',
         location='South Miami',
