@@ -40,7 +40,7 @@ class User(db.Model, UserMixin):
 
 
   def to_dict(self):
-    user = {
+    return {
       "id": self.id,
       "email": self.email,
       "first_name": self.first_name,
@@ -50,5 +50,3 @@ class User(db.Model, UserMixin):
       "is_host": self.is_host,
       "profile_url": self.profile_url,
     }
-    print(user)
-    return user
