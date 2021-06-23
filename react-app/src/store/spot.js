@@ -1,27 +1,31 @@
-//createSpot is thunk for creating spot
+
 
 //constants
+const LOAD_SINGLE_SPOT = "spot/LOAD_SINGLE_SPOT"
 const ADD_UPDATE_SPOT = "spot/ADD_UPDATE_SPOT";
 const DELETE_SPOT = "spot/DELETE_SPOT"
 
 //action creators
-const addUpdateSpot = (spot) => ({
+const loadSingleSpotActionCreator = (spot) => ({
+  type: LOAD_SINGLE_SPOT,
+  payload: spot,
+});
+
+const addUpdateSpotActionCreator = (spot) => ({
   type: ADD_UPDATE_SPOT,
   payload: spot,
 });
 
-const deleteSpot = (spot) => ({
+const deleteSpotActionCreator = (spot) => ({
   type:DELETE_SPOT,
   payload:spot.id
 })
-
-
-
 
 //thuunks
 export const createSpot =
   (name, description, location, pet_friendly, pprivate, available) =>
   async (dispatch) => {
+
     const response = await fetch("api/spots/create", {
       method: "POST",
       headers: {
@@ -36,35 +40,37 @@ export const createSpot =
         available,
       }),
     });
-    const data = await response.json();
-    if (data.errors) {
-      return data;
+
+    const responseObject = await response.json();
+
+    if (responseObject.errors) {
+      return responseObject;
     }
-    dispatch(addUpdateSpot(data));
-    return {};
+
+    dispatch(addUpdateSpotActionCreator(responseObject));
   };
 
 // Thunk for read
 export const fetchSpot =(id) => async (dispatch) => {
-    const response = await fetch(`api/spots/:${id}`, {
+    const response = await fetch(`api/spots/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-    const data = await response.json();
-    if (data.errors) {
-      return data;
+    const responseObject = await response.json();
+    if (responseObject.errors) {
+      return responseObject;
     }
-    dispatch(addUpdateSpot(data));
+    dispatch(loadSingleSpotActionCreator(responseObject));
   };
 
 
 // Thunk for update
-export const updateSpotActionCreator =
+export const updateSpot =
   (name, description, location, pet_friendly, pprivate, available, id) =>
   async (dispatch) => {
-    const response = await fetch(`api/spots/:${id}`, {
+    const response = await fetch(`api/spots/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,27 +85,28 @@ export const updateSpotActionCreator =
       }),
     });
 
-    const data = await response.json();
-    if (data.errors) {
-      return data;
+    const responseObject = await response.json();
+    if (responseObject.errors) {
+      return responseObject;
     }
-    dispatch(addUpdateSpot(data));
+    dispatch(addUpdateSpotActionCreator(responseObject));
 
   };
+
 // Thunk for delete
-export function deleteSpotActionCreator( id ) {
+export function deleteSpot( id ) {
     return async function (dispatch) {
-        const res = await fetch(`api/spots/:${id}`,
-            {
-                method: 'DELETE',
-                body: JSON.stringify({id}),
-            }
-        );
+        const res = await fetch(`api/spots/${id}`, {
+          method: 'DELETE',headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({id}),
+        });
         if (res.ok) {
 
             const responseObject = await res.json();
             // console.log(responseObject, '🙂')
-            dispatch(deleteSpot(responseObject));
+            dispatch(deleteSpotActionCreator(responseObject));
             return responseObject;
         } else {
             throw res;
@@ -108,26 +115,27 @@ export function deleteSpotActionCreator( id ) {
 }
 
 
-//reducer
-const initialState = {};
+// Reducer
+const initialState = {spots:{}, loaded_spot:{}};
 
 export default function reducer(state = initialState, action) {
   let newState;
 
   switch (action.type) {
 
-
-
-    case ADD_UPDATE_SPOT:
+    case LOAD_SINGLE_SPOT:
       newState = { ...state };
-      newState[action.payload.id] = action.payload;
+      newState.loaded_spot = action.payload;
       return newState;
 
-
+    case ADD_UPDATE_SPOT:
+      newState = { ...state, spots:{...state.spots}};
+      newState.spots[action.payload.id] = action.payload;
+      return newState;
 
     case DELETE_SPOT:
-      newState = { ...state };
-      delete newState[action.payload.id]
+      newState = { ...state, spots:{...state.spots} };
+      delete newState.spots[action.payload.id]
       return newState;
 
     default:
