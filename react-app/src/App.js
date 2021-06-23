@@ -9,6 +9,8 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotForm from "./components/SpotForm";
 import { authenticate } from "./store/session";
+import Booking from "./components/Booking"
+
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Booking/>
       <NavBar />
       <SpotForm />
       <Switch>

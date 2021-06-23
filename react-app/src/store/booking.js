@@ -1,11 +1,3 @@
-/*
--[x] READ ALL - GET /api/user/:id/booking/
--[x] READ SINGULAR - GET /api/user/:id/booking/:booking_id/
--[x] CREATE - POST /api/user/:id/booking/create
--[x] UPDATE - POST /api/user/:id/booking/:booking_id/
--[x] DELETE - POST /api/user/:id/booking/:booking_id/delete
-*/
-
 //constants
 const LOAD_BOOKINGS = "booking/LOAD_BOOKINGS"
 const LOAD_BOOKING = "booking/LOAD_BOOKING"
@@ -36,7 +28,7 @@ const deleteBookingActionCreator = (booking) => ({
 //thuunks
 export const createBooking =(start_date, end_date,) =>
   async (dispatch) => {
-    const response = await fetch("api/bookings/create", {
+    const response = await fetch("/api/bookings/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +51,7 @@ export const createBooking =(start_date, end_date,) =>
 // Thunk for read All Booking api/user/:id/booking/
 export const fetchBookings =() => async (dispatch) => {
 
-    const response = await fetch(`api/booking/`, {
+    const response = await fetch(`/api/bookings/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -69,6 +61,7 @@ export const fetchBookings =() => async (dispatch) => {
     if (responseObject.errors) {
       return responseObject;
     }
+    console.log(responseObject, '🙂')
     dispatch(loadBookingsActionCreator(responseObject));
   };
 
@@ -76,7 +69,7 @@ export const fetchBookings =() => async (dispatch) => {
 // Thunk for read one booking, api/user/:id/booking/:booking_id
 export const fetchBooking =(id) => async (dispatch) => {
 
-    const response = await fetch(`api/booking/${id}`, {
+    const response = await fetch(`/api/booking/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -94,7 +87,7 @@ export const fetchBooking =(id) => async (dispatch) => {
 // Thunk for update
 export const updateBooking = (start_date,end_date, id) =>
   async (dispatch) => {
-    const response = await fetch(`api/bookings/${id}`, {
+    const response = await fetch(`/api/bookings/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -115,7 +108,7 @@ export const updateBooking = (start_date,end_date, id) =>
 // Thunk for delete
 export function deleteBooking( id ) {
     return async function (dispatch) {
-        const res = await fetch(`api/bookings/${id}`, {
+        const res = await fetch(`/api/bookings/${id}`, {
           method: 'DELETE',headers: {
             "Content-Type": "application/json",
           },
@@ -135,6 +128,7 @@ export function deleteBooking( id ) {
 
 
 // Reducer
+// const initialState = { };
 const initialState = {bookings:{}, loaded_bookings:{}, };
 
 export default function reducer(state = initialState, action) {
@@ -143,7 +137,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
 
     case LOAD_BOOKINGS:
-      newState = { ...state };
+      newState =  {...state};
       newState.loaded_bookings = action.payload;
       return newState;
 
