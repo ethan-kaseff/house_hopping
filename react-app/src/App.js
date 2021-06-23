@@ -30,7 +30,9 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <SpotForm />
+      <Route path="/spots/new">
+        <SpotForm />
+      </Route>
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
