@@ -4,6 +4,7 @@
 const LOAD_SINGLE_SPOT = "spot/LOAD_SINGLE_SPOT"
 const ADD_UPDATE_SPOT = "spot/ADD_UPDATE_SPOT";
 const DELETE_SPOT = "spot/DELETE_SPOT"
+const LOAD_AVAILABLE_SPOTS= 'spot/LOAD_AVAILABLE/SPOTS'
 
 //action creators
 const loadSingleSpotActionCreator = (spot) => ({
@@ -19,6 +20,11 @@ const addUpdateSpotActionCreator = (spot) => ({
 const deleteSpotActionCreator = (spot) => ({
   type:DELETE_SPOT,
   payload:spot.id
+})
+
+const loadAvailableSpots = (spots) => ({
+  type: LOAD_AVAILABLE_SPOTS,
+  payload: spots
 })
 
 //thuunks
@@ -114,14 +120,31 @@ export function deleteSpot( id ) {
     }
 }
 
+// Thunk for Search Bar
+export const getAvailableSpots = (location, start_date, end_date) => async (dispatch) => {
+  const res = await fetch(`api/spot-search/${location}/${start_date}/${end_date}`)
+
+  const responseObject = await res.json();
+  if (responseObject.errors) {
+    return responseObject;
+  }
+
+  dispatch(addUpdateSpotActionCreator(responseObject));
+}
+
 
 // Reducer
-const initialState = {spots:{}, loaded_spot:{}};
+const initialState = {availableSpots:{}, spots:{}, loaded_spot:{}};
 
 export default function reducer(state = initialState, action) {
   let newState;
 
   switch (action.type) {
+
+    case LOAD_AVAILABLE_SPOTS:
+      newState = {...state};
+      newState.availableSpots = action.payload;
+      return newState;
 
     case LOAD_SINGLE_SPOT:
       newState = { ...state };
