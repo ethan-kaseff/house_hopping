@@ -9,7 +9,10 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotForm from "./components/SpotForm";
 import SearchBar from './components/SearchBar'
+import SearchResults from "./components/SearchResults";
 import { authenticate } from "./store/session";
+
+import 'react-dates/initialize';
 
 
 function App() {
