@@ -23,3 +23,4 @@ def reviews_by_spot(location, start_date, end_date):
         availableSpotsDict[spot.id] = spot.to_dict()
 
     return availableSpotsDict
+ 
