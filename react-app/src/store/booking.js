@@ -129,7 +129,7 @@ export function deleteBooking( id ) {
 
 // Reducer
 // const initialState = { };
-const initialState = {bookings:{}, loaded_bookings:{}, };
+const initialState = {bookings:{}, loaded_booking:{}, };
 
 export default function reducer(state = initialState, action) {
   let newState;
@@ -138,12 +138,12 @@ export default function reducer(state = initialState, action) {
 
     case LOAD_BOOKINGS:
       newState =  {...state};
-      newState.loaded_bookings = action.payload;
+      newState.bookings = action.payload;
       return newState;
 
     case LOAD_BOOKING:
       newState = { ...state, bookings:{...state.bookings}};
-      newState.bookings[action.payload.id] = action.payload;
+      newState.loaded_booking = action.payload;
       return newState;
 
     case ADD_UPDATE_BOOKING:
