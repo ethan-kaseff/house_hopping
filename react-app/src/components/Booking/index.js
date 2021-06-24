@@ -9,17 +9,16 @@ export default function Booking() {
     console.log('bookingState😎', bookingState)
 
     useEffect(() => {
-
         dispatch(fetchBookings())
     },[dispatch])
 
     return (
         <div>
-            {/* {bookingState && Object.values(bookingState).map(booking => {
+            {bookingState && Object.values(bookingState).map(booking => {
                 return (
                     <div>{booking.start_date} </div>
                 )
-})} */}
+})}
         </div>
     )
 }
