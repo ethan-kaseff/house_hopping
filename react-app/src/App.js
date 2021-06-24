@@ -8,7 +8,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotForm from "./components/SpotForm";
-import SearchBar from './components/SearchBar'
+import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
 import { authenticate } from "./store/session";
 
@@ -39,6 +39,9 @@ function App() {
       <Switch>
         <Route path='/search-bar' exact = {true}>
           <SearchBar />
+        </Route>
+        <Route path='/search-results' exact = {true}>
+          <SearchResults />
         </Route>
         <Route path="/login" exact={true}>
           <LoginForm />

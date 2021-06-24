@@ -8,7 +8,7 @@ import DataListInput from 'react-datalist-input';
 
 import 'react-dates/lib/css/_datepicker.css';
 
-import { getAvailableSpots } from '../store/spot';
+import { getAvailableSpots } from '../../store/spot';
 // import { saveCurrentDates } from '../../store/booking';
 
 
@@ -30,7 +30,7 @@ function SearchBar() {
 
         dispatch(getAvailableSpots(location, startDate, endDate))
 
-        history.push(`/searchResults`);
+        history.push(`/search-results`);
     }
 
     const items = [

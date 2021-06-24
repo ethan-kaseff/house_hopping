@@ -8,6 +8,10 @@ spot_search_routes = Blueprint('spot-search', __name__)
 
 @spot_search_routes.route('/<location>/<start_date>/<end_date>')
 def reviews_by_spot(location, start_date, end_date):
+
+
+    
+
     conflictedBookings = Booking.query.filter(Booking.start_date <= end_date) \
                                         .filter(Booking.end_date >= start_date).all()
 

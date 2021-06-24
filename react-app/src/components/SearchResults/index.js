@@ -29,16 +29,16 @@ function SearchResults() {
                             {availableSpots &&
                                 <div>
                                     {
-                                        spotArr.map(plane => {
+                                        spotArr.map(spot => {
                                             return (
                                                 <card onClick={() => {
-                                                    history.push(`/planes/${plane.id}`)
+                                                    history.push(`/spots/${spot.id}`)
                                                 }} className='plane-card'>
-                                                    <img className='plane-image' src={plane.imageLink} alt=''></img>
+                                                    {/* <img className='plane-image' src={plane.imageLink} alt=''></img> */}
                                                     <div className='plane-info'>
-                                                        <h3>{plane.name}</h3>
+                                                        <h3>{spot.name}</h3>
                                                         <label>Description:</label>
-                                                        <p>{plane.description}</p>
+                                                        <p>{spot.description}</p>
                                                     </div>
                                                 </card>
                                             )
