@@ -1,32 +1,43 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { Redirect } from "react-router-dom";
+import { signUp } from "../../store/session";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.session.user);
-  const [username, setUsername] = useState("");
+  const user = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      // could set errors later 
+      const data = await dispatch(
+        signUp(firstName, lastName, email, birthdate, aboutMe, password)
+      );
+      // could set errors later
     }
   };
-
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
-
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
+  };
+  const updateBirthdate = (e) => {
+    setBirthdate(e.target.value);
+  };
+  const updateAboutMe = (e) => {
+    setAboutMe(e.target.value);
+  };
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -40,46 +51,111 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    <div className="flex items-center justify-center m-5">
+      <form
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        onSubmit={onSignUp}
+      >
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            First Name
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="firstName"
+            placeholder="John"
+            onChange={updateFirstName}
+            value={firstName}
+          ></input>
+        </div>
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Last Name
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="lastName"
+            placeholder="Doe"
+            onChange={updateLastName}
+            value={lastName}
+          ></input>
+        </div>
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Email
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="email"
+            placeholder="e@mail.com"
+            onChange={updateEmail}
+            value={email}
+          ></input>
+        </div>
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Birthdate
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="birthdate"
+            placeholder="2021-07-28"
+            onChange={updateBirthdate}
+            value={birthdate}
+          ></input>
+        </div>
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            About Me
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="aboutMe"
+            placeholder="I like pizza..."
+            onChange={updateAboutMe}
+            value={aboutMe}
+          ></input>
+        </div>
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Password
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="password"
+            name="password"
+            placeholder="password123"
+            onChange={updatePassword}
+            value={password}
+          ></input>
+        </div>
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Repeat Password
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="password"
+            name="repeat_password"
+            placeholder="password123"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Sign Up
+        </button>
+      </form>
+    </div>
   );
 };
 
