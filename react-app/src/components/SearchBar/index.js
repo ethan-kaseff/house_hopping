@@ -23,12 +23,22 @@ function SearchBar() {
     // For the DataList
     const [location, setLocation] = useState();
 
+    function convert(str) {
+        var date = new Date(str),
+            mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+            day = ("0" + date.getDate()).slice(-2);
+        return [date.getFullYear(), mnth, day].join("-");
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const startDateFormatted = convert(startDate)
+        const endDateFormatted = convert(endDate)
+
         // dispatch(saveCurrentDates(startDate, endDate))
-        console.log(location.key)
-        dispatch(getAvailableSpots(location.key, startDate, endDate))
+
+        dispatch(getAvailableSpots(location.key, startDateFormatted, endDateFormatted))
 
         history.push(`/search-results`);
     }

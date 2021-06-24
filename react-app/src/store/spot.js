@@ -127,7 +127,7 @@ export const getAvailableSpots = (location, start_date, end_date) => async (disp
     return responseObject;
   }
 
-  dispatch(addUpdateSpotActionCreator(responseObject));
+  dispatch(loadAvailableSpots(responseObject));
 }
 
 
