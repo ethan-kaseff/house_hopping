@@ -1,5 +1,3 @@
-
-
 //constants
 const LOAD_SINGLE_SPOT = "spot/LOAD_SINGLE_SPOT"
 const ADD_UPDATE_SPOT = "spot/ADD_UPDATE_SPOT";
@@ -26,7 +24,7 @@ export const createSpot =
   (name, description, location, pet_friendly, pprivate, available) =>
   async (dispatch) => {
 
-    const response = await fetch("api/spots/create", {
+    const response = await fetch("/api/spots/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +50,7 @@ export const createSpot =
 
 // Thunk for read
 export const fetchSpot =(id) => async (dispatch) => {
-    const response = await fetch(`api/spots/${id}`, {
+    const response = await fetch(`/api/spots/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +68,7 @@ export const fetchSpot =(id) => async (dispatch) => {
 export const updateSpot =
   (name, description, location, pet_friendly, pprivate, available, id) =>
   async (dispatch) => {
-    const response = await fetch(`api/spots/${id}`, {
+    const response = await fetch(`/api/spots/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +94,7 @@ export const updateSpot =
 // Thunk for delete
 export function deleteSpot( id ) {
     return async function (dispatch) {
-        const res = await fetch(`api/spots/${id}`, {
+        const res = await fetch(`/api/spots/${id}`, {
           method: 'DELETE',headers: {
             "Content-Type": "application/json",
           },
@@ -117,14 +115,17 @@ export function deleteSpot( id ) {
 
 // Reducer
 const initialState = {spots:{}, loaded_spot:{}};
+// const initialState = {};
 
 export default function reducer(state = initialState, action) {
   let newState;
+  // console.log(action.payload);
 
   switch (action.type) {
 
     case LOAD_SINGLE_SPOT:
       newState = { ...state };
+      // newState.spot = action.payload;
       newState.loaded_spot = action.payload;
       return newState;
 
