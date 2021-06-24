@@ -8,7 +8,12 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotForm from "./components/SpotForm";
+import Spot from "./components/Spot";
 import { authenticate } from "./store/session";
+import Booking from "./components/Booking"
+import BookSpotForm from "./components/BookSpotForm"
+
+
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -29,6 +34,13 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Booking/>
+    {/* <Route path="/spots/:id">
+      <BookSpotForm/>
+    </Route> */}
+    <Route path="/spots/:id">
+      <Spot/>
+    </Route>
       <NavBar />
       <Route path="/spots/new">
         <SpotForm />

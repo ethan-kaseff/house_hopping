@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, BooleanField, TextField, SubmitField
-from wtforms.validators import DataRequired, Email, ValidationError
-from app.models import Spot
+from wtforms.validators import DataRequired
+
 
 class SpotForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])

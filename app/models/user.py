@@ -45,9 +45,8 @@ class User(db.Model, UserMixin):
       "email": self.email,
       "first_name": self.first_name,
       "last_name": self.last_name,
-      "birth_date": self.birth_date,
+      "birth_date": str(self.birth_date),
       "about_me": self.about_me,
       "is_host": self.is_host,
-      "hashed_password": self.hashed_password,
-      "profile_url": self.profile_url
+      "profile_url": self.profile_url,
     }

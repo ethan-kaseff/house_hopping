@@ -32,16 +32,17 @@ def ru_spots(id):
         return spot.to_dict()
     elif request.method == "POST":
         form = SpotForm()
-        spot = Spot(
-            name=form.data['name'],
-            description=form.data['description'],
-            location=form.data['location'],
-            pet_friendly=form.data['pet_friendly'],
-            private=form.data['private'],
-            available=form.data['available'],
-            user_id=1
-        )
-        db.session.add(spot)
+
+        spot = Spot.query.get(id) 
+
+        spot.name=form.data['name'],
+        spot.description=form.data['description'],
+        spot.location=form.data['location'],
+        spot.pet_friendly=form.data['pet_friendly'],
+        spot.private=form.data['private'],
+        spot.available=form.data['available'],
+        spot.user_id=1
+
         db.session.commit()
         return spot.to_dict()
     elif request.method == "DELETE":

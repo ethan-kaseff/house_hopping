@@ -2,7 +2,7 @@ from .db import db
 
 class Spot(db.Model):
     __tablename__ = "spots"
-    
+
     id = db.Column(db.Integer, nullable = False, primary_key=True)
     name = db.Column(db.String(100), nullable= False)
     description = db.Column(db.Text, nullable= False)
@@ -21,7 +21,6 @@ class Spot(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "description": self.description,
             "description": self.description,
             "location": self.location,
             "pet_friendly": self.pet_friendly,

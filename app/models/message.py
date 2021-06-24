@@ -10,3 +10,12 @@ class Message(db.Model):
 
     sender = db.relationship("User", foreign_keys=[user_id_sender], back_populates="user_sender")
     recipient = db.relationship("User", foreign_keys=[user_id_recipient], back_populates="user_recipient")
+
+def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id_sender": self.user_id_sender,
+            "user_id_recipient": self.user_id_recipient,
+            "content": self.content,
+            "message_url": self.message_url,
+        }

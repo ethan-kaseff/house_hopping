@@ -10,3 +10,12 @@ class Image(db.Model):
 
     spot = db.relationship("Spot", back_populates="images")
     review = db.relationship("Review", back_populates="images")
+
+
+def to_dict(self):
+        return {
+            "id": self.id,
+            "image_url": self.image_url,
+            "spot_id": self.spot_id,
+            "review_id": self.review_id,
+        }
