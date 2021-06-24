@@ -8,11 +8,15 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotForm from "./components/SpotForm";
+import SearchBar from "./components/SearchBar";
+import SearchResults from "./components/SearchResults";
 import Spot from "./components/Spot";
 import { authenticate } from "./store/session";
 import Booking from "./components/Booking"
 import BookSpotForm from "./components/BookSpotForm"
 
+
+import 'react-dates/initialize';
 
 
 function App() {
@@ -46,6 +50,12 @@ function App() {
         <SpotForm />
       </Route>
       <Switch>
+        <Route path='/search-bar' exact = {true}>
+          <SearchBar />
+        </Route>
+        <Route path='/search-results' exact = {true}>
+          <SearchResults />
+        </Route>
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>

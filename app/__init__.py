@@ -10,6 +10,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.spot_routes import spot_routes
 from .api.review_routes import review_routes
+from .api.spot_search_routes import spot_search_routes
 from .api.booking_routes import booking_routes
 
 from .seeds import seed_commands
@@ -35,6 +36,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(spot_routes,url_prefix='/api/spots')
+app.register_blueprint(spot_search_routes,url_prefix='/api/spot-search')
 app.register_blueprint(review_routes,url_prefix='/api/reviews')
 app.register_blueprint(booking_routes, url_prefix='/api/bookings')
 
