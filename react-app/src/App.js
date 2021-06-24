@@ -14,6 +14,8 @@ import Spot from "./components/Spot";
 import { authenticate } from "./store/session";
 import Booking from "./components/Booking"
 import BookSpotForm from "./components/BookSpotForm"
+import EditBookSpotForm from "./components/EditBookSpotForm"
+// import BookSpotForm from "./components/BookSpotForm"
 
 
 import 'react-dates/initialize';
@@ -38,14 +40,17 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Booking/>
-    {/* <Route path="/spots/:id">
+    <NavBar />
+    <Route path="/booking/new">
       <BookSpotForm/>
-    </Route> */}
+    </Route>
+    <Route path="/bookings/:id">
+      <Booking/>
+      <EditBookSpotForm/>
+    </Route>
     <Route path="/spots/:id">
       <Spot/>
     </Route>
-      <NavBar />
       <Route path="/spots/new">
         <SpotForm />
       </Route>
@@ -70,6 +75,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <h1>My Home Page</h1>
+          <Booking/>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -16,7 +16,9 @@ export default function Booking() {
         <div>
             {bookingState && Object.values(bookingState).map(booking => {
                 return (
-                    <div>{booking.start_date} </div>
+                    <h2> Booking
+                        <div> Start Date:{booking.start_date} </div>
+                    </h2>
                 )
 })}
         </div>

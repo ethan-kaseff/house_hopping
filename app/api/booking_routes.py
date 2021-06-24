@@ -57,11 +57,11 @@ def get_booking(id):
 
 @booking_routes.route('/')
 def get_bookings():
-    # print('HELLLLOOOO')
-    bookings= Booking.query.all()
+    # bookings= Booking.query.all()
+    bookings= Booking.query.filter(Booking.user_id == User.id).all()
     bookingsDict = {}
     # print(bookings_by_owner)
-    # print(Booking.to_dict)
+    print('🎨 bookings',bookings)
     for booking in bookings:
         bookingsDict[booking.id] = booking.to_dict()
     return bookingsDict

@@ -1,10 +1,10 @@
 import React,{useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams, useHistory} from 'react-router-dom';
-import { createBooking} from '../../store/booking'
+import { updateBooking} from '../../store/booking'
 
 
-export default function BookSpotForm() {
+export default function EditBookSpotForm() {
     const [start_date,setStartDate] = useState('');
     const [end_date, setEndDate] = useState('');
     const bookingState = useSelector(state => state.booking.bookings);
@@ -15,7 +15,7 @@ export default function BookSpotForm() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        const data = await dispatch(createBooking(start_date, end_date));
+        const data = await dispatch(updateBooking(start_date, end_date));
         history.push('/');
     }
 
@@ -30,7 +30,7 @@ export default function BookSpotForm() {
                     <label> End Date</label>
                     <input type="text" value={end_date} onChange={(e) => setEndDate(e.target.value)} />
                 </div>
-                <button type='submit'>Submit</button>
+                <button type='submit'>Edit</button>
             </form>
         </div>
     )
