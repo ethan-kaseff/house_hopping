@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Booking, User, db
-# from app.forms import BookingForm
+from app.forms import BookingForm
 
 booking_routes = Blueprint('booking', __name__)
 
@@ -11,14 +11,12 @@ booking_routes = Blueprint('booking', __name__)
 def create_bookings():
     if request.method == 'POST':
         #create booking
-        # form = BookingForm()
+        form = BookingForm()
         booking = Booking(
             spot_id=2,
             user_id=1,
-            start_date="2021-07-01",
-            end_date="2021-07-05",
-            # start_date=form.data['start_date'],
-            # end_date=form.data['end_date'],
+            start_date=form.data['start_date'],
+            end_date=form.data['end_date'],
         )
         db.session.add(booking)
         db.session.commit()
@@ -28,16 +26,14 @@ def create_bookings():
 @booking_routes.route('/<int:id>', methods=['POST', 'DELETE'])
 def update_delete_bookings(id):
     if request.method == "POST":
-        # form = BookingForm()
+        form = BookingForm()
 
         booking = Booking.query.get(id)
 
         booking.spot_id=1,
         booking.user_id=2,
-        booking.start_date="2021-07-01",
-        booking.end_date="2021-07-05",
-        # booking.start_date=form.data['start_date'],
-        # booking.end_date=form.data['end_data'],
+        booking.start_date=form.data['start_date'],
+        booking.end_date=form.data['end_data'],
 
         db.session.commit()
         return booking.to_dict()
@@ -49,7 +45,7 @@ def update_delete_bookings(id):
 
 
 @booking_routes.route('/user/<int:id>')
-def get_bookings(id):
+def get_booking(id):
     # print('HELLLLOOOO')
     bookings_by_owner = Booking.query.filter(Booking.user_id == id).all()
     bookingDict = {}
@@ -58,3 +54,14 @@ def get_bookings(id):
     for booking in bookings_by_owner:
         bookingDict[booking.id] = booking.to_dict()
     return bookingDict
+
+@booking_routes.route('/')
+def get_bookings():
+    # print('HELLLLOOOO')
+    bookings= Booking.query.all()
+    bookingsDict = {}
+    # print(bookings_by_owner)
+    # print(Booking.to_dict)
+    for booking in bookings:
+        bookingsDict[booking.id] = booking.to_dict()
+    return bookingsDict

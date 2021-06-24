@@ -10,7 +10,11 @@ import User from "./components/User";
 import SpotForm from "./components/SpotForm";
 import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
+import Spot from "./components/Spot";
 import { authenticate } from "./store/session";
+import Booking from "./components/Booking"
+import BookSpotForm from "./components/BookSpotForm"
+
 
 import 'react-dates/initialize';
 
@@ -34,8 +38,17 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Booking/>
+    {/* <Route path="/spots/:id">
+      <BookSpotForm/>
+    </Route> */}
+    <Route path="/spots/:id">
+      <Spot/>
+    </Route>
       <NavBar />
-      <SpotForm />
+      <Route path="/spots/new">
+        <SpotForm />
+      </Route>
       <Switch>
         <Route path='/search-bar' exact = {true}>
           <SearchBar />
