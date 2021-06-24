@@ -27,15 +27,15 @@ function SearchBar() {
         e.preventDefault();
 
         // dispatch(saveCurrentDates(startDate, endDate))
-
-        dispatch(getAvailableSpots(location, startDate, endDate))
+        console.log(location.key)
+        dispatch(getAvailableSpots(location.key, startDate, endDate))
 
         history.push(`/search-results`);
     }
 
     const items = [
         {
-            key: 'Kansas  City',
+            key: 'Kansas City',
             label: 'Kansas City'
         },
         {
