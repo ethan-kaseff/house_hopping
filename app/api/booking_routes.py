@@ -46,11 +46,17 @@ def update_delete_bookings(id):
 
 @booking_routes.route('/<int:id>')
 def get_booking(id):
-    booking_by_id = Booking.query.filter(Booking.id == id).all()
-    bookingDict = {}
-    for booking in booking_by_id:
-        bookingDict[booking.id] = booking.to_dict()
-    return bookingDict
+    print(Booking, 'BOOKING')
+    # booking_by_id = Booking.query.get(id)
+    bookings = Booking.query.all()
+    return {'booking': [booking.to_dict() for booking in bookings]}
+    # print(booking_by_id)
+    # bookingDict = {}
+    # return bookingDict
+    # return booking_by_id.to_dict()
+    # for booking in booking_by_id:
+    #     bookingDict[booking.id] = booking.to_dict()
+    # return bookingDict
 
 @booking_routes.route('/')
 def get_bookings():

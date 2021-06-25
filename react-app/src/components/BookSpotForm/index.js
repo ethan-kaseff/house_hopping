@@ -12,6 +12,8 @@ export default function BookSpotForm() {
   const history = useHistory();
   const { id } = useParams();
   const user_id = user.user.id;
+
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const data = await dispatch(
@@ -26,7 +28,7 @@ export default function BookSpotForm() {
         <div>
           <label> Start Date</label>
           <input
-            type="text"
+            type="date"
             value={start_date}
             onChange={(e) => setStartDate(e.target.value)}
           />
@@ -34,7 +36,7 @@ export default function BookSpotForm() {
         <div>
           <label> End Date</label>
           <input
-            type="text"
+            type="date"
             value={end_date}
             onChange={(e) => setEndDate(e.target.value)}
           />
