@@ -18,6 +18,15 @@ const LoginForm = () => {
     }
   };
 
+  const onLoginWithDemo = async (e) => {
+    e.preventDefault();
+
+    const data = await dispatch(login('demo@aa.io', 'password'));
+    if (data.errors) {
+      setErrors(data.errors);
+    }
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -80,7 +89,14 @@ const LoginForm = () => {
           </button>
         </div>
       </form>
+      <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"
+            type="button" onClick={onLoginWithDemo}
+          >
+            Login With Demo User
+          </button>
     </div>
+
   );
 };
 

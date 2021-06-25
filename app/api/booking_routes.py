@@ -13,8 +13,8 @@ def create_bookings():
         #create booking
         form = BookingForm()
         booking = Booking(
-            spot_id=2,
-            user_id=1,
+            spot_id=form.data['spot_id'],
+            user_id=form.data['user_id'],
             start_date=form.data['start_date'],
             end_date=form.data['end_date'],
         )
@@ -52,13 +52,13 @@ def get_booking(id):
         bookingDict[booking.id] = booking.to_dict()
     return bookingDict
 
-
-@booking_routes.route('/user/<int:id>')
-def get_bookings(id):
-
-    all_bookings= Booking.query.filter(Booking.user_id == id).all()
+@booking_routes.route('/')
+def get_bookings():
+    # bookings= Booking.query.all()
+    bookings= Booking.query.filter(Booking.user_id == current_user.id).all()
     bookingsDict = {}
-
-    for booking in all_bookings:
+    # print(bookings_by_owner)
+    # print('🎨 bookings',bookings)
+    for booking in bookings:
         bookingsDict[booking.id] = booking.to_dict()
     return bookingsDict
