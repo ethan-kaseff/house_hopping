@@ -86,7 +86,12 @@ function SearchBar() {
                         />
                     </div>
                     <div>
-                        <button type='submit' id='search-submit'>Submit</button>
+                        <button
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"
+                            type="submit"
+                        >
+                            Sign Up
+                        </button>
                     </div>
                 </form>
             </div>

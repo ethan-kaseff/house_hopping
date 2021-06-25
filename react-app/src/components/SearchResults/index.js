@@ -27,7 +27,7 @@ function SearchResults() {
             </div>
             <div>
               {availableSpots && (
-                <div class='flex flex-wrap overflow-hidden justify-center'>
+                <div className='flex flex-wrap overflow-hidden justify-center'>
                   {spotArr.map((spot) => {
                     return (
                       <NavLink to={`/spots/${spot.id}`} exact={true}>

@@ -68,19 +68,6 @@
     padding: 4px;
 }
 
-#search-submit {
-    background-color: rgb(64, 128, 224);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    padding: 15px 32px;
-    /* margin-right: 5px; */
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
 #search-submit:hover {
     background-color: rgb(54, 113, 201);
 }
