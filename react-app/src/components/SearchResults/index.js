@@ -23,11 +23,11 @@ function SearchResults() {
         <div>
           <div className="search-results">
             <div className="search-title">
-              <h2>Search Results...</h2>
+              <h1 className="flex text-5xl justify-center pt-5">Search Results:</h1>
             </div>
             <div>
               {availableSpots && (
-                <div>
+                <div class='flex flex-wrap overflow-hidden justify-center'>
                   {spotArr.map((spot) => {
                     return (
                       <NavLink to={`/spots/${spot.id}`} exact={true}>
