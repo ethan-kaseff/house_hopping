@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 import { DateRangePicker } from 'react-dates';
 import DataListInput from 'react-datalist-input';
 
+import './SearchBar.css'
 import 'react-dates/lib/css/_datepicker.css';
 
 import { getAvailableSpots } from '../../store/spot';
