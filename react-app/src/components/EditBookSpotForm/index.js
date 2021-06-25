@@ -15,7 +15,7 @@ export default function EditBookSpotForm() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        const data = await dispatch(updateBooking(start_date, end_date));
+        const data = await dispatch(updateBooking(start_date, end_date,id));
         history.push('/');
     }
 
@@ -30,7 +30,7 @@ export default function EditBookSpotForm() {
                     <label> End Date</label>
                     <input type="text" value={end_date} onChange={(e) => setEndDate(e.target.value)} />
                 </div>
-                <button type='submit'>Edit</button>
+                <input type='submit'>Edit</input>
             </form>
         </div>
     )
