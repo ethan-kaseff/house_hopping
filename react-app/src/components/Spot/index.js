@@ -5,30 +5,36 @@ import { fetchSpot } from "../../store/spot";
 import { NavLink } from "react-router-dom";
 import BookSpotForm from "../BookSpotForm";
 
-export default function Spot() {
+export default function Spot({ spot }) {
   const dispatch = useDispatch();
-  const spotState = useSelector((state) => state.spot.loaded_spot);
+  const loadedSpot = useSelector((state) => state.spot.loaded_spot);
   // useSelector(state => console.log('state👻', state));
   // console.log('spotState😎', spotState)
-
+  let spotState;
   let { id } = useParams();
-  if (!id) {
-    id = 2;
+  if (!spot) {
+    if (!id) {
+      id = 2;
+    }
+    spotState = loadedSpot;
+  } else {
+    spotState = spot;
   }
   // console.log('ID⬇️',id)
   // const testDispatch = () => {
 
-  //     dispatch(fetchSpot(1))
-  // }
-
   useEffect(() => {
     dispatch(fetchSpot(id));
   }, []);
+  //     dispatch(fetchSpot(1))
+  // }
+
+  // useEffect(() => {
+  //   dispatch(fetchSpot(id));
+  // }, []);
   let pets;
   let privy;
-  spotState.pet_friendly
-    ? (pets = "Pet friendly!")
-    : (pets = "Not pets, sorry");
+  spotState.pet_friendly ? (pets = "Pet friendly!") : (pets = "No pets, sorry");
   spotState.private ? (privy = "Private House") : (privy = "Shared Space");
 
   return (
