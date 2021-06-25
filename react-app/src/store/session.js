@@ -74,7 +74,7 @@ export const signUp =
         password: password,
       }),
     });
-    const data = response.json();
+    const data = await response.json();
     dispatch(setUser(data));
   };
 
