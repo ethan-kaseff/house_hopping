@@ -1,7 +1,7 @@
 // constants
 
-const SET_USER = 'session/SET_USER'
-const REMOVE_USER = 'session/REMOVE_USER'
+const SET_USER = "session/SET_USER";
+const REMOVE_USER = "session/REMOVE_USER";
 
 // action creators
 const setUser = (user) => ({
@@ -12,7 +12,6 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER,
 });
-
 
 // thunks
 export const authenticate = () => async (dispatch) => {
@@ -29,24 +28,23 @@ export const authenticate = () => async (dispatch) => {
 };
 
 export const login = (email, password) => async (dispatch) => {
-
-    const response  = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            email,
-            password
-        })
-    });
-    const data = await response.json()
-    if (data.errors) {
-        return data
-    }
-    dispatch(setUser(data))
-    return {}
-}
+  const response = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+  const data = await response.json();
+  if (data.errors) {
+    return data;
+  }
+  dispatch(setUser(data));
+  return {};
+};
 
 export const logout = () => async (dispatch) => {
   const response = await fetch("/api/auth/logout", {
@@ -72,7 +70,7 @@ export const signUp =
         email,
         about_me: aboutMe,
         birthdate,
-        hashed_password: password,
+        password: password,
       }),
     });
     const data = response.json();
@@ -82,15 +80,15 @@ export const signUp =
 // reducer r
 
 // reducer r
-const initialState = {}
+const initialState = {};
 
-export default function reducer(state=initialState, action) {
-    switch (action.type) {
-        case SET_USER:
-            return {user: action.payload}
-        case REMOVE_USER:
-            return {user: null}
-        default:
-            return state
-    }
+export default function reducer(state = initialState, action) {
+  switch (action.type) {
+    case SET_USER:
+      return { user: action.payload };
+    case REMOVE_USER:
+      return { user: null };
+    default:
+      return state;
+  }
 }
