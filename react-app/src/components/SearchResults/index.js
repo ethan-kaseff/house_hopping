@@ -25,7 +25,7 @@ function SearchResults() {
             <div className="search-title">
               <h2>Search Results...</h2>
             </div>
-            <div className="plane-card-list">
+            <div>
               {availableSpots && (
                 <div>
                   {spotArr.map((spot) => {
@@ -33,16 +33,6 @@ function SearchResults() {
                       <NavLink to={`/spots/${spot.id}`} exact={true}>
                         <Spot spot={spot} />
                       </NavLink>
-                      // <card onClick={() => {
-                      //     history.push(`/spots/${spot.id}`)
-                      // }} className='plane-card'>
-                      //     {/* <img className='plane-image' src={plane.imageLink} alt=''></img> */}
-                      //     <div className='plane-info'>
-                      //         <h3>{spot.name}</h3>
-                      //         <label>Description:</label>
-                      //         <p>{spot.description}</p>
-                      //     </div>
-                      // </card>
                     );
                   })}
                 </div>
@@ -65,10 +55,3 @@ function SearchResults() {
 }
 
 export default SearchResults;
-
-/* availablePlanes.foreach( plane => {
-                        <div>
-                            <h3>{plane.name}</h3>
-                            <p>{plane.description}</p>
-                        </div>
-                    }) */
