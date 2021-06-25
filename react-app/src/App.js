@@ -49,8 +49,10 @@ function App() {
         <EditBookSpotForm />
       </Route>
       <Route path="/spots/:id">
-        <Spot />
-        <BookSpotForm />
+        <div className='flex flex-row items-center justify-center'>
+          <Spot />
+          <BookSpotForm />
+        </div>
       </Route>
       <Route path="/spots/new">
         <SpotForm />
