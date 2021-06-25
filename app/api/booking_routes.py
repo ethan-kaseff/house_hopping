@@ -13,8 +13,8 @@ def create_bookings():
         #create booking
         form = BookingForm()
         booking = Booking(
-            spot_id=2,
-            user_id=1,
+            spot_id=form.data['spot_id'],
+            user_id=form.data['user_id'],
             start_date=form.data['start_date'],
             end_date=form.data['end_date'],
         )

@@ -12,14 +12,13 @@ import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
 import Spot from "./components/Spot";
 import { authenticate } from "./store/session";
-import Booking from "./components/Booking"
-import BookSpotForm from "./components/BookSpotForm"
-import EditBookSpotForm from "./components/EditBookSpotForm"
+import Booking from "./components/Booking";
+import BookSpotForm from "./components/BookSpotForm";
+import EditBookSpotForm from "./components/EditBookSpotForm";
+import Splash from "./components/Splash";
 // import BookSpotForm from "./components/BookSpotForm"
 
-
-import 'react-dates/initialize';
-
+import "react-dates/initialize";
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -40,25 +39,26 @@ function App() {
 
   return (
     <BrowserRouter>
-    <NavBar />
-    <Route path="/booking/new">
-      <BookSpotForm/>
-    </Route>
-    <Route path="/bookings/:id">
-      <Booking/>
-      <EditBookSpotForm/>
-    </Route>
-    <Route path="/spots/:id">
-      <Spot/>
-    </Route>
+      <NavBar />
+      <Route path="/booking/new">
+        <BookSpotForm />
+      </Route>
+      <Route path="/bookings/:id">
+        <Booking />
+        <EditBookSpotForm />
+      </Route>
+      <Route path="/spots/:id">
+        <Spot />
+        <BookSpotForm />
+      </Route>
       <Route path="/spots/new">
         <SpotForm />
       </Route>
       <Switch>
-        <Route path='/search-bar' exact = {true}>
+        <Route path="/search-bar" exact={true}>
           <SearchBar />
         </Route>
-        <Route path='/search-results' exact = {true}>
+        <Route path="/search-results" exact={true}>
           <SearchResults />
         </Route>
         <Route path="/login" exact={true}>
@@ -74,8 +74,8 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
-          <Booking/>
+          <Splash />
+          <Booking />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
