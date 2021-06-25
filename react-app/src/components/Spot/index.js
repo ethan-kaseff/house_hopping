@@ -7,15 +7,10 @@ import {fetchSpot} from '../../store/spot';
 export default function Spot() {
     const dispatch = useDispatch();
     const spotState = useSelector(state => state.spot.loaded_spot);
-    // useSelector(state => console.log('state👻', state));
     // console.log('spotState😎', spotState)
 
     const {id} = useParams();
     // console.log('ID⬇️',id)
-    // const testDispatch = () => {
-
-    //     dispatch(fetchSpot(1))
-    // }
 
     useEffect(() => {
         dispatch(fetchSpot(id))
@@ -23,7 +18,16 @@ export default function Spot() {
 
     return (
         <div>
-            {spotState.name}
+            <h1>{spotState.name}</h1>
+            <div>
+                <h2>Description:</h2>
+                <h2>{spotState.description}</h2>
+                <h2>Location:</h2>
+                <h2>{spotState.location}</h2>
+                <h2>{spotState.pet_friendly}</h2>
+                <h2>{spotState.private}</h2>
+                <h2>{spotState.available}</h2>
+            </div>
 
             {/* <button onClick={() => testDispatch()}>TestDispatch</button> */}
         </div>

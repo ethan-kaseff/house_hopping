@@ -42,14 +42,13 @@ function App() {
     <BrowserRouter>
     <NavBar />
     <Route path="/booking/new">
-      <BookSpotForm/>
+      <BookSpotForm />
     </Route>
     <Route path="/bookings/:id">
-      <Booking/>
-      <EditBookSpotForm/>
+      <EditBookSpotForm />
     </Route>
     <Route path="/spots/:id">
-      <Spot/>
+      <Spot />
     </Route>
       <Route path="/spots/new">
         <SpotForm />
@@ -75,7 +74,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <h1>My Home Page</h1>
-          <Booking/>
+          <Booking />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

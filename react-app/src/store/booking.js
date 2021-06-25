@@ -50,18 +50,18 @@ export const createBooking =(start_date, end_date,) =>
 
 // Thunk for read All Booking api/user/:id/booking/
 export const fetchBookings =() => async (dispatch) => {
-
-    const response = await fetch(`/api/bookings/`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    console.log('HEYYYYYYYYY')
+    const response = await fetch(`/api/bookings`)
+    // const response = await fetch(`/api/bookings`, {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
     const responseObject = await response.json();
     if (responseObject.errors) {
       return responseObject;
     }
-    console.log(responseObject, '🙂')
     dispatch(loadBookingsActionCreator(responseObject));
   };
 

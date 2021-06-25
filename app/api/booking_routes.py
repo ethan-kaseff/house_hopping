@@ -7,7 +7,7 @@ booking_routes = Blueprint('booking', __name__)
 
 
 @booking_routes.route('/create', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def create_bookings():
     if request.method == 'POST':
         #create booking
@@ -44,24 +44,21 @@ def update_delete_bookings(id):
         return booking.to_dict()
 
 
-@booking_routes.route('/user/<int:id>')
+@booking_routes.route('/<int:id>')
 def get_booking(id):
-    # print('HELLLLOOOO')
-    bookings_by_owner = Booking.query.filter(Booking.user_id == id).all()
+    booking_by_id = Booking.query.filter(Booking.id == id).all()
     bookingDict = {}
-    # print(bookings_by_owner)
-    # print(Booking.to_dict)
-    for booking in bookings_by_owner:
+    for booking in booking_by_id:
         bookingDict[booking.id] = booking.to_dict()
     return bookingDict
 
-@booking_routes.route('/')
-def get_bookings():
-    # bookings= Booking.query.all()
-    bookings= Booking.query.filter(Booking.user_id == User.id).all()
+
+@booking_routes.route('/user/<int:id>')
+def get_bookings(id):
+
+    all_bookings= Booking.query.filter(Booking.user_id == id).all()
     bookingsDict = {}
-    # print(bookings_by_owner)
-    print('🎨 bookings',bookings)
-    for booking in bookings:
+
+    for booking in all_bookings:
         bookingsDict[booking.id] = booking.to_dict()
     return bookingsDict

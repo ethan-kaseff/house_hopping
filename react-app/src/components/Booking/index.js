@@ -6,7 +6,7 @@ import {fetchBookings} from '../../store/booking'
 export default function Booking() {
     const dispatch = useDispatch();
     const bookingState = useSelector(state => state.booking.bookings);
-    console.log('bookingState😎', bookingState)
+    // console.log('bookingState😎', bookingState)
 
     useEffect(() => {
         dispatch(fetchBookings())
@@ -20,7 +20,7 @@ export default function Booking() {
                         <div> Start Date:{booking.start_date} </div>
                     </h2>
                 )
-})}
+            })}
         </div>
     )
 }
