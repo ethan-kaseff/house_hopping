@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import { NavLink } from "react-router-dom";
+import { Redirect, useParams } from "react-router";
+import { NavLink, useHistory } from "react-router-dom";
 import Spot from "../Spot";
-import SearchBar from '../SearchBar'
+import SearchBar from '../SearchBar';
+import {useDispatch} from 'react-redux';
 
 
 
 function Splash() {
+  const history = useHistory();
   let { id } = useParams();
   if (!id) {
     id = 2;
   }
+  useEffect(()=> {
+    history.push('/')
+  }, [])
   return (
     <div className="flex flex-col items-center justify-center m-5">
       <h1 className="text-7xl">Welcome to House Hopper!</h1>

@@ -39,6 +39,7 @@ export const login = (email, password) => async (dispatch) => {
     }),
   });
   const data = await response.json();
+  console.log(data)
   if (data.errors) {
     return data;
   }
@@ -73,7 +74,7 @@ export const signUp =
         password: password,
       }),
     });
-    const data = response.json();
+    const data = await response.json();
     dispatch(setUser(data));
   };
 
