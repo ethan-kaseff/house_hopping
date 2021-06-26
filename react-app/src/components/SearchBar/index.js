@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 import { DateRangePicker } from 'react-dates';
 import DataListInput from 'react-datalist-input';
 
+import './SearchBar.css'
 import 'react-dates/lib/css/_datepicker.css';
 
 import { getAvailableSpots } from '../../store/spot';
@@ -85,7 +86,12 @@ function SearchBar() {
                         />
                     </div>
                     <div>
-                        <button type='submit' id='search-submit'>Submit</button>
+                        <button
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"
+                            type="submit"
+                        >
+                            Sign Up
+                        </button>
                     </div>
                 </form>
             </div>

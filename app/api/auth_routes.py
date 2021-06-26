@@ -71,7 +71,7 @@ def sign_up():
             birth_date="2016-02-17",
             about_me=form.data['about_me'],
             is_host=True,
-            hashed_password=form.data['hashed_password'],
+            password=form.data['password'],
             profile_url=""
         )
         db.session.add(user)
