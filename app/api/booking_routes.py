@@ -33,7 +33,7 @@ def update_delete_bookings(id):
         booking.spot_id=1,
         booking.user_id=2,
         booking.start_date=form.data['start_date'],
-        booking.end_date=form.data['end_data'],
+        booking.end_date=form.data['end_date'],
 
         db.session.commit()
         return booking.to_dict()
@@ -46,17 +46,11 @@ def update_delete_bookings(id):
 
 @booking_routes.route('/<int:id>')
 def get_booking(id):
-    print(Booking, 'BOOKING')
-    # booking_by_id = Booking.query.get(id)
-    bookings = Booking.query.all()
-    return {'booking': [booking.to_dict() for booking in bookings]}
-    # print(booking_by_id)
-    # bookingDict = {}
-    # return bookingDict
-    # return booking_by_id.to_dict()
-    # for booking in booking_by_id:
-    #     bookingDict[booking.id] = booking.to_dict()
-    # return bookingDict
+
+    bookings = Booking.query.get(id)
+    print(bookings, 'BOOKINGS')
+
+    return bookings.to_dict()
 
 @booking_routes.route('/')
 def get_bookings():
