@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Review, db
+from app.models import Review, db, Spot
 from app.forms import ReviewForm
 
 review_routes = Blueprint('reviews', __name__)
@@ -45,11 +45,18 @@ def update_delete_reviews(id):
 
 @review_routes.route('/user/<int:id>')
 def reviews_by_user(id):
-    reviews = Review.query.filter(Review.user_id == id).all()
-    reviewsDict = {}
+    # reviews = Review.query.filter(Review.user_id == id).all()
+    reviews = Review.query.join(Spot).filter(Review.user_id == id).all()
+    # print('reviews[0]🥳',dir(reviews[0]))
+    # print('reviews[0]🥳',reviews[0].spot.to_dict())
+    spotByUserReviews = {}
     for review in reviews:
-        reviewsDict[review.id] = review.to_dict()
-    return reviewsDict
+        spotByUserReviews[review.spot.id] = review.spot.to_dict()
+        if ("reviews" not in spotByUserReviews[review.spot.id].keys()):
+            spotByUserReviews[review.spot.id]["reviews"] = {}
+        spotByUserReviews[review.spot.id]["reviews"][review.id] = review.to_dict()
+
+    return spotByUserReviews
 
 
 @review_routes.route('/spot/<int:id>')

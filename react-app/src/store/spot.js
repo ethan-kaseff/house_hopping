@@ -3,6 +3,8 @@ const LOAD_SINGLE_SPOT = "spot/LOAD_SINGLE_SPOT"
 const ADD_UPDATE_SPOT = "spot/ADD_UPDATE_SPOT";
 const DELETE_SPOT = "spot/DELETE_SPOT"
 const LOAD_AVAILABLE_SPOTS= 'spot/LOAD_AVAILABLE/SPOTS'
+const LOAD_SPOTS_BY_USER_REVIEWS = 'spot/LOAD_SPOTS_BY_USER_REVIEWS'
+
 
 //action creators
 const loadSingleSpotActionCreator = (spot) => ({
