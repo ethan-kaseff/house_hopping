@@ -19,24 +19,26 @@ export default function EditBookSpotForm() {
             fetchBooking(id));
         const editBooking = await dispatch(
             updateBooking(start_date, end_date,id));
-        history.push('/');
+        history.push(`/`);
     }
 
     return (
         <div>
+            <div className="flex flex-col items-center justify-center m-5">
             <form onSubmit={handleFormSubmit}>
-                <div>
-                    <label> Start Date</label>
+                <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                    <label> Start Date: </label>
                     <input type="date" value={start_date} onChange={(e) => setStartDate(e.target.value)} />
                 </div>
-                <div>
-                    <label> End Date</label>
+                <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                    <label> End Date: </label>
                     <input type="date" value={end_date} onChange={(e) => setEndDate(e.target.value)} />
                 </div>
-                <button type='submit'>Edit</button>
+                <button type='submit' className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Edit</button>
                 {/* <input type='button' onClick={handleFormSubmit}>Edit</input> */}
 
             </form>
+            </div>
         </div>
     )
 }

@@ -4,29 +4,16 @@ import { useParams } from "react-router-dom";
 import {fetchBooking} from '../../store/booking'
 
 
-export default function One_Booking() {
+export default function OneBooking() {
   const dispatch = useDispatch();
   const loadedBooking = useSelector((state) => state.booking.loaded_booking);
-  console.log(loadedBooking.booking, 'LOADED')
-  let newArr = loadedBooking.booking
-  for (let booking in newArr) {
-    console.log(booking, 'booking')
-  }
-  // useSelector(state => console.log('state👻', state));
-  // console.log('spotState😎', spotState)
+  // console.log(loadedBooking.booking, 'LOADED')
+
   const {id} = useParams()
-  // console.log('ID⬇️',id)
-  // const testDispatch = () => {
 
   useEffect(() => {
     dispatch(fetchBooking(id));
   }, []);
-  //     dispatch(fetchSpot(1))
-  // }
-
-  // useEffect(() => {
-  //   dispatch(fetchSpot(id));
-  // }, []);
 
 
   return (
@@ -38,6 +25,7 @@ export default function One_Booking() {
           alt="Sunset in the mountains"
         />
         <div className="px-6 py-4">
+          <h2>Current Booking: </h2>
           <div className="font-bold text-xl mb-2">{loadedBooking.start_date}</div>
           <p className="text-gray-700 text-base">{loadedBooking.end_date}</p>
 

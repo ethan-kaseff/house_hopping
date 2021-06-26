@@ -74,7 +74,7 @@ export const fetchBooking = (id) => async (dispatch) => {
       "Content-Type": "application/json",
     },
   });
-  console.log(response, "🙂");
+  // console.log(response, "🙂");
 
   const responseObject = await response.json();
   if (responseObject.errors) {
@@ -101,6 +101,7 @@ export const updateBooking = (start_date, end_date, id) => async (dispatch) => {
   if (responseObject.errors) {
     return responseObject;
   }
+  // console.log(responseObject, 'HEYYYYYYYYY')
   dispatch(addUpdateBookingActionCreator(responseObject));
 };
 
@@ -131,7 +132,7 @@ const initialState = { bookings: {}, loaded_booking: {} };
 
 export default function reducer(state = initialState, action) {
   let newState;
-  console.log(action, 'ACTION')
+  // console.log(action, 'ACTION')
   switch (action.type) {
     case LOAD_BOOKINGS:
       newState = { ...state };
@@ -139,7 +140,7 @@ export default function reducer(state = initialState, action) {
       return newState;
 
     case LOAD_BOOKING:
-      console.log(action.payload, '!!!!!')
+      // console.log(action.payload, '!!!!!')
       // newState = { ...state, bookings: { ...state.bookings } };
       // newState.bookings[action.payload.id] = action.payload;
       newState = { ...state };

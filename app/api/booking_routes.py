@@ -30,8 +30,8 @@ def update_delete_bookings(id):
 
         booking = Booking.query.get(id)
 
-        booking.spot_id=1,
-        booking.user_id=2,
+        # booking.spot_id=1,
+        # booking.user_id=2,
         booking.start_date=form.data['start_date'],
         booking.end_date=form.data['end_date'],
 

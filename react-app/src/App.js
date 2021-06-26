@@ -12,11 +12,11 @@ import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
 import Spot from "./components/Spot";
 import { authenticate } from "./store/session";
-import My_Bookings from "./components/Booking";
+import MyBookings from "./components/Booking";
 import BookSpotForm from "./components/BookSpotForm";
 import EditBookSpotForm from "./components/EditBookSpotForm";
 import Splash from "./components/Splash";
-import One_Booking from "./components/One_booking";
+import OneBooking from "./components/One_booking";
 // import BookSpotForm from "./components/BookSpotForm"
 
 import "react-dates/initialize";
@@ -32,7 +32,7 @@ function App() {
       setLoaded(true);
       // immediately invoking asynchronous function
     })();
-  }, []);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -45,7 +45,7 @@ function App() {
         <BookSpotForm />
       </Route>
       <Route path="/bookings/:id">
-        <One_Booking />
+        <OneBooking />
         <EditBookSpotForm />
       </Route>
       <Route path="/spots/:id">
@@ -78,7 +78,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <Splash />
-          <My_Bookings />
+          <MyBookings />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
