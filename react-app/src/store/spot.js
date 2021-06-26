@@ -26,6 +26,10 @@ const loadAvailableSpots = (spots) => ({
   type: LOAD_AVAILABLE_SPOTS,
   payload: spots
 })
+const loadSpotsByUserReviews = (spots) => ({
+  type: LOAD_SPOTS_BY_USER_REVIEWS,
+  payload: spots
+})
 
 //thuunks
 export const createSpot =
@@ -133,6 +137,21 @@ export const getAvailableSpots = (location, start_date, end_date) => async (disp
 }
 
 
+// Thunk To Get All Reviews of the user by spot
+export const fetchSpotReviewsByUser =(id) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/user/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const responseObject = await response.json();
+    if (responseObject.errors) {
+      return responseObject;
+    }
+    dispatch(loadSpotsByUserReviews(responseObject));
+  };
+
 // Reducer
 const initialState = {availableSpots:{}, spots:{}, loaded_spot:{}};
 
@@ -162,6 +181,11 @@ export default function reducer(state = initialState, action) {
     case DELETE_SPOT:
       newState = { ...state, spots:{...state.spots} };
       delete newState.spots[action.payload.id]
+      return newState;
+
+      case LOAD_SPOTS_BY_USER_REVIEWS:
+      newState = {...state};
+      newState.spots = action.payload;
       return newState;
 
     default:

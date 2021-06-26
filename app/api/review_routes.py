@@ -47,14 +47,16 @@ def update_delete_reviews(id):
 def reviews_by_user(id):
     # reviews = Review.query.filter(Review.user_id == id).all()
     reviews = Review.query.join(Spot).filter(Review.user_id == id).all()
-    # print('reviews[0]🥳',dir(reviews[0]))
+    print('reviews[0]🥳',dir(reviews[0].spot))
     # print('reviews[0]🥳',reviews[0].spot.to_dict())
     spotByUserReviews = {}
     for review in reviews:
         spotByUserReviews[review.spot.id] = review.spot.to_dict()
         if ("reviews" not in spotByUserReviews[review.spot.id].keys()):
             spotByUserReviews[review.spot.id]["reviews"] = {}
-        spotByUserReviews[review.spot.id]["reviews"][review.id] = review.to_dict()
+
+        for r in review.spot.reviews:
+            spotByUserReviews[review.spot.id]["reviews"][r.id] = r.to_dict()
 
     return spotByUserReviews
 
