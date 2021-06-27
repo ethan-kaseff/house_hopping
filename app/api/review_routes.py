@@ -52,11 +52,11 @@ def reviews_by_user(id):
     spotByUserReviews = {}
     for review in reviews:
         spotByUserReviews[review.spot.id] = review.spot.to_dict()
-        if ("reviews" not in spotByUserReviews[review.spot.id].keys()):
-            spotByUserReviews[review.spot.id]["reviews"] = {}
+        # if ("reviews" not in spotByUserReviews[review.spot.id].keys()):
+        #     spotByUserReviews[review.spot.id]["reviews"] = {}
 
-        for r in review.spot.reviews:
-            spotByUserReviews[review.spot.id]["reviews"][r.id] = r.to_dict()
+        # for r in review.spot.reviews:
+        #     spotByUserReviews[review.spot.id]["reviews"][r.id] = r.to_dict()
 
     return spotByUserReviews
 

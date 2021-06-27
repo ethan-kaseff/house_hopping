@@ -26,7 +26,7 @@ const loadAvailableSpots = (spots) => ({
   type: LOAD_AVAILABLE_SPOTS,
   payload: spots
 })
-const loadSpotsByUserReviews = (spots) => ({
+const loadSpotsByUserReviewsActionCreator = (spots) => ({
   type: LOAD_SPOTS_BY_USER_REVIEWS,
   payload: spots
 })
@@ -149,11 +149,11 @@ export const fetchSpotReviewsByUser =(id) => async (dispatch) => {
     if (responseObject.errors) {
       return responseObject;
     }
-    dispatch(loadSpotsByUserReviews(responseObject));
+    dispatch(loadSpotsByUserReviewsActionCreator(responseObject));
   };
 
 // Reducer
-const initialState = {availableSpots:{}, spots:{}, loaded_spot:{}};
+const initialState = {availableSpots:{}, spots:{}, loaded_spot:{}, userReviewSpots:{}};
 
 
 export default function reducer(state = initialState, action) {
@@ -183,9 +183,9 @@ export default function reducer(state = initialState, action) {
       delete newState.spots[action.payload.id]
       return newState;
 
-      case LOAD_SPOTS_BY_USER_REVIEWS:
+    case LOAD_SPOTS_BY_USER_REVIEWS:
       newState = {...state};
-      newState.spots = action.payload;
+      newState.userReviewSpots = action.payload;
       return newState;
 
     default:

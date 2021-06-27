@@ -17,6 +17,8 @@ import BookSpotForm from "./components/BookSpotForm";
 import EditBookSpotForm from "./components/EditBookSpotForm";
 import Splash from "./components/Splash";
 import OneBooking from "./components/One_booking";
+import SpotDetailsPage from "./components/SpotDetailsPage";
+
 // import BookSpotForm from "./components/BookSpotForm"
 
 import "react-dates/initialize";
@@ -49,10 +51,11 @@ function App() {
         <EditBookSpotForm />
       </Route>
       <Route path="/spots/:id">
-        <div className='flex flex-row items-center justify-center'>
+        {/* <div className='flex flex-row items-center justify-center'>
           <Spot />
           <BookSpotForm />
-        </div>
+        </div> */}
+        <SpotDetailsPage/>
       </Route>
       <Route path="/spots/new">
         <SpotForm />
