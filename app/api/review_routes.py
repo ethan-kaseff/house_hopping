@@ -42,6 +42,11 @@ def update_delete_reviews(id):
         db.session.commit()
         return review.to_dict()
 
+@review_routes.route('/<int:id>')
+def single_review(id):
+    review = Review.query.get(id)
+    return review.to_dict()
+
 
 @review_routes.route('/user/<int:id>')
 def reviews_by_user(id):
