@@ -17,7 +17,7 @@ def reviews_by_spot(location, start_date, end_date):
     conflictedBookings = Booking.query.filter(Booking.start_date <= end_date) \
                                         .filter(Booking.end_date >= start_date).all()
 
-    conflictedBookingsSpotIdSet = {}
+    conflictedBookingsSpotIdSet = set()
     for booking in conflictedBookings:
         conflictedBookingsSpotIdSet.add(booking.spot_id)
 
@@ -29,4 +29,3 @@ def reviews_by_spot(location, start_date, end_date):
         availableSpotsDict[spot.id] = spot.to_dict()
 
     return availableSpotsDict
- 
