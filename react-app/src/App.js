@@ -18,6 +18,7 @@ import EditBookSpotForm from "./components/EditBookSpotForm";
 import Splash from "./components/Splash";
 import OneBooking from "./components/One_booking";
 import SpotDetailsPage from "./components/SpotDetailsPage";
+import ReviewEditForm from "./components/ReviewEditForm";
 
 // import BookSpotForm from "./components/BookSpotForm"
 
@@ -72,6 +73,9 @@ function App() {
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path="/review/:review_id" exact={true}>
+          < ReviewEditForm/>
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
