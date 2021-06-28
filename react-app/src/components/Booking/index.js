@@ -14,7 +14,7 @@ export default function Booking() {
 
     return (
         <div>
-            {bookingState && Object.values(bookingState).map(booking => {
+            {/* {bookingState && Object.values(bookingState).map(booking => {
                 return (
                     <div>
                     <h2> Booking </h2>
@@ -23,7 +23,7 @@ export default function Booking() {
                     <input type='button' value='delete' key={'booking_delete'+ booking.id} id={'booking_delete'+ booking.id}/>
                     </div>
                 )
-})}
+})} */}
         </div>
     )
 }
