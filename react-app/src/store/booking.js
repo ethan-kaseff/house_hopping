@@ -62,22 +62,25 @@ export const fetchBookings = () => async (dispatch) => {
   if (responseObject.errors) {
     return responseObject;
   }
-  console.log(responseObject, "🙂");
+  // console.log(responseObject, "🙂");
   dispatch(loadBookingsActionCreator(responseObject));
 };
 
 // Thunk for read one booking, api/user/:id/booking/:booking_id
 export const fetchBooking = (id) => async (dispatch) => {
-  const response = await fetch(`/api/booking/${id}`, {
+  const response = await fetch(`/api/bookings/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
+  // console.log(response, "🙂");
+
   const responseObject = await response.json();
   if (responseObject.errors) {
     return responseObject;
   }
+  // console.log(responseObject, "🙂");
   dispatch(loadBookingActionCreator(responseObject));
 };
 
@@ -98,6 +101,7 @@ export const updateBooking = (start_date, end_date, id) => async (dispatch) => {
   if (responseObject.errors) {
     return responseObject;
   }
+  // console.log(responseObject, 'HEYYYYYYYYY')
   dispatch(addUpdateBookingActionCreator(responseObject));
 };
 
@@ -128,7 +132,7 @@ const initialState = { bookings: {}, loaded_booking: {} };
 
 export default function reducer(state = initialState, action) {
   let newState;
-
+  // console.log(action, 'ACTION')
   switch (action.type) {
     case LOAD_BOOKINGS:
       newState = { ...state };
@@ -136,8 +140,12 @@ export default function reducer(state = initialState, action) {
       return newState;
 
     case LOAD_BOOKING:
-      newState = { ...state, bookings: { ...state.bookings } };
+      // console.log(action.payload, '!!!!!')
+      // newState = { ...state, bookings: { ...state.bookings } };
+      // newState.bookings[action.payload.id] = action.payload;
+      newState = { ...state };
       newState.loaded_booking = action.payload;
+      // newState.bookings[action.payload.id] = action.payload;
       return newState;
 
     case ADD_UPDATE_BOOKING:

@@ -33,7 +33,7 @@ def ru_spots(id):
     elif request.method == "POST":
         form = SpotForm()
 
-        spot = Spot.query.get(id) 
+        spot = Spot.query.get(id)
 
         spot.name=form.data['name'],
         spot.description=form.data['description'],
@@ -41,7 +41,7 @@ def ru_spots(id):
         spot.pet_friendly=form.data['pet_friendly'],
         spot.private=form.data['private'],
         spot.available=form.data['available'],
-        spot.user_id=1
+        # spot.user_id=1
 
         db.session.commit()
         return spot.to_dict()

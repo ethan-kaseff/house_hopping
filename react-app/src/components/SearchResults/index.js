@@ -1,11 +1,9 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import Spot from "../Spot";
 
 function SearchResults() {
-  const history = useHistory();
-  const dispatch = useDispatch();
   const availableSpots = useSelector((state) => state.spot.availableSpots);
 
   const spotArr = [];

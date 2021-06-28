@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchSpot } from "../../store/spot";
-import { NavLink } from "react-router-dom";
-import BookSpotForm from "../BookSpotForm";
 
 export default function Spot({ spot }) {
   const dispatch = useDispatch();
   const loadedSpot = useSelector((state) => state.spot.loaded_spot);
-  // useSelector(state => console.log('state👻', state));
-  // console.log('spotState😎', spotState)
+
   let spotState;
   let { id } = useParams();
   if (!spot) {
@@ -25,7 +22,7 @@ export default function Spot({ spot }) {
 
   useEffect(() => {
     dispatch(fetchSpot(id));
-  }, []);
+  }, [dispatch]);
   //     dispatch(fetchSpot(1))
   // }
 

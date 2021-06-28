@@ -40,7 +40,7 @@ export default function BookSpotForm() {
         {/* <div>
           <label> Start Date</label>
           <input
-            type="text"
+            type="date"
             value={start_date}
             onChange={(e) => setStartDate(e.target.value)}
           />
@@ -48,7 +48,7 @@ export default function BookSpotForm() {
         <div>
           <label> End Date</label>
           <input
-            type="text"
+            type="date"
             value={end_date}
             onChange={(e) => setEndDate(e.target.value)}
           />
