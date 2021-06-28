@@ -3,6 +3,8 @@ const LOAD_SINGLE_SPOT = "spot/LOAD_SINGLE_SPOT"
 const ADD_UPDATE_SPOT = "spot/ADD_UPDATE_SPOT";
 const DELETE_SPOT = "spot/DELETE_SPOT"
 const LOAD_AVAILABLE_SPOTS= 'spot/LOAD_AVAILABLE/SPOTS'
+const LOAD_SPOTS_BY_USER_REVIEWS = 'spot/LOAD_SPOTS_BY_USER_REVIEWS'
+
 
 //action creators
 const loadSingleSpotActionCreator = (spot) => ({
@@ -22,6 +24,10 @@ const deleteSpotActionCreator = (spot) => ({
 
 const loadAvailableSpots = (spots) => ({
   type: LOAD_AVAILABLE_SPOTS,
+  payload: spots
+})
+const loadSpotsByUserReviewsActionCreator = (spots) => ({
+  type: LOAD_SPOTS_BY_USER_REVIEWS,
   payload: spots
 })
 
@@ -131,8 +137,23 @@ export const getAvailableSpots = (location, start_date, end_date) => async (disp
 }
 
 
+// Thunk To Get All Reviews of the user by spot
+export const fetchSpotReviewsByUser =(id) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/user/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const responseObject = await response.json();
+    if (responseObject.errors) {
+      return responseObject;
+    }
+    dispatch(loadSpotsByUserReviewsActionCreator(responseObject));
+  };
+
 // Reducer
-const initialState = {availableSpots:{}, spots:{}, loaded_spot:{}};
+const initialState = {availableSpots:{}, spots:{}, loaded_spot:{}, userReviewSpots:{}};
 
 
 export default function reducer(state = initialState, action) {
@@ -160,6 +181,11 @@ export default function reducer(state = initialState, action) {
     case DELETE_SPOT:
       newState = { ...state, spots:{...state.spots} };
       delete newState.spots[action.payload.id]
+      return newState;
+
+    case LOAD_SPOTS_BY_USER_REVIEWS:
+      newState = {...state};
+      newState.userReviewSpots = action.payload;
       return newState;
 
     default:
