@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { createSpot } from "../store/spot";
 
 function SpotForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
@@ -19,6 +21,7 @@ function SpotForm() {
       createSpot(name, description, location, pet_friendly, pprivate, available)
     );
     window.alert("submitted");
+    history.push("/");
   };
 
   return (
