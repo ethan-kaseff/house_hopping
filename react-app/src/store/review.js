@@ -2,6 +2,7 @@
 const LOAD_REVIEWS_BY_SPOTID ="reviews/LOAD_REVIEWS_BY_SPOTID";
 const LOAD_REVIEW_BY_ID ="reviews/LOAD_REVIEW_BY_ID";
 const UPDATE_REVIEW ="reviews/UPDATE_REVIEW";
+const DELETE_REVIEW ="reviews/DELETE_REVIEW";
 
 
 // Action Creators
@@ -17,6 +18,10 @@ const loadReviewByIdActionCreator = (review) => ({
 
 const updateReviewActionCreator = (review) => ({
     type:UPDATE_REVIEW,
+    payload:review,
+});
+const deleteReviewActionCreator = (review) => ({
+    type:DELETE_REVIEW,
     payload:review,
 });
 
@@ -54,13 +59,28 @@ export const fetchReviewById = (review_id) => async (dispatch) => {
 
     dispatch(loadReviewByIdActionCreator(responseObject));
 }
+
 export const updateReview = (review_id,content,count) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${review_id}`,{
     method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body:{ review_id,content,count }
+      body:JSON.stringify({ content,count })
+    });
+    const responseObject = await response.json();
+    if (responseObject.errors) {
+      return responseObject;
+    }
+
+    dispatch(updateReviewActionCreator(responseObject));
+}
+export const deleteReview = (review_id) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${review_id}`,{
+    method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      }
     });
     const responseObject = await response.json();
 
@@ -68,7 +88,7 @@ export const updateReview = (review_id,content,count) => async (dispatch) => {
       return responseObject;
     }
 
-    dispatch(updateReviewActionCreator(responseObject));
+    dispatch(deleteReviewActionCreator(responseObject));
 }
 
 // Reducer
@@ -91,6 +111,10 @@ export default function reducer(state = initialState, action) {
             newState.selected_review= action.payload;
             const id = action.payload.id;
             newState.loaded_reviews[id] = action.payload;
+            return newState;
+        case DELETE_REVIEW:
+            newState = {...state, loaded_reviews:{...state.loaded_reviews}};
+            delete newState.loaded_reviews[action.payload.id]
             return newState;
         default:
           return state;
