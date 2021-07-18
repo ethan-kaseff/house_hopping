@@ -5,6 +5,8 @@ from faker import Faker
 fake = Faker()
 
 # Adds a demo user, you can add other users here if you want
+
+
 def seed_spots():
 
     spot1 = Spot(
@@ -57,15 +59,15 @@ def seed_spots():
         available=True,
         user_id=5,
     )
-    spot6  = Spot(
-        id=6  ,
+    spot6 = Spot(
+        id=6,
         name='Camp Ground',
         description='Woodsy',
         location='Kentucky',
         pet_friendly=False,
         private=True,
         available=True,
-        user_id=6 ,
+        user_id=6,
     )
     spot7 = Spot(
         id=7,
@@ -79,8 +81,8 @@ def seed_spots():
     )
     spot8 = Spot(
         id=8,
-        name='The Abbey ',
-        description='Tall ceilings ',
+        name='The Abbey',
+        description='Tall ceilings',
         location='England',
         pet_friendly=False,
         private=True,
@@ -97,7 +99,16 @@ def seed_spots():
         available=True,
         user_id=1,
     )
-
+    spot10 = Spot(
+        id=10,
+        name='Post Office Cafe',
+        description='Provincetown',
+        location='Cape Cod',
+        pet_friendly=False,
+        private=True,
+        available=True,
+        user_id=6,
+    )
 
     db.session.add(spot1)
     db.session.add(spot2)
@@ -108,6 +119,7 @@ def seed_spots():
     db.session.add(spot7)
     db.session.add(spot8)
     db.session.add(spot9)
+    db.session.add(spot10)
 
     db.session.commit()
 
@@ -115,6 +127,8 @@ def seed_spots():
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
+
+
 def undo_spots():
     db.session.execute('TRUNCATE spots;')
     db.session.commit()

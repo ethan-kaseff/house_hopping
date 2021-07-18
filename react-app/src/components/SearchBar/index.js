@@ -33,6 +33,7 @@ function SearchBar() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log('location🏡',location)
 
         const startDateFormatted = convert(startDate)
         const endDateFormatted = convert(endDate)
@@ -52,6 +53,34 @@ function SearchBar() {
         {
             key: 'South Miami',
             label: 'South Miami'
+        },
+        {
+            key: 'Tennessee',
+            label: 'Tennessee'
+        },
+        {
+            key: 'Jackson',
+            label: 'Jackson'
+        },
+        {
+            key: 'Folsom',
+            label: 'Folsom'
+        },
+        {
+            key: 'Kentucky',
+            label: 'Kentucky'
+        },
+        {
+            key: 'Mars',
+            label: 'Mars'
+        },
+        {
+            key: 'England',
+            label: 'England'
+        },
+        {
+            key: 'Cape Cod',
+            label: 'Cape Cod'
         },
     ]
 

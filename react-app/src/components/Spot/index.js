@@ -21,7 +21,9 @@ export default function Spot({ spot }) {
   // const testDispatch = () => {
 
   useEffect(() => {
-    dispatch(fetchSpot(id));
+    if (id !== undefined) {
+      dispatch(fetchSpot(id));
+    }
   }, [dispatch]);
   //     dispatch(fetchSpot(1))
   // }

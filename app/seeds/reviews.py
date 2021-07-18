@@ -5,6 +5,8 @@ from faker import Faker
 fake = Faker()
 
 # Adds a demo user, you can add other users here if you want
+
+
 def seed_reviews():
 
     review1 = Review(
@@ -46,7 +48,7 @@ def seed_reviews():
     review7 = Review(
         count=4,
         content="Spacious bathroom",
-        user_id=7,
+        user_id=6,
         spot_id=7,
     )
     review8 = Review(
@@ -74,7 +76,6 @@ def seed_reviews():
         spot_id=5,
     )
 
-
     db.session.add(review1)
     db.session.add(review2)
     db.session.add(review3)
@@ -93,6 +94,8 @@ def seed_reviews():
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
+
+
 def undo_reviews():
     db.session.execute('TRUNCATE reviews;')
     db.session.commit()

@@ -4,3 +4,21 @@
 
 
 -[] pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+
+
+
+## Seed Data Work ##
+
+CREATE USER assign_now_app WITH PASSWORD '1SuperSecretPassword' CREATEDB;
+CREATE DATABASE assign_now_app_db with OWNER assign_now_app;
+DATABASE_URL=postgresql://assign_now_app:1SuperSecretPassword@localhost/assign_now_app_db
+
+CREATE USER starter_redux_user WITH PASSWORD 'password' CREATEDB;
+CREATE DATABASE starter_redux with OWNER starter_redux_user;
+
+-[x] flask db init
+
+-[x] flask db migrate
+-[] flask db upgrade
+
+-[] flask seed all

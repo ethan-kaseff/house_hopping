@@ -1,8 +1,6 @@
 import React, { useEffect, useState }from 'react'
 import {  useDispatch, useSelector } from "react-redux"
 import { useParams, useHistory } from "react-router-dom";
-import Spot from "../Spot"
-import BookSpotForm from "../BookSpotForm"
 import {fetchReviewsBySpotId, deleteReview} from "../../store/review"
 
 
@@ -41,9 +39,6 @@ export default function SpotDetailsPage() {
     return (
         <div>
             <div className='flex flex-row items-center justify-center'>
-                <Spot/>
-                <BookSpotForm />
-
             </div>
             <div className='flex flex-row items-center justify-center'>
                 {reviews && Object.values(reviews).map(review => {

@@ -5,6 +5,8 @@ from faker import Faker
 fake = Faker()
 
 # Adds a demo user, you can add other users here if you want
+
+
 def seed_bookings():
 
     booking1 = Booking(
@@ -48,17 +50,16 @@ def seed_bookings():
 
     booking7 = Booking(
         spot_id=7,
-        user_id=7,
+        user_id=6,
         start_date="2021-07-01",
         end_date="2021-07-05"
     )
     booking8 = Booking(
         spot_id=8,
-        user_id=8,
+        user_id=4,
         start_date="2021-07-01",
         end_date="2021-07-05",
     )
-
 
     db.session.add(booking1)
     db.session.add(booking2)
@@ -75,6 +76,8 @@ def seed_bookings():
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
+
+
 def undo_bookings():
     db.session.execute('TRUNCATE bookings;')
     db.session.commit()
