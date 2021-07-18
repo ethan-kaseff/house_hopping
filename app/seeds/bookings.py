@@ -20,9 +20,54 @@ def seed_bookings():
         end_date="2021-07-05",
     )
 
+    booking3 = Booking(
+        spot_id=3,
+        user_id=3,
+        start_date="2021-07-01",
+        end_date="2021-07-05"
+    )
+    booking4 = Booking(
+        spot_id=4,
+        user_id=4,
+        start_date="2021-07-01",
+        end_date="2021-07-05",
+    )
+
+    booking5 = Booking(
+        spot_id=5,
+        user_id=5,
+        start_date="2021-07-01",
+        end_date="2021-07-05"
+    )
+    booking6 = Booking(
+        spot_id=6,
+        user_id=6,
+        start_date="2021-07-01",
+        end_date="2021-07-05",
+    )
+
+    booking7 = Booking(
+        spot_id=7,
+        user_id=7,
+        start_date="2021-07-01",
+        end_date="2021-07-05"
+    )
+    booking8 = Booking(
+        spot_id=8,
+        user_id=8,
+        start_date="2021-07-01",
+        end_date="2021-07-05",
+    )
+
 
     db.session.add(booking1)
     db.session.add(booking2)
+    db.session.add(booking3)
+    db.session.add(booking4)
+    db.session.add(booking5)
+    db.session.add(booking6)
+    db.session.add(booking7)
+    db.session.add(booking8)
 
     db.session.commit()
 

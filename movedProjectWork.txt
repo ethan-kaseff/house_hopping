@@ -1,3 +1,6 @@
 ## Steps to reactivate your projects after you moved thr root directory ##
 
--[]
+-[x] delete the .venv folder
+
+
+-[] pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt

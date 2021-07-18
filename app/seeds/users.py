@@ -12,7 +12,7 @@ def seed_users():
     #             password='password')
     demo1 = User(
         id=1,
-        email='demo@aa.io',
+        email='demo1@aa.io',
         first_name='Demo',
         last_name='User',
         birth_date= "2018-06-01",
@@ -33,8 +33,57 @@ def seed_users():
         profile_url=fake.url()
     )
 
+    demo3 = User(
+        id=3,
+        email='demo3@aa.io',
+        first_name='Elvis',
+        last_name='Presley',
+        birth_date= "2018-06-01",
+        about_me='Rock & Roll Singer',
+        is_host=False,
+        password='password',
+        profile_url=''
+    )
+    demo4 = User(
+        id=4,
+        email='demo4@aa.io',
+        first_name='June ',
+        last_name='Carter',
+        birth_date= "2014-06-01",
+        about_me='Eukelaylee Player',
+        is_host=False,
+        password='password',
+        profile_url=''
+    )
+    demo5 = User(
+        id=5,
+        email='demo5@aa.io',
+        first_name='Johnny ',
+        last_name='Cash',
+        birth_date= "2015-06-01",
+        about_me='Country Singer',
+        is_host=False,
+        password='password',
+        profile_url=''
+    )
+    demo6 = User(
+        id=6,
+        email='demo6@aa.io',
+        first_name='Britney',
+        last_name='Spears',
+        birth_date= "2016-06-01",
+        about_me='Pop Singer',
+        is_host=False,
+        password='password',
+        profile_url=''
+    )
+
     db.session.add(demo1)
     db.session.add(demo2)
+    db.session.add(demo3)
+    db.session.add(demo4)
+    db.session.add(demo5)
+    db.session.add(demo6)
 
     db.session.commit()
 
