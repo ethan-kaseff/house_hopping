@@ -1,0 +1,3 @@
+## Steps to reactivate your projects after you moved thr root directory ##
+
+-[]
