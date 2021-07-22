@@ -22,3 +22,18 @@ CREATE DATABASE starter_redux with OWNER starter_redux_user;
 -[] flask db upgrade
 
 -[] flask seed all
+
+
+if you have an issue and you need to edit or add an attribute into a MODEL for sqlAlchemy,
+
+run the following:
+
+flask seed undo
+flask db downgrade
+
+--- Delete the versions inside of the versions folder inside the migration folder
+
+flask db migrate
+flask db upgrade
+
+flask seed all

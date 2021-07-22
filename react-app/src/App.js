@@ -51,15 +51,15 @@ function App() {
         <OneBooking />
         <EditBookSpotForm />
       </Route>
-      <Route path="/spots/:id">
-        {/* <div className='flex flex-row items-center justify-center'>
-          <Spot />
-          <BookSpotForm />
-        </div> */}
-        <SpotDetailsPage/>
-      </Route>
-      <Route path="/spots/new">
+      <Route exact path="/spots/new">
         <SpotForm />
+      </Route>
+      <Route path="/spots/:id">
+        <div className='flex flex-row items-center justify-center'>
+          {/* <Spot />
+          <BookSpotForm /> */}
+          <SpotDetailsPage/>
+        </div>
       </Route>
       <Switch>
         <Route path="/search-bar" exact={true}>

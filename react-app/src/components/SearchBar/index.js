@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom'
 
 
@@ -11,6 +11,7 @@ import 'react-dates/lib/css/_datepicker.css';
 
 import { getAvailableSpots } from '../../store/spot';
 // import { saveCurrentDates } from '../../store/booking';
+import { fetchLocations } from '../../store/location'
 
 
 function SearchBar() {
@@ -23,6 +24,7 @@ function SearchBar() {
 
     // For the DataList
     const [location, setLocation] = useState();
+    const locations = useSelector(state => state.location.locations)
 
     function convert(str) {
         var date = new Date(str),
@@ -45,44 +47,50 @@ function SearchBar() {
         history.push(`/search-results`);
     }
 
-    const items = [
-        {
-            key: 'Kansas City',
-            label: 'Kansas City'
-        },
-        {
-            key: 'South Miami',
-            label: 'South Miami'
-        },
-        {
-            key: 'Tennessee',
-            label: 'Tennessee'
-        },
-        {
-            key: 'Jackson',
-            label: 'Jackson'
-        },
-        {
-            key: 'Folsom',
-            label: 'Folsom'
-        },
-        {
-            key: 'Kentucky',
-            label: 'Kentucky'
-        },
-        {
-            key: 'Mars',
-            label: 'Mars'
-        },
-        {
-            key: 'England',
-            label: 'England'
-        },
-        {
-            key: 'Cape Cod',
-            label: 'Cape Cod'
-        },
-    ]
+    useEffect(() => {
+         dispatch(fetchLocations())
+         if (locations) {
+
+         }
+    }, [dispatch])
+    // const items = [
+    //     {
+    //         key: 'Kansas City',
+    //         label: 'Kansas City'
+    //     },
+    //     {
+    //         key: 'South Miami',
+    //         label: 'South Miami'
+    //     },
+    //     {
+    //         key: 'Tennessee',
+    //         label: 'Tennessee'
+    //     },
+    //     {
+    //         key: 'Jackson',
+    //         label: 'Jackson'
+    //     },
+    //     {
+    //         key: 'Folsom',
+    //         label: 'Folsom'
+    //     },
+    //     {
+    //         key: 'Kentucky',
+    //         label: 'Kentucky'
+    //     },
+    //     {
+    //         key: 'Mars',
+    //         label: 'Mars'
+    //     },
+    //     {
+    //         key: 'England',
+    //         label: 'England'
+    //     },
+    //     {
+    //         key: 'Cape Cod',
+    //         label: 'Cape Cod'
+    //     },
+    // ]
 
     const onSelect = useCallback((selectedItem) => {
         setLocation(selectedItem);
@@ -95,7 +103,7 @@ function SearchBar() {
                     <div className='autocomplete-div'>
                         <DataListInput
                             placeholder="Select a State..."
-                            items={items}
+                            items={Object.values(locations)}
                             onSelect={onSelect}
                         />
                     </div>

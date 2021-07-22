@@ -4,12 +4,14 @@ import session from "./session";
 import spot from "./spot";
 import booking from "./booking";
 import review from "./review"
+import location from "./location"
 
 const rootReducer = combineReducers({
   session,
   spot,
   booking,
   review,
+  location
 });
 
 let enhancer;
