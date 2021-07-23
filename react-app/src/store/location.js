@@ -24,12 +24,12 @@ export const fetchLocations = () => async (dispatch)  => {
   if (responseObject.errors) {
     return responseObject;
   }
-  // console.log(responseObject, "🙂");
+  // console.log(responseObject, "responseObject🙂");
   dispatch(loadLocationsActionCreator(responseObject));
 }
 
 /* Reducer */
-const initialState  = { locations:{} }
+const initialState  = { locations:[]}
 
 export default function reducer(state = initialState, action) {
   let newState;
@@ -37,7 +37,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
 
     case LOAD_LOCATIONS:
-      newState = { ...state };
+      newState = { ...state,locations:{...state.locations} };
       newState.locations = action.payload;
       return newState;
 

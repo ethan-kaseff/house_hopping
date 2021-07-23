@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom'
 
@@ -23,8 +23,9 @@ function SearchBar() {
     const [focusedInput, setfocusedInput] = useState(null);
 
     // For the DataList
+    // const [items, setItems] = useState({});
     const [location, setLocation] = useState();
-    const locations = useSelector(state => state.location.locations)
+    const locations = useSelector(state => state.location.locations.locations)
 
     function convert(str) {
         var date = new Date(str),
@@ -35,7 +36,6 @@ function SearchBar() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('location🏡',location)
 
         const startDateFormatted = convert(startDate)
         const endDateFormatted = convert(endDate)
@@ -47,12 +47,33 @@ function SearchBar() {
         history.push(`/search-results`);
     }
 
-    useEffect(() => {
-         dispatch(fetchLocations())
-         if (locations) {
 
-         }
+    useEffect(() => {
+        dispatch(fetchLocations())
+        if (locations) {
+        }
     }, [dispatch])
+
+
+    useEffect(() => {
+        console.log("💥 items",items)
+        console.log("🏡 locations",locations)
+    }, [locations])
+
+
+    const items = useMemo(() =>{
+        if (locations) {
+            const data = locations.map((oneItem) => ({
+            // required: what to show to the user
+            label: oneItem.name,
+            // required: key to identify the item within the array
+            key: oneItem.id,
+        }))
+        return data;
+    }},
+    [locations]
+    );
+
     // const items = [
     //     {
     //         key: 'Kansas City',
@@ -100,13 +121,14 @@ function SearchBar() {
         <>
             <div className='search-bar-container'>
                 <form onSubmit={handleSubmit} className='search-bar'>
+                    {locations ?
                     <div className='autocomplete-div'>
                         <DataListInput
                             placeholder="Select a State..."
-                            items={Object.values(locations)}
+                            items={items}
                             onSelect={onSelect}
                         />
-                    </div>
+                    </div> : null }
                     <div>
                         <DateRangePicker
                             startDate={startDate} // momentPropTypes.momentObj or null,
