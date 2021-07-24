@@ -39,6 +39,9 @@ def seed_locations():
     location10 = Location(
         name='New York City'
     )
+    location11 = Location(
+        name='San Francisco'
+    )
 
     db.session.add(location1)
     db.session.add(location2)
@@ -50,6 +53,7 @@ def seed_locations():
     db.session.add(location8)
     db.session.add(location9)
     db.session.add(location10)
+    db.session.add(location11)
 
     db.session.commit()
 

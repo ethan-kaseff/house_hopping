@@ -6,15 +6,17 @@ from app.forms import SpotForm
 spot_routes = Blueprint('spots', __name__)
 
 # @login_required
+
+
 @spot_routes.route('/create', methods=['GET', 'POST'])
 def create_spots():
     if request.method == 'POST':
-        #create spot
+        # create spot
         form = SpotForm()
         spot = Spot(
             name=form.data['name'],
             description=form.data['description'],
-            location=form.data['location'],
+            location_id=form.data['location_id'],
             pet_friendly=form.data['pet_friendly'],
             private=form.data['private'],
             available=True,
@@ -22,7 +24,7 @@ def create_spots():
         )
         db.session.add(spot)
         db.session.commit()
-        return spot.to_dict() #returning spot object, may use to_dict in future
+        return spot.to_dict()  # returning spot object, may use to_dict in future
 
 
 @spot_routes.route('/<int:id>', methods=['GET', 'POST', 'DELETE'])
@@ -35,12 +37,12 @@ def ru_spots(id):
 
         spot = Spot.query.get(id)
 
-        spot.name=form.data['name'],
-        spot.description=form.data['description'],
-        spot.location=form.data['location'],
-        spot.pet_friendly=form.data['pet_friendly'],
-        spot.private=form.data['private'],
-        spot.available=form.data['available'],
+        spot.name = form.data['name'],
+        spot.description = form.data['description'],
+        spot.location = form.data['location'],
+        spot.pet_friendly = form.data['pet_friendly'],
+        spot.private = form.data['private'],
+        spot.available = form.data['available'],
         # spot.user_id=1
 
         db.session.commit()

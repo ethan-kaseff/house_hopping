@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { createSpot } from "../store/spot";
+import DataListInput from 'react-datalist-input';
+import { fetchLocations } from '../store/location'
+
 
 function SpotForm() {
   const dispatch = useDispatch();
@@ -12,14 +15,37 @@ function SpotForm() {
   const [pet_friendly, setPet_friendly] = useState(false);
   const [pprivate, setPprivate] = useState(false);
   const [available, setAvailable] = useState(true);
+  const [error,setError] = useState("");
+  const locations = useSelector(state => state.location.locations.locations)
+
 
   const onSubmit = async (ev) => {
     ev.preventDefault();
-    const data = await dispatch(
-      createSpot(name, description, location, pet_friendly, pprivate, available)
-    );
-    window.alert("submitted");
+    if (name === "") {
+      setError("Please provide a name.")
+    }
+    else if(description === "") {
+      setError("Please provide a description.")
+    }
+    else if(location === "") {
+      setError("Please select a location.")
+    }
+    else {
+      setError("")
+      const data = await dispatch(
+        createSpot(name, description, location, pet_friendly, pprivate, available)
+      );
+      window.alert("submitted");
+    }
   };
+
+  useEffect(() => {
+    dispatch(fetchLocations())
+    if (locations) {
+
+    }
+    }, [dispatch])
+
 
   return (
     <div className="flex items-center justify-center m-5">
@@ -59,15 +85,15 @@ function SpotForm() {
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Location
           </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            name="location"
-            onChange={(ev) => {
-              setLocation(ev.target.value);
-            }}
-            value={location}
-          ></input>
+          {locations ?
+                    <div className=''>
+                      <select onChange={e => setLocation(e.target.value)} name="location" id="location" className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+                        <option value="-1">Select An Option</option>
+                        {locations.map(loc => {
+                          return <option value={loc.id}>{loc.name}</option>
+                        })}
+                      </select>
+                    </div> : null }
         </div>
         <div>
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -110,6 +136,9 @@ function SpotForm() {
             }}
             value={available}
           ></input>
+        </div>
+        <div >
+          <p className="text-red-700">{error}</p>
         </div>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"

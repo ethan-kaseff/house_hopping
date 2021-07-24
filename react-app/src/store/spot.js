@@ -33,7 +33,7 @@ const loadSpotsByUserReviewsActionCreator = (spots) => ({
 
 //thuunks
 export const createSpot =
-  (name, description, location, pet_friendly, pprivate, available) =>
+  (name, description, location_id, pet_friendly, pprivate, available) =>
   async (dispatch) => {
 
     const response = await fetch("/api/spots/create", {
@@ -44,7 +44,7 @@ export const createSpot =
       body: JSON.stringify({
         name,
         description,
-        location,
+        location_id,
         pet_friendly,
         private: pprivate,
         available,

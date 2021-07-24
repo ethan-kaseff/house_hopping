@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import {fetchReviewsBySpotId, deleteReview} from "../../store/review"
 import Spot from "../../components/Spot"
 import BookSpotForm from "../../components/BookSpotForm"
+import CreateReviewForm from "../../components/CreateReviewForm"
 
 
 export default function SpotDetailsPage() {
@@ -45,8 +46,10 @@ export default function SpotDetailsPage() {
                 <div className='flex flex-row items-center justify-center'>
                     <Spot />
                     <BookSpotForm />
+                </div >
+                <div className="flex flex-col items-center">
+                    <CreateReviewForm/>
                 </div>
-                {/* Form */}
                 <div className='flex flex-row items-center justify-center'>
                     {reviews && Object.values(reviews).map(review => {
                         return <div>

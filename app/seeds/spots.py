@@ -10,7 +10,6 @@ fake = Faker()
 def seed_spots():
 
     spot1 = Spot(
-        id=1,
         name='Cozy Downtown Couch',
         description='Best couch vibe in your gosh darn life! Great kitchen and laundry available.',
         location_id=1,
@@ -20,7 +19,6 @@ def seed_spots():
         user_id=1,
     )
     spot2 = Spot(
-        id=2,
         name='Haunted House 👻',
         description='The spookiest.',
         location_id=2,
@@ -30,7 +28,6 @@ def seed_spots():
         user_id=2,
     )
     spot3 = Spot(
-        id=3,
         name='Country Inn',
         description='Feel like home',
         location_id=3,
@@ -40,7 +37,6 @@ def seed_spots():
         user_id=3,
     )
     spot4 = Spot(
-        id=4,
         name='Jackson Spring',
         description='Hotter than a pepper spout',
         location_id=4,
@@ -50,7 +46,6 @@ def seed_spots():
         user_id=4,
     )
     spot5 = Spot(
-        id=5,
         name='Folsom Prison',
         description='Blues',
         location_id=5,
@@ -60,7 +55,6 @@ def seed_spots():
         user_id=5,
     )
     spot6 = Spot(
-        id=6,
         name='Camp Ground',
         description='Woodsy',
         location_id=6,
@@ -70,7 +64,6 @@ def seed_spots():
         user_id=6,
     )
     spot7 = Spot(
-        id=7,
         name='Mars',
         description='Toxic',
         location_id=7,
@@ -80,7 +73,6 @@ def seed_spots():
         user_id=5,
     )
     spot8 = Spot(
-        id=8,
         name='The Abbey',
         description='Tall ceilings',
         location_id=8,
@@ -90,7 +82,6 @@ def seed_spots():
         user_id=2,
     )
     spot9 = Spot(
-        id=9,
         name='Bears Town',
         description='Provincetown',
         location_id=9,
@@ -100,7 +91,6 @@ def seed_spots():
         user_id=1,
     )
     spot10 = Spot(
-        id=10,
         name='Post Office Cafe',
         description='Provincetown',
         location_id=9,
@@ -110,7 +100,6 @@ def seed_spots():
         user_id=6,
     )
     spot11 = Spot(
-        id=11,
         name='Upper East Side Apartment',
         description='Close to train',
         location_id=10,

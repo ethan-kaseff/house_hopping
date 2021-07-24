@@ -26,21 +26,19 @@ function SearchResults() {
             <div>
               {availableSpots && (
                 <div className='flex flex-wrap overflow-hidden justify-center'>
-                  {spotArr.map((spot) => {
+                  {spotArr.length > 0 ? spotArr.map((spot) => {
                     return (
                       <NavLink to={`/spots/${spot.id}`} exact={true}>
                         <Spot spot={spot} />
                       </NavLink>
                     );
-                  })}
-                </div>
-              )}
-              {!availableSpots && (
-                <div className="no-results">
-                  <p>
-                    Unfortunately we don't have any planes available for this
-                    timeframe.
+                  }) :
+                  <div className="no-results">
+                  <p className="text-2xl" >
+                    Unfortunately, we currently don't have any spots in that location.
                   </p>
+                </div>
+                }
                 </div>
               )}
             </div>
