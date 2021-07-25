@@ -65,13 +65,14 @@ export const fetchReviewById = (review_id) => async (dispatch) => {
     dispatch(loadReviewByIdActionCreator(responseObject));
 }
 
-export const createReview = (content,count) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/create/`,{
+export const createReview = (content,count, user_id, spot_id) => async (dispatch) => {
+  console.log("count😌", count)
+    const response = await fetch(`/api/reviews/`,{
     method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body:JSON.stringify({ content,count })
+      body:JSON.stringify({ content,count , user_id, spot_id})
     });
     const responseObject = await response.json();
     if (responseObject.errors) {
@@ -80,6 +81,7 @@ export const createReview = (content,count) => async (dispatch) => {
 
     dispatch(createReviewActionCreator(responseObject));
 }
+
 export const updateReview = (review_id,content,count) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${review_id}`,{
     method: "POST",

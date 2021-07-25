@@ -17,13 +17,13 @@ export default function MyBookings() {
 
 
     return (
-        <div className="flex flex-col items-center justify-center m-5">
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                <h2> Upcoming Bookings:</h2>
+        <div className="flex flex-col items-center justify-center m-3">
+            <div className="max-w-sm border rounded overflow-hidden shadow-lg p-3">
+                <h2 className="p-1 m-1"> Upcoming Bookings:</h2>
                 {bookingState && Object.values(bookingState).map(booking => {
                     return (
 
-                        <div>
+                        <div className="border rounded p-1 m-1 bg-blue-500 text-white">
                             {/* <h2>Start Date:{booking.start_date}</h2>
                             <h2>End Date:{booking.end_date}</h2> */}
                             <Link to={`bookings/${booking.id}`}>{booking.start_date}</Link>

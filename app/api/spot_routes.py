@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Spot, db
 from app.forms import SpotForm
+import random
 
 spot_routes = Blueprint('spots', __name__)
 
@@ -25,6 +26,14 @@ def create_spots():
         db.session.add(spot)
         db.session.commit()
         return spot.to_dict()  # returning spot object, may use to_dict in future
+
+
+@spot_routes.route('/', methods=['GET'])
+def get_random_spots():
+    spots = Spot.query.all()
+    spots_dict = {spot.id: spot.to_dict() for spot in spots}
+    id = random.choice(list(spots_dict.keys()))
+    return spots_dict[id]
 
 
 @spot_routes.route('/<int:id>', methods=['GET', 'POST', 'DELETE'])

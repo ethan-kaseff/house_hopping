@@ -52,7 +52,7 @@ export default function SpotDetailsPage() {
                 </div>
                 <div className='flex flex-row items-center justify-center'>
                     {reviews && Object.values(reviews).map(review => {
-                        return <div>
+                        return <div className="m-3 border rounded p-3">
                             <p>{review.content} </p>
                             {generateStars(review.count)}
                             {review.user_id == user.id ?
