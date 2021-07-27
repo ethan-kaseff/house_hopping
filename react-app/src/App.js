@@ -19,16 +19,12 @@ import Splash from "./components/Splash";
 import OneBooking from "./components/One_booking";
 import SpotDetailsPage from "./components/SpotDetailsPage";
 import ReviewEditForm from "./components/ReviewEditForm";
-
 // import BookSpotForm from "./components/BookSpotForm"
-
 import "react-dates/initialize";
-
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -36,11 +32,9 @@ function App() {
       // immediately invoking asynchronous function
     })();
   }, [dispatch]);
-
   if (!loaded) {
     return null;
   }
-
   return (
     <BrowserRouter>
       <NavBar />
@@ -51,15 +45,15 @@ function App() {
         <OneBooking />
         <EditBookSpotForm />
       </Route>
-      <Route path="/spots/:id(\d)">
-        {/* <div className='flex flex-row items-center justify-center'>
-          <Spot />
-          <BookSpotForm />
-        </div> */}
-        <SpotDetailsPage />
-      </Route>
-      <Route path="/spots/new">
+      <Route exact path="/spots/new">
         <SpotForm />
+      </Route>
+      <Route path="/spots/:id">
+        <div className='flex flex-row items-center justify-center'>
+          {/* <Spot />
+          <BookSpotForm /> */}
+          <SpotDetailsPage/>
+        </div>
       </Route>
       <Switch>
         <Route path="/search-bar" exact={true}>
@@ -91,5 +85,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;

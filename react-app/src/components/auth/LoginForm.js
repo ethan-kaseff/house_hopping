@@ -21,7 +21,7 @@ const LoginForm = () => {
   const onLoginWithDemo = async (e) => {
     e.preventDefault();
 
-    const data = await dispatch(login('demo@aa.io', 'password'));
+    const data = await dispatch(login('demo1@aa.io', 'password'));
     if (data.errors) {
       setErrors(data.errors);
     }

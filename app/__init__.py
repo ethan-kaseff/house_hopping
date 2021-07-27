@@ -12,6 +12,7 @@ from .api.spot_routes import spot_routes
 from .api.review_routes import review_routes
 from .api.spot_search_routes import spot_search_routes
 from .api.booking_routes import booking_routes
+from .api.location_routes import location_routes
 
 from .seeds import seed_commands
 
@@ -35,10 +36,11 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
-app.register_blueprint(spot_routes,url_prefix='/api/spots')
-app.register_blueprint(spot_search_routes,url_prefix='/api/spot-search')
-app.register_blueprint(review_routes,url_prefix='/api/reviews')
+app.register_blueprint(spot_routes, url_prefix='/api/spots')
+app.register_blueprint(spot_search_routes, url_prefix='/api/spot-search')
+app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(booking_routes, url_prefix='/api/bookings')
+app.register_blueprint(location_routes, url_prefix='/api/locations')
 
 db.init_app(app)
 Migrate(app, db)
@@ -51,6 +53,7 @@ CORS(app)
 # Therefore, we need to make sure that in production any
 # request made over http is redirected to https.
 # Well.........
+
 
 @app.before_request
 def https_redirect():

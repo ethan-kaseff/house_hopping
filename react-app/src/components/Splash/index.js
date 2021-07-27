@@ -3,16 +3,25 @@ import { Redirect, useParams } from "react-router";
 import { NavLink, useHistory } from "react-router-dom";
 import Spot from "../Spot";
 import SearchBar from '../SearchBar';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import { fetchRandomSpot } from "../../store/spot";
 
 
 
 function Splash() {
   const history = useHistory();
-  let { id } = useParams();
-  if (!id) {
-    id = 2;
-  }
+  const dispatch = useDispatch();
+  const randomSpot = useSelector(state => state.spot.randomSpot)
+
+  // let { id } = useParams();
+  // if (!id) {
+  //   id = 2;
+  // }
+
+  useEffect(() => {
+    dispatch(fetchRandomSpot());
+  }, [dispatch])
+
   useEffect(()=> {
     history.push('/')
   }, [])
@@ -23,8 +32,8 @@ function Splash() {
       <br />
       <SearchBar />
       <p> Try checking out this spot today!</p>
-      <NavLink to={`/spots/${id}`} exact={true}>
-        <Spot />
+      <NavLink to={`/spots/${randomSpot.id}`} exact={true}>
+        <Spot spot={randomSpot}/>
       </NavLink>
     </div>
   );

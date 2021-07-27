@@ -1,9 +1,10 @@
 import React, { useEffect, useState }from 'react'
 import {  useDispatch, useSelector } from "react-redux"
 import { useParams, useHistory } from "react-router-dom";
-import Spot from "../Spot"
-import BookSpotForm from "../BookSpotForm"
 import {fetchReviewsBySpotId, deleteReview} from "../../store/review"
+import Spot from "../../components/Spot"
+import BookSpotForm from "../../components/BookSpotForm"
+import CreateReviewForm from "../../components/CreateReviewForm"
 
 
 export default function SpotDetailsPage() {
@@ -40,26 +41,31 @@ export default function SpotDetailsPage() {
 
     return (
         <div>
-            <div className='flex flex-row items-center justify-center'>
-                <Spot/>
-                <BookSpotForm />
-
-            </div>
-            <div className='flex flex-row items-center justify-center'>
-                {reviews && Object.values(reviews).map(review => {
-
-                    return <div>
-                        <p>{review.content} </p>
-                        {generateStars(review.count)}
-                        {review.user_id == user.id ?
-                        <div className='flex flex-row items-center justify-center' >
-                            <button id={'edit'+review.id} onClick={handleReviewEdit}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Edit</button>
-                            <button id={'delete'+review.id} onClick={handleReviewDelete}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Delete</button>
+            {!(id === "new") ? (
+            <div>
+                <div className='flex flex-row items-center justify-center'>
+                    <Spot />
+                    <BookSpotForm />
+                </div >
+                <div className="flex flex-col items-center">
+                    <CreateReviewForm/>
+                </div>
+                <div className='flex flex-row items-center justify-center'>
+                    {reviews && Object.values(reviews).map(review => {
+                        return <div className="m-3 border rounded p-3">
+                            <p>{review.content} </p>
+                            {generateStars(review.count)}
+                            {review.user_id == user.id ?
+                            <div className='flex flex-row items-center justify-center' >
+                                <button id={'edit'+review.id} onClick={handleReviewEdit}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Edit</button>
+                                <button id={'delete'+review.id} onClick={handleReviewDelete}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                            </div>
+                            : null }
                         </div>
-                        : null }
-                    </div>
-                })}
+                    })}
+                </div>
             </div>
+            ): null }
         </div>
     )
 }
