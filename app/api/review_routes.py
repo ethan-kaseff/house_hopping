@@ -26,7 +26,6 @@ def create_reviews():
 def update_delete_reviews(id):
     if request.method == "POST":
         form = ReviewForm()
-
         review = Review.query.get(id)
 
         review.count = form.data['count']

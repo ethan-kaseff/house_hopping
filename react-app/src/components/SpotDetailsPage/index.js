@@ -3,7 +3,7 @@ import {  useDispatch, useSelector } from "react-redux"
 import { useParams, useHistory } from "react-router-dom";
 import Spot from "../Spot"
 import BookSpotForm from "../BookSpotForm"
-import {fetchReviewsBySpotId} from "../../store/review"
+import {fetchReviewsBySpotId, deleteReview} from "../../store/review"
 
 
 export default function SpotDetailsPage() {
@@ -29,7 +29,7 @@ export default function SpotDetailsPage() {
         history.push(`/review/${event.target.id.substring(event.target.id.length-1)}`);
     }
     const handleReviewDelete = (event) => {
-
+        dispatch(deleteReview(event.target.id.substring(event.target.id.length-1)));
     }
 
 
