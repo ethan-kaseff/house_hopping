@@ -31,6 +31,7 @@ export default function MyBookings() {
                     )
                 })}
             </div>
+
         </div>
     )
 }

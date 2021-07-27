@@ -1,66 +1,46 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom'
-
-
 import { DateRangePicker } from 'react-dates';
 import DataListInput from 'react-datalist-input';
-
 import './SearchBar.css'
 import 'react-dates/lib/css/_datepicker.css';
-
 import { getAvailableSpots } from '../../store/spot';
 // import { saveCurrentDates } from '../../store/booking';
 import { fetchLocations } from '../../store/location'
-
-
 function SearchBar() {
     const dispatch = useDispatch();
     const history = useHistory();
-
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const [focusedInput, setfocusedInput] = useState(null);
-
     // For the DataList
     // const [items, setItems] = useState({});
     const [location, setLocation] = useState();
     const locations = useSelector(state => state.location.locations.locations)
-
     function convert(str) {
         var date = new Date(str),
             mnth = ("0" + (date.getMonth() + 1)).slice(-2),
             day = ("0" + date.getDate()).slice(-2);
         return [date.getFullYear(), mnth, day].join("-");
     }
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const startDateFormatted = convert(startDate)
         const endDateFormatted = convert(endDate)
-
         // dispatch(saveCurrentDates(startDate, endDate))
-
         dispatch(getAvailableSpots(location.key, startDateFormatted, endDateFormatted))
-
         history.push(`/search-results`);
     }
-
-
     useEffect(() => {
         dispatch(fetchLocations())
         if (locations) {
         }
     }, [dispatch])
-
-
     useEffect(() => {
         console.log("💥 items",items)
         console.log("🏡 locations",locations)
     }, [locations])
-
-
     const items = useMemo(() =>{
         if (locations) {
             const data = locations.map((oneItem) => ({
@@ -73,7 +53,6 @@ function SearchBar() {
     }},
     [locations]
     );
-
     // const items = [
     //     {
     //         key: 'Kansas City',
@@ -112,11 +91,9 @@ function SearchBar() {
     //         label: 'Cape Cod'
     //     },
     // ]
-
     const onSelect = useCallback((selectedItem) => {
         setLocation(selectedItem);
     })
-
     return (
         <>
             <div className='search-bar-container'>
@@ -157,5 +134,4 @@ function SearchBar() {
         </>
     )
 }
-
 export default SearchBar;

@@ -19,16 +19,12 @@ import Splash from "./components/Splash";
 import OneBooking from "./components/One_booking";
 import SpotDetailsPage from "./components/SpotDetailsPage";
 import ReviewEditForm from "./components/ReviewEditForm";
-
 // import BookSpotForm from "./components/BookSpotForm"
-
 import "react-dates/initialize";
-
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -36,11 +32,9 @@ function App() {
       // immediately invoking asynchronous function
     })();
   }, [dispatch]);
-
   if (!loaded) {
     return null;
   }
-
   return (
     <BrowserRouter>
       <NavBar />
@@ -91,5 +85,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;

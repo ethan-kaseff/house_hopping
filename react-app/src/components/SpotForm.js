@@ -5,8 +5,6 @@ import { Redirect } from "react-router-dom";
 import { createSpot } from "../store/spot";
 import DataListInput from 'react-datalist-input';
 import { fetchLocations } from '../store/location'
-
-
 function SpotForm() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -17,8 +15,6 @@ function SpotForm() {
   const [available, setAvailable] = useState(true);
   const [error,setError] = useState("");
   const locations = useSelector(state => state.location.locations.locations)
-
-
   const onSubmit = async (ev) => {
     ev.preventDefault();
     if (name === "") {
@@ -38,15 +34,11 @@ function SpotForm() {
       window.alert("submitted");
     }
   };
-
   useEffect(() => {
     dispatch(fetchLocations())
     if (locations) {
-
     }
     }, [dispatch])
-
-
   return (
     <div className="flex items-center justify-center m-5">
       <form
@@ -149,8 +141,6 @@ function SpotForm() {
       </form>
     </div>
   );
-
   //end of spotform
 }
-
 export default SpotForm;

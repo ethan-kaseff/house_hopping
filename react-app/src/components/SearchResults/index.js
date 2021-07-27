@@ -2,18 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Spot from "../Spot";
-
 function SearchResults() {
   const availableSpots = useSelector((state) => state.spot.availableSpots);
-
   const spotArr = [];
-
   for (const key in availableSpots) {
     spotArr.push(availableSpots[key]);
   }
-
   // Card Click Function
-
   return (
     <>
       <div className="search-results-main-area">
@@ -49,5 +44,4 @@ function SearchResults() {
     </>
   );
 }
-
 export default SearchResults;
