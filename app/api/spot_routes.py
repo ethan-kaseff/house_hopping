@@ -46,6 +46,17 @@ def get_all_spots():
     return spotsDict
 
 
+@spot_routes.route('/users/<int:id>', methods=['GET'])
+def get_spots_by_user(id):
+    # print('CURRENT', current_user.id)
+    spots = Spot.query.filter(Spot.user_id == current_user.id).all()
+    # print(spots)
+    spotsDict = {}
+    for spot in spots:
+        spotsDict[spot.id] = spot.to_dict()
+    return spotsDict
+
+
 @spot_routes.route('/<int:id>', methods=['GET', 'POST', 'DELETE'])
 def ru_spots(id):
     if request.method == "GET":

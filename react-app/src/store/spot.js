@@ -1,6 +1,7 @@
 //constants
 const LOAD_SINGLE_SPOT = "spot/LOAD_SINGLE_SPOT";
 const LOAD_ALL_SPOTS = "spot/LOAD_ALL_SPOTS";
+const LOAD_SPOTS_BY_USER = "spot/LOAD_SPOTS_BY_USER"
 const LOAD_RANDOM_SPOT = "spot/LOAD_RANDOM_SPOT";
 const ADD_UPDATE_SPOT = "spot/ADD_UPDATE_SPOT";
 const DELETE_SPOT = "spot/DELETE_SPOT"
@@ -18,6 +19,11 @@ const loadAllSpotsActionCreator = (spot) => ({
   type: LOAD_ALL_SPOTS,
   payload: spot,
 });
+
+const loadHostSpots = (spot) => ({
+  type: LOAD_SPOTS_BY_USER,
+  payload: spot
+})
 
 const loadRandomSpotActionCreator = (spot) => ({
   type: LOAD_RANDOM_SPOT,
@@ -102,6 +108,17 @@ export const fetchAllSpots =() => async (dispatch) => {
     }
     dispatch(loadAllSpotsActionCreator(responseObject));
   };
+
+
+  export const fetchSpotByUser = (id) => async (dispatch) => {
+    const response = await fetch(`api/spots/users/${id}`)
+
+    const responseObject = await response.json()
+    if (responseObject.errors) {
+      return responseObject
+    }
+    dispatch(loadHostSpots(responseObject))
+  }
 
 // export const fetchRandomSpot =() => async (dispatch) => {
 //     const response = await fetch(`/api/spots/`, {
@@ -213,6 +230,12 @@ export default function reducer(state = initialState, action) {
       newState = {...state};
       newState.spots = action.payload;
       return newState;
+
+    case LOAD_SPOTS_BY_USER:
+      newState = {...state};
+      newState.spots = action.payload;
+      return newState;
+
 
     case LOAD_RANDOM_SPOT:
       newState = {...state};

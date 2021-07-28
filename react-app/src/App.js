@@ -79,7 +79,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <Splash />
-          <MyBookings />
+          {/* <MyBookings /> */}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
