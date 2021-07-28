@@ -40,15 +40,19 @@ export const fetchReviewsBySpotId = (spot_id) => async (dispatch) => {
         "Content-Type": "application/json",
       }
     });
-    const responseObject = await response.json();
+    // console.log(response)
 
-    if (responseObject.errors) {
-      return responseObject;
+    if (response.ok) {
+      const responseObject = await response.json();
+      // console.log(responseObject)
+      dispatch(loadReviewsBySpotIdActionCreator(responseObject));
     }
-
-    dispatch(loadReviewsBySpotIdActionCreator(responseObject));
-
+    // if (responseObject.errors) {
+    //   return responseObject;
+    // }
 }
+
+
 export const fetchReviewById = (review_id) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${review_id}`,{
     method: "GET",

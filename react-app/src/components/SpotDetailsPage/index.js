@@ -5,13 +5,18 @@ import {fetchReviewsBySpotId, deleteReview} from "../../store/review"
 import Spot from "../../components/Spot"
 import BookSpotForm from "../../components/BookSpotForm"
 import CreateReviewForm from "../../components/CreateReviewForm"
+import { fetchSpot } from "../../store/spot"
 
 
 export default function SpotDetailsPage() {
-    const {id } = useParams();
+    const { id } = useParams();
+    // console.log(id)
     const dispatch = useDispatch();
     const history = useHistory();
+    const spotState = useSelector(state => state.spot.loaded_spot)
+    // console.log(spotState)
     const reviews = useSelector(state => state.review.loaded_reviews)
+    console.log(reviews)
     const user = useSelector(state => state.session.user)
     const generateStars = (starCount) => {
         // console.log(starCount)
@@ -35,7 +40,8 @@ export default function SpotDetailsPage() {
 
 
    useEffect(() => {
-       dispatch(fetchReviewsBySpotId(id));
+     dispatch(fetchReviewsBySpotId(id));
+        dispatch(fetchSpot(id))
    }, [dispatch])
 
 
@@ -44,9 +50,25 @@ export default function SpotDetailsPage() {
             {!(id === "new") ? (
             <div>
                 <div className='flex flex-row items-center justify-center'>
-                    <Spot />
+                    {/* <Spot /> */}
                     <BookSpotForm />
                 </div >
+                <div className="grid grid-cols-1 items-center justify-center m-5">
+                <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                    <img
+                        className="w-full"
+                        src="https://www.goerie.com/storyimage/PA/20150718/LIFESTYLE/610129783/AR/0/AR-610129783.jpg"
+                        alt="Sunset in the mountains"
+                    />
+                    <div className="px-6 py-4">
+                        <div className="font-bold text-xl mb-2">{spotState.name}</div>
+                        <p className="text-gray-700 text-base">{spotState.description}</p>
+                        {/* <p>{pets}</p>
+                        <p>{privy}</p> */}
+                        {/* <p>Pet Friendly {spotState.pet_friendly}</p> */}
+                    </div>
+                    </div>
+                </div>
                 <div className="flex flex-col items-center">
                     <CreateReviewForm/>
                 </div>

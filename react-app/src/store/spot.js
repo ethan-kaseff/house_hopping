@@ -74,6 +74,7 @@ export const createSpot =
 
 // Thunk for read
 export const fetchSpot =(id) => async (dispatch) => {
+  // console.log(id)
     const response = await fetch(`/api/spots/${id}`, {
       method: "GET",
       headers: {
@@ -95,26 +96,26 @@ export const fetchAllSpots =() => async (dispatch) => {
       },
     });
     const responseObject = await response.json();
-    console.log('😎responseObject',responseObject)
+    // console.log('😎responseObject',responseObject)
     if (responseObject.errors) {
       return responseObject;
     }
     dispatch(loadAllSpotsActionCreator(responseObject));
   };
 
-export const fetchRandomSpot =() => async (dispatch) => {
-    const response = await fetch(`/api/spots/`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const responseObject = await response.json();
-    if (responseObject.errors) {
-      return responseObject;
-    }
-    dispatch(loadRandomSpotActionCreator(responseObject));
-  };
+// export const fetchRandomSpot =() => async (dispatch) => {
+//     const response = await fetch(`/api/spots/`, {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     const responseObject = await response.json();
+//     if (responseObject.errors) {
+//       return responseObject;
+//     }
+//     dispatch(loadRandomSpotActionCreator(responseObject));
+//   };
 
 
 // Thunk for update
@@ -179,19 +180,19 @@ export const getAvailableSpots = (location, start_date, end_date) => async (disp
 
 
 // Thunk To Get All Reviews of the user by spot
-export const fetchSpotReviewsByUser =(id) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/user/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const responseObject = await response.json();
-    if (responseObject.errors) {
-      return responseObject;
-    }
-    dispatch(loadSpotsByUserReviewsActionCreator(responseObject));
-  };
+// export const fetchSpotReviewsByUser =(id) => async (dispatch) => {
+//     const response = await fetch(`/api/reviews/user/${id}`, {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     const responseObject = await response.json();
+//     if (responseObject.errors) {
+//       return responseObject;
+//     }
+//     dispatch(loadSpotsByUserReviewsActionCreator(responseObject));
+//   };
 
 // Reducer
 const initialState = {availableSpots:{}, spots:{}, loaded_spot:{}, userReviewSpots:{}, randomSpot:{}};

@@ -4,7 +4,8 @@ import { NavLink, useHistory } from "react-router-dom";
 import Spot from "../Spot";
 import SearchBar from '../SearchBar';
 import {useDispatch, useSelector} from 'react-redux';
-import { fetchRandomSpot } from "../../store/spot";
+import { fetchAllSpots } from "../../store/spot"
+// import { fetchRandomSpot } from "../../store/spot";
 
 
 
@@ -19,7 +20,7 @@ function Splash() {
   // }
 
   useEffect(() => {
-    dispatch(fetchRandomSpot());
+    // dispatch(fetchRandomSpot());
   }, [dispatch])
 
   useEffect(()=> {
@@ -32,9 +33,10 @@ function Splash() {
       <br />
       <SearchBar />
       <p> Try checking out this spot today!</p>
-      <NavLink to={`/spots/${randomSpot.id}`} exact={true}>
+      <Spot />
+      {/* <NavLink to={`/spots/${randomSpot.id}`} exact={true}>
         <Spot spot={randomSpot}/>
-      </NavLink>
+      </NavLink> */}
     </div>
   );
 }
