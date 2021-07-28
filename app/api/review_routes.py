@@ -54,7 +54,7 @@ def single_review(id):
 def reviews_by_user(id):
     # reviews = Review.query.filter(Review.user_id == id).all()
     reviews = Review.query.join(Spot).filter(Review.user_id == id).all()
-    print('reviews[0]🥳', dir(reviews[0].spot))
+    # print('reviews[0]🥳', dir(reviews[0].spot))
     # print('reviews[0]🥳',reviews[0].spot.to_dict())
     spotByUserReviews = {}
     for review in reviews:

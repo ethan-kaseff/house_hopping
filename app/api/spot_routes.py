@@ -28,17 +28,29 @@ def create_spots():
         return spot.to_dict()  # returning spot object, may use to_dict in future
 
 
-@spot_routes.route('/', methods=['GET'])
-def get_random_spots():
-    spots = Spot.query.all()
-    spots_dict = {spot.id: spot.to_dict() for spot in spots}
-    id = random.choice(list(spots_dict.keys()))
-    return spots_dict[id]
+# @spot_routes.route('/', methods=['GET'])
+# def get_random_spots():
+#     spots = Spot.query.all()
+#     spots_dict = {spot.id: spot.to_dict() for spot in spots}
+#     id = random.choice(list(spots_dict.keys()))
+#     return spots_dict[id]
 
 
 @spot_routes.route('/', methods=['GET'])
 def get_all_spots():
+    # spots = Spot.query.filter(Spot.user_id == current_user.id).all()
+    spots = Spot.query.all()
+    spotsDict = {}
+    for spot in spots:
+        spotsDict[spot.id] = spot.to_dict()
+    return spotsDict
+
+
+@spot_routes.route('/users/<int:id>', methods=['GET'])
+def get_spots_by_user(id):
+    # print('CURRENT', current_user.id)
     spots = Spot.query.filter(Spot.user_id == current_user.id).all()
+    # print(spots)
     spotsDict = {}
     for spot in spots:
         spotsDict[spot.id] = spot.to_dict()
