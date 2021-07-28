@@ -23,7 +23,7 @@ export default function UsersList() {
 
   return (
     <div>
-      <h1>Current Bookings: </h1>
+      <h1 className="font-semibold text-center p-1 m-1">Current Bookings: </h1>
         <MyBookings />
       <h1>Current Listings: </h1>
       {spots.map(spot => {
