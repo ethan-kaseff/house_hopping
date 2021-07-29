@@ -28,11 +28,10 @@ function Splash() {
   }, [])
   return (
     <div className="flex flex-col items-center justify-center m-5">
-      <h1 className="text-7xl">Welcome to House Hopper!</h1>
-      <h2 className="text-2xl text-gray-500">Happy Travels!</h2>
+      <h1 className="text-7xl">Welcome to House Hopping!</h1>
       <br />
       <SearchBar />
-      <p> Try checking out this spot today!</p>
+      <p className="text-4xl text-center p-5 text-gray-500"> Check Out These Spots</p>
       <Spot />
       {/* <NavLink to={`/spots/${randomSpot.id}`} exact={true}>
         <Spot spot={randomSpot}/>

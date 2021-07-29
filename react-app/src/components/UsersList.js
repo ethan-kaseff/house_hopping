@@ -23,9 +23,9 @@ export default function UsersList() {
 
   return (
     <div>
-      <h1>Current Bookings: </h1>
         <MyBookings />
-      <h1>Current Listings: </h1>
+      <h1 className="font-bold text-3xl text-center p-5">Current Listings: </h1>
+      <div className="grid grid-flow-col grid-cols-3 grid-rows-3 gap-4">
       {spots.map(spot => {
         return(
             <div className="grid grid-cols-1 items-center justify-center m-5">
@@ -48,6 +48,7 @@ export default function UsersList() {
             </div>
         )
       })}
+      </div>
     </div>
   )
 }

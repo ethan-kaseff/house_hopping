@@ -41,11 +41,13 @@ export default function Spot({ spot }) {
   // spotState.private ? (privy = "Private House") : (privy = "Shared Space");
 
   return (
-    <div>
+    <div className="grid grid-flow-col grid-cols-3 grid-rows-3 gap-4" >
       {allSpots.map(spotObj => {
         return (
-          <div className="grid grid-cols-1 items-center justify-center m-5">
+          <div className="  m-5">
             <div className="max-w-sm rounded overflow-hidden shadow-lg">
+          {/* <div className="grid grid-cols-1 items-center justify-center m-5">
+            <div className="max-w-sm rounded overflow-hidden shadow-lg"> */}
               <img
                 className="w-full"
                 src="https://www.goerie.com/storyimage/PA/20150718/LIFESTYLE/610129783/AR/0/AR-610129783.jpg"
