@@ -40,71 +40,67 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="flex items-center justify-center">
-      <img
-        className="w-full h-full bg-no-repeat bg-cover bg-center"
-        src="https://www.goerie.com/storyimage/PA/20150718/LIFESTYLE/610129783/AR/0/AR-610129783.jpg"
-        alt="house"
-      />
-      <div className="flex items-center justify-center m-5">
-        <h1 className="text-2xl">Welcome to House Hopping!</h1>
-        <form
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-          onSubmit={onLogin}
-        >
-          <div>
-            {errors.map((error) => (
-              <p className="text-red-500 text-xs italic">{error}</p>
-            ))}
-          </div>
-          <div>
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              name="email"
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={updateEmail}
-            />
-          </div>
-          <div>
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={updatePassword}
-            />
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              Login
-            </button>
-          </div>
-        </form>
-        <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"
-              type="button" onClick={onLoginWithDemo}
-            >
-              Login With Demo User
-            </button>
+    <div className="bg-cover bg-center " style={{backgroundImage: "url(https://i.imgur.com/q8brc1T.jpeg)", minHeight: "100vh"}}>
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-7xl text-blue-700 m-5">Welcome to House Hopping!</h1>
+        <div className="flex items-center justify-center m-5">
+          <form
+            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            onSubmit={onLogin}
+          >
+            <div>
+              {errors.map((error) => (
+                <p className="text-red-500 text-xs italic">{error}</p>
+              ))}
+            </div>
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="email"
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={updateEmail}
+              />
+            </div>
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="password"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={updatePassword}
+              />
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+          <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"
+                type="button" onClick={onLoginWithDemo}
+              >
+                Login With Demo User
+              </button>
+        </div>
       </div>
     </div>
-
   );
 };
 
