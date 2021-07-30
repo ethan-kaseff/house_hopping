@@ -7,7 +7,7 @@ export default function Spot({ spot }) {
   const dispatch = useDispatch();
   const loadedSpot = useSelector((state) => state.spot.loaded_spot);
   const allSpots = useSelector((state) => Object.values(state.spot.spots));
-  // console.log(allSpots)
+  console.log(allSpots)
 
 
   // let spotState;
@@ -48,11 +48,15 @@ export default function Spot({ spot }) {
             <div className="max-w-sm rounded overflow-hidden shadow-lg">
           {/* <div className="grid grid-cols-1 items-center justify-center m-5">
             <div className="max-w-sm rounded overflow-hidden shadow-lg"> */}
-              <img
-                className="w-full"
-                src="https://www.goerie.com/storyimage/PA/20150718/LIFESTYLE/610129783/AR/0/AR-610129783.jpg"
-                alt="Sunset in the mountains"
-              />
+              <div className="flex-none w-48 relative">
+                <img
+                  className="w-full"
+                  // src="https://www.goerie.com/storyimage/PA/20150718/LIFESTYLE/610129783/AR/0/AR-610129783.jpg"
+                  src="https://i.imgur.com/bUBNNlS.jpg"
+                  alt="Sunset in the mountains"
+                />
+              </div>
+
               <div className="px-6 py-4">
                 <NavLink to={`/spots/${spotObj.id}`}>
                   <div className="font-bold text-xl mb-2">{spotObj.name}</div>
