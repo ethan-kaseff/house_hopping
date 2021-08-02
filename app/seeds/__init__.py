@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .locations import seed_locations, undo_locations
 from .spots import seed_spots, undo_spots
-from .images import undo_images
+from .images import seed_images, undo_images
 from .reviews import seed_reviews, undo_reviews
 from .bookings import seed_bookings, undo_bookings
 
@@ -19,6 +19,7 @@ def seed():
     seed_spots()
     seed_reviews()
     seed_bookings()
+    seed_images()
     # Add other seed functions here
 
 
