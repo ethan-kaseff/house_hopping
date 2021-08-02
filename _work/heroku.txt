@@ -21,3 +21,10 @@ https://hackmd.io/@jma/S1A1YjP9u
    heroku run -a house-hopping flask db upgrade
 -[x]
   heroku run -a house-hopping flask seed all
+
+
+# Login to the heroku cointainer registry
+-[]
+    heroku container:push web -a web house-hopping
+-[]
+    heroku: container:release web -a house-hopping
