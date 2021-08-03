@@ -21,6 +21,9 @@ import SpotDetailsPage from "./components/SpotDetailsPage";
 import ReviewEditForm from "./components/ReviewEditForm";
 // import BookSpotForm from "./components/BookSpotForm"
 import "react-dates/initialize";
+
+
+
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch();

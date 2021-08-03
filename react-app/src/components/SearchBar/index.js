@@ -38,8 +38,8 @@ function SearchBar() {
         }
     }, [dispatch])
     useEffect(() => {
-        console.log("💥 items",items)
-        console.log("🏡 locations",locations)
+        // console.log("💥 items",items)
+        // console.log("🏡 locations",locations)
     }, [locations])
     const items = useMemo(() =>{
         if (locations) {
