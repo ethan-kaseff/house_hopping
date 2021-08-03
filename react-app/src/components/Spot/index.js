@@ -14,7 +14,6 @@ export default function Spot() {
 
 
 
-
   // let spotState;
   // let { id } = useParams();
   // if (!spot) {
@@ -57,7 +56,6 @@ export default function Spot() {
               <div className="flex-none w-48 relative">
                 <img
                   className="w-full"
-                  // src="https://www.goerie.com/storyimage/PA/20150718/LIFESTYLE/610129783/AR/0/AR-610129783.jpg"
                   src="https://i.imgur.com/bUBNNlS.jpg"
                   alt="Sunset in the mountains"
                 />
