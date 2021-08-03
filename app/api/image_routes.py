@@ -13,6 +13,7 @@ def get_all_images():
     imagesDict = {}
     for image in images:
         imagesDict[image.id] = image.to_dict()
+    # return {"imagesDict": [image.to_dict() for image in images]}
     return imagesDict
 
 

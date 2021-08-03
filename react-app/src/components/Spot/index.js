@@ -9,8 +9,9 @@ export default function Spot() {
   const loadedSpot = useSelector((state) => state.spot.loaded_spot);
   const allSpots = useSelector((state) => Object.values(state.spot.spots));
   // console.log(allSpots)
-  const allImages = useSelector(state => state.image.image)
+  const allImages = useSelector(state => (state.image.image?.imagesDict))
   console.log(allImages)
+
 
 
 
