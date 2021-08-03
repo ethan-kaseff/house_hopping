@@ -2,12 +2,16 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { fetchSpot, fetchAllSpots } from "../../store/spot";
+import { getAllImages } from "../../store/image"
 
-export default function Spot({ spot }) {
+export default function Spot() {
   const dispatch = useDispatch();
   const loadedSpot = useSelector((state) => state.spot.loaded_spot);
   const allSpots = useSelector((state) => Object.values(state.spot.spots));
-  console.log(allSpots)
+  // console.log(allSpots)
+  const allImages = useSelector(state => state.image.image)
+  console.log(allImages)
+
 
 
   // let spotState;
@@ -28,6 +32,7 @@ export default function Spot({ spot }) {
     //   dispatch(fetchSpot(id));
     // }
     dispatch(fetchAllSpots())
+    dispatch(getAllImages())
   }, [dispatch]);
   //     dispatch(fetchSpot(1))
   // }
