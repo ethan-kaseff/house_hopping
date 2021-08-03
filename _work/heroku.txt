@@ -1,0 +1,30 @@
+-[x] logged into the heroku cli
+
+    heroku login (then press ENTER TWICE)
+
+-[] in local terminal
+```
+heroku run -a house-hopping flask db upgrade
+heroku run -a house-hopping flask seed all
+heroku run -a house-hopping flask db downgrade
+heroku run -a house-hopping flask seed undo
+```
+if need
+https://hackmd.io/@jma/S1A1YjP9u
+
+## Updating DB on heroku
+
+-[x] destroys all the tables in Heroku DB and doesn't make you have to type your app name again
+(wipes the PG clean)
+  heroku pg:reset -a house-hopping --confirm house-hopping
+-[x]
+   heroku run -a house-hopping flask db upgrade
+-[x]
+  heroku run -a house-hopping flask seed all
+
+
+# Login to the heroku cointainer registry
+-[]
+    heroku container:push web -a web house-hopping
+-[]
+    heroku: container:release web -a house-hopping

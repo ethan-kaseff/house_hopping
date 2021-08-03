@@ -16,13 +16,19 @@ DATABASE_URL=postgresql://assign_now_app:1SuperSecretPassword@localhost/assign_n
 CREATE USER starter_redux_user WITH PASSWORD 'password' CREATEDB;
 CREATE DATABASE starter_redux with OWNER starter_redux_user;
 
--[x] flask db init
+-[x]  create a migration repository with the following command:
+    flask db init
 
--[x] flask db migrate
--[] flask db upgrade
+-[x]  generate an initial migration
+    flask db migrate
+
+-[] apply the migration to the database
+    flask db upgrade
 
 -[] flask seed all
 
+
+-[] flask db --help
 
 if you have an issue and you need to edit or add an attribute into a MODEL for sqlAlchemy,
 
