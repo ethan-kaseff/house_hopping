@@ -2,6 +2,21 @@
 
     heroku login (then press ENTER TWICE)
 
+
+
+-[] in local terminal
+```
+heroku container:login
+heroku container:push web -a house-hopping
+heroku container:release web -a house-hopping
+```
+-[] in local terminal
+```
+heroku run -a house-hopping flask db upgrade
+heroku run -a house-hopping flask seed all
+heroku run -a house-hopping flask db downgrade
+heroku run -a house-hopping flask seed undo
+```
 -[] in local terminal
 ```
 heroku run -a house-hopping flask db upgrade

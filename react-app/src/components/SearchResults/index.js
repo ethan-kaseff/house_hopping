@@ -21,7 +21,7 @@ function SearchResults() {
             <div>
               {availableSpots && (
                 <div className='flex flex-wrap overflow-hidden justify-center'>
-                  {spotArr.length > 0 ? spotArr.map((spot) => {
+                  {Object.values(availableSpots).length > 0 ? Object.values(availableSpots).map((spot) => {
                     return (
                       <NavLink to={`/spots/${spot.id}`} exact={true}>
                         <Spot spot={spot} />
