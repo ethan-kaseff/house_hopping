@@ -10,7 +10,7 @@ export default function Spot() {
   const allSpots = useSelector((state) => Object.values(state.spot.spots));
   // console.log(allSpots)
   const allImages = useSelector(state => (state.image.image?.imagesDict))
-  console.log(allImages)
+  // console.log(allImages)
 
 
 

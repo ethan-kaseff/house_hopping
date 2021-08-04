@@ -14,7 +14,7 @@ export default function BookSpotForm() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
-  const user_id = user.user.id;
+  const user_id = user?.user?.id;
 
   function convert(str) {
     var date = new Date(str),
