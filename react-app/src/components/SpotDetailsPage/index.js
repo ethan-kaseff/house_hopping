@@ -6,6 +6,7 @@ import Spot from "../../components/Spot"
 import BookSpotForm from "../../components/BookSpotForm"
 import CreateReviewForm from "../../components/CreateReviewForm"
 import { fetchSpot } from "../../store/spot"
+import { getImagesBySpotId } from "../../store/image"
 
 
 export default function SpotDetailsPage() {
@@ -16,8 +17,11 @@ export default function SpotDetailsPage() {
     const spotState = useSelector(state => state.spot.loaded_spot)
     // console.log(spotState)
     const reviews = useSelector(state => state.review.loaded_reviews)
-    console.log(reviews)
+    // console.log(reviews)
     const user = useSelector(state => state.session.user)
+    const newImage = useSelector(state => state.image.image)
+    // console.log(newImage?.image_url)
+
     const generateStars = (starCount) => {
         // console.log(starCount)
         const stars = [];
@@ -40,8 +44,9 @@ export default function SpotDetailsPage() {
 
 
    useEffect(() => {
-     dispatch(fetchReviewsBySpotId(id));
+        dispatch(fetchReviewsBySpotId(id));
         dispatch(fetchSpot(id))
+        dispatch(getImagesBySpotId(id))
    }, [dispatch])
 
 
@@ -57,7 +62,7 @@ export default function SpotDetailsPage() {
                 <div className="max-w-sm rounded overflow-hidden shadow-lg">
                     <img
                         className="w-full"
-                        src="https://www.goerie.com/storyimage/PA/20150718/LIFESTYLE/610129783/AR/0/AR-610129783.jpg"
+                        src={newImage?.image_url}
                         alt="Sunset in the mountains"
                     />
                     <div className="px-6 py-4">

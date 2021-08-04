@@ -12,7 +12,7 @@ class Image(db.Model):
     review = db.relationship("Review", back_populates="images")
 
 
-def to_dict(self):
+    def to_dict(self):
         return {
             "id": self.id,
             "image_url": self.image_url,

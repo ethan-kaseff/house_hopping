@@ -54,7 +54,7 @@ const SignUpForm = () => {
     <div className="bg-cover bg-center " style={{backgroundImage: "url(https://i.imgur.com/q8brc1T.jpeg)", minHeight: "100vh"}}>
       <div className="flex items-center justify-center p-10">
         <form
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          className="bg-white bg-opacity-80 shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={onSignUp}
         >
           <div>
