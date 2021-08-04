@@ -39,7 +39,7 @@ https://hackmd.io/@jma/S1A1YjP9u
 
 
 # Login to the heroku cointainer registry
--[]
+-[x]
     heroku container:push web -a web house-hopping
--[]
+-[x]
     heroku: container:release web -a house-hopping
