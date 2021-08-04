@@ -33,9 +33,6 @@ function Splash() {
       <SearchBar />
       <p className="text-4xl text-center p-5 text-gray-500"> Check Out These Spots</p>
       <Spot />
-      {/* <NavLink to={`/spots/${randomSpot.id}`} exact={true}>
-        <Spot spot={randomSpot}/>
-      </NavLink> */}
     </div>
   );
 }

@@ -45,7 +45,7 @@ const LoginForm = () => {
         <h1 className="text-7xl text-blue-700 m-5">Welcome to House Hopping!</h1>
         <div className="flex items-center justify-center m-5">
           <form
-            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            className="bg-white bg-opacity-80 shadow-md rounded px-8 pt-6 pb-8 mb-4"
             onSubmit={onLogin}
           >
             <div>
@@ -90,14 +90,14 @@ const LoginForm = () => {
               >
                 Login
               </button>
-            </div>
-          </form>
-          <button
+              <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"
                 type="button" onClick={onLoginWithDemo}
               >
                 Login With Demo User
               </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
