@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createSpot } from "../store/spot";
 import DataListInput from 'react-datalist-input';
 import { fetchLocations } from '../store/location'
+
+
 function SpotForm() {
   const dispatch = useDispatch();
+  const history = useHistory()
+  const user = useSelector(state => state.session.user);
+  // console.log(user)
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
@@ -15,6 +20,11 @@ function SpotForm() {
   const [available, setAvailable] = useState(true);
   const [error,setError] = useState("");
   const locations = useSelector(state => state.location.locations.locations)
+
+  if (!user) {
+    history.push("/login");
+  }
+
   const onSubmit = async (ev) => {
     ev.preventDefault();
     if (name === "") {
@@ -34,11 +44,13 @@ function SpotForm() {
       window.alert("submitted");
     }
   };
+
   useEffect(() => {
     dispatch(fetchLocations())
     if (locations) {
     }
     }, [dispatch])
+
   return (
     <div className="flex items-center justify-center m-5">
       <form
