@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom'
@@ -8,7 +9,6 @@ import 'react-dates/lib/css/_datepicker.css';
 import { getAvailableSpots } from '../../store/spot';
 // import { saveCurrentDates } from '../../store/booking';
 import { fetchLocations } from '../../store/location'
-
 function SearchBar() {
     const dispatch = useDispatch();
     const history = useHistory();

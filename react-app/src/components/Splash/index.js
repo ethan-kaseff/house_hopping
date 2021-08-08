@@ -28,10 +28,10 @@ function Splash() {
   }, [])
   return (
     <div className="flex flex-col items-center justify-center m-5">
-      <h1 className="text-7xl">Welcome to House Hopping!</h1>
+      <h1 className="text-7xl text-yellow-500">Welcome to House Hopping</h1>
       <br />
       <SearchBar />
-      <p className="text-4xl text-center p-5 text-gray-500"> Check Out These Spots to Book</p>
+      <p className="text-4xl text-center p-5 text-gray-500"> Book These Spots!</p>
       <Spot />
     </div>
   );

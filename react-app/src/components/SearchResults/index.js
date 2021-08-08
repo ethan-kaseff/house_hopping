@@ -2,13 +2,18 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Spot from "../Spot";
+
 function SearchResults() {
   const availableSpots = useSelector((state) => state.spot.availableSpots);
+
   const spotArr = [];
+
   for (const key in availableSpots) {
     spotArr.push(availableSpots[key]);
   }
+
   // Card Click Function
+
   return (
     <>
       <div className="search-results-main-area">
@@ -21,7 +26,7 @@ function SearchResults() {
             <div>
               {availableSpots && (
                 <div className='flex flex-wrap overflow-hidden justify-center'>
-                  {Object.values(availableSpots).length > 0 ? Object.values(availableSpots).map((spot) => {
+                  {spotArr.length > 0 ? spotArr.map((spot) => {
                     return (
                       <NavLink to={`/spots/${spot.id}`} exact={true}>
                         <Spot spot={spot} />
@@ -44,4 +49,5 @@ function SearchResults() {
     </>
   );
 }
+
 export default SearchResults;

@@ -1,3 +1,4 @@
+import re
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db
 from app.forms import LoginForm
@@ -34,7 +35,6 @@ def login():
     Logs a user in
     """
     form = LoginForm()
-    print('🙂', request.get_json())
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -55,6 +55,36 @@ def logout():
     return {'message': 'User logged out'}
 
 
+# @auth_routes.route('/signup', methods=['POST'])
+# def sign_up():
+#     """
+#     Creates a new user and logs them in
+#     """
+    # regex = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
+    # form = SignUpForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    # if form.validate_on_submit():
+    #     if re.match(regex, form.data['email']):
+    #         user = User(
+    #             email=form.data['email'],
+    #             first_name=form.data['first_name'],
+    #             last_name=form.data['last_name'],
+    #             birth_date=form.data['birth_date'],
+    #             # birth_date="2016-02-17",
+    #             about_me=form.data['about_me'],
+    #             is_host=True,
+    #             password=form.data['password'],
+    #             profile_url=""
+    #         )
+    #         db.session.add(user)
+    #         db.session.commit()
+    #         login_user(user)
+    #         return user.to_dict()
+    #     else:
+    #         return {"errors": "Unable to sign up, please review your information above."}
+    # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
     """
@@ -63,7 +93,6 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if request.method == "POST":
-        print("here")
         user = User(
             email=form.data['email'],
             first_name=form.data['first_name'],
@@ -78,7 +107,6 @@ def sign_up():
         db.session.commit()
         login_user(user)
         return user.to_dict()
-    print("didnt go here")
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
