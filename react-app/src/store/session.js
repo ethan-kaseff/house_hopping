@@ -74,8 +74,11 @@ export const signUp =
         password: password,
       }),
     });
-    const data = await response.json();
-    dispatch(setUser(data));
+    const responseObject = await response.json();
+    if(responseObject.errors){
+        return responseObject.errors
+    }
+    dispatch(setUser(responseObject));
   };
 
 // reducer r

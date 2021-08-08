@@ -13,14 +13,20 @@ const SignUpForm = () => {
   const [aboutMe, setAboutMe] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors,setErrors] = useState("")
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(
-        signUp(firstName, lastName, email, birthdate, aboutMe, password)
-      );
-      // could set errors later
+     if (password === repeatPassword) {
+      const e = await dispatch(signUp(firstName, lastName, email, birthdate, aboutMe, password));
+      if (e) {
+        setErrors(e)
+      }
+      else{
+        setErrors('')
+      }
+    } else {
+      setErrors('Password and Repeat Password must match!')
     }
   };
   const updateEmail = (e) => {
@@ -149,6 +155,9 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
+          {errors?
+        <p className="text-red-600">{errors}</p>
+        :null}
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
