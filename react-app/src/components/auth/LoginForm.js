@@ -12,9 +12,9 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data.errors) {
-      setErrors(data.errors);
+    const responseObject = await dispatch(login(email, password));
+    if (responseObject.errors) {
+      setErrors(responseObject.errors);
     }
   };
 
