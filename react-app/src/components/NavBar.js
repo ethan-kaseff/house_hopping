@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import LogoutButton from "./auth/LogoutButton";
 import "../output.css";
 
-const NavBar = () => {
+const NavBar = ({pageName}) => {
   const user = useSelector((store) => store.session.user);
   // console.log(user);
   if (user) {
@@ -43,7 +43,7 @@ const NavBar = () => {
   } else {
     return (
       <nav className="flex flex-wrap items-center justify-between p-5 bg-blue-200">
-        {user &&  <NavLink
+        {(user || pageName ==="sign-up") &&  <NavLink
           to="/login"
           exact={true}
           activeClassName="active"
@@ -53,14 +53,14 @@ const NavBar = () => {
         </NavLink>}
 
 
-        <NavLink
+        {(pageName !== "sign-up") && <NavLink
           to="/sign-up"
           exact={true}
           activeClassName="active"
           className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
         >
           Sign Up
-        </NavLink>
+        </NavLink>}
       </nav>
     );
   }

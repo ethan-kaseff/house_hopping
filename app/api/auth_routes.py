@@ -92,21 +92,25 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    if request.method == "POST":
-        user = User(
-            email=form.data['email'],
-            first_name=form.data['first_name'],
-            last_name=form.data['last_name'],
-            birth_date="2016-02-17",
-            about_me=form.data['about_me'],
-            is_host=True,
-            password=form.data['password'],
-            profile_url=""
-        )
-        db.session.add(user)
-        db.session.commit()
-        login_user(user)
-        return user.to_dict()
+    regex = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
+    if form.validate_on_submit():
+        if re.match(regex, form.data['email']):
+            user = User(
+                email=form.data['email'],
+                first_name=form.data['first_name'],
+                last_name=form.data['last_name'],
+                birth_date="2016-02-17",
+                about_me=form.data['about_me'],
+                is_host=True,
+                password=form.data['password'],
+                profile_url=""
+            )
+            db.session.add(user)
+            db.session.commit()
+            login_user(user)
+            return user.to_dict()
+        else:
+            return {"errors": "Unable to sign up, please review your email information"}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

@@ -1,16 +1,23 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import React,{useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink,useHistory } from "react-router-dom";
 import Spot from "../Spot";
 
 function SearchResults() {
   const availableSpots = useSelector((state) => state.spot.availableSpots);
-
+  const current_user = useSelector(state => state.session.user);
+  const history = useHistory();
   const spotArr = [];
 
   for (const key in availableSpots) {
     spotArr.push(availableSpots[key]);
   }
+
+  useEffect(() => {
+    if (!current_user){
+      history.push('/login')
+    }
+  }, [current_user])
 
   // Card Click Function
 

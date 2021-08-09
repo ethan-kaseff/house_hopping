@@ -84,14 +84,18 @@ export const signUp =
 // reducer r
 
 // reducer r
-const initialState = {};
+const initialState = {user:{}};
 
 export default function reducer(state = initialState, action) {
+  let newState = {...state}
   switch (action.type) {
     case SET_USER:
-      return { user: action.payload };
+      newState.user = action.payload
+      return newState;
     case REMOVE_USER:
-      return { user: null };
+      newState = {...state,user:{...state.user}}
+      newState.user = null;
+      return newState;
     default:
       return state;
   }

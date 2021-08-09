@@ -29,6 +29,7 @@ const SignUpForm = () => {
       setErrors('Password and Repeat Password must match!')
     }
   };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
