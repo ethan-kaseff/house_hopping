@@ -40,47 +40,58 @@ function App() {
   }
   return (
     <BrowserRouter>
-      <NavBar />
+    <Switch>
       <Route path="/booking/new">
+        <NavBar />
         <BookSpotForm />
       </Route>
       <Route path="/bookings/:id">
+        <NavBar />
         <OneBooking />
         <EditBookSpotForm />
       </Route>
       <Route exact path="/spots/new">
+        <NavBar />
         <SpotForm />
       </Route>
       <Route path="/spots/:id">
+        <NavBar />
         <div className='flex flex-row items-center justify-center'>
           {/* <Spot />
           <BookSpotForm /> */}
           <SpotDetailsPage/>
         </div>
       </Route>
-      <Switch>
         <Route path="/search-bar" exact={true}>
+          <NavBar />
           <SearchBar />
         </Route>
         <Route path="/search-results" exact={true}>
+          <NavBar />
           <SearchResults />
         </Route>
-        <Route path="/login" exact={true}>
+        <Route path="/" exact={true}>
+          <NavBar />
           <LoginForm />
         </Route>
         <Route path="/sign-up" exact={true}>
+          <NavBar pageName="sign-up"/>
           <SignUpForm />
         </Route>
         <Route path="/review/:review_id" exact={true}>
+          <NavBar />
           < ReviewEditForm/>
         </Route>
         <ProtectedRoute path="/users" exact={true}>
+          <NavBar />
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
+          <NavBar />
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
+        <ProtectedRoute path="/home" exact={true}>
+          <NavBar />
           <Splash />
           {/* <MyBookings /> */}
         </ProtectedRoute>

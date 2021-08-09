@@ -4,7 +4,7 @@
 
 
 
--[] in local terminal
+-[] in local terminal & Start up Docker GUI
 ```
 heroku container:login
 heroku container:push web -a house-hopping

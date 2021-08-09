@@ -74,8 +74,11 @@ export const signUp =
         password: password,
       }),
     });
-    const data = await response.json();
-    dispatch(setUser(data));
+    const responseObject = await response.json();
+    if(responseObject.errors){
+        return responseObject.errors
+    }
+    dispatch(setUser(responseObject));
   };
 
 // reducer r
@@ -84,11 +87,15 @@ export const signUp =
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
+  let newState = {...state}
   switch (action.type) {
     case SET_USER:
-      return { user: action.payload };
+      newState.user = action.payload
+      return newState;
     case REMOVE_USER:
-      return { user: null };
+      newState = {...state,user:{...state.user}}
+      newState.user = null;
+      return newState;
     default:
       return state;
   }

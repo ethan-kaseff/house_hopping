@@ -120,19 +120,19 @@ export const fetchAllSpots =() => async (dispatch) => {
     dispatch(loadHostSpots(responseObject))
   }
 
-// export const fetchRandomSpot =() => async (dispatch) => {
-//     const response = await fetch(`/api/spots/`, {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     const responseObject = await response.json();
-//     if (responseObject.errors) {
-//       return responseObject;
-//     }
-//     dispatch(loadRandomSpotActionCreator(responseObject));
-//   };
+export const fetchRandomSpot =() => async (dispatch) => {
+    const response = await fetch(`/api/spots/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const responseObject = await response.json();
+    if (responseObject.errors) {
+      return responseObject;
+    }
+    dispatch(loadRandomSpotActionCreator(responseObject));
+  };
 
 
 // Thunk for update

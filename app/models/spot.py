@@ -33,5 +33,6 @@ class Spot(db.Model):
             "private": self.private,
             "available": self.available,
             "location_id": self.location_id,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "images": [image.to_dict() for image in self.images]
         }
