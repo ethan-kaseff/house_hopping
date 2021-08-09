@@ -5,7 +5,7 @@ import Spot from "../Spot";
 import SearchBar from '../SearchBar';
 import {useDispatch, useSelector} from 'react-redux';
 import { fetchAllSpots } from "../../store/spot"
-// import { fetchRandomSpot } from "../../store/spot";
+import { fetchRandomSpot } from "../../store/spot";
 
 
 
@@ -20,7 +20,7 @@ function Splash() {
   // }
 
   useEffect(() => {
-    // dispatch(fetchRandomSpot());
+    dispatch(fetchRandomSpot());
   }, [dispatch])
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function Splash() {
       <br />
       <SearchBar />
       <p className="text-4xl text-center p-5 text-gray-500"> Book These Spots!</p>
-      <Spot />
+      <Spot spot={randomSpot} />
     </div>
   );
 }
