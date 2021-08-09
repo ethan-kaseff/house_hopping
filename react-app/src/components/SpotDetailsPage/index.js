@@ -22,7 +22,7 @@ export default function SpotDetailsPage() {
     // console.log(newImage?.image_url)
 
     if (!user) {
-        history.push("/login");
+        history.push("/");
     }
 
     const generateStars = (starCount) => {

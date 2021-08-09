@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect,useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 
 const LoginForm = () => {
@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -34,10 +35,12 @@ const LoginForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
+  useEffect(() => {
+    if (user) {
+      history.push('/home')
+    }
+  }, [user])
 
-  if (user) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <div className="bg-cover bg-center " style={{backgroundImage: "url(https://i.imgur.com/q8brc1T.jpeg)", minHeight: "100vh"}}>

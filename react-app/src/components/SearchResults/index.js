@@ -15,7 +15,7 @@ function SearchResults() {
 
   useEffect(() => {
     if (!current_user){
-      history.push('/login')
+      history.push('/')
     }
   }, [current_user])
 

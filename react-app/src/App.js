@@ -70,7 +70,7 @@ function App() {
           <NavBar />
           <SearchResults />
         </Route>
-        <Route path="/login" exact={true}>
+        <Route path="/" exact={true}>
           <NavBar />
           <LoginForm />
         </Route>
@@ -90,7 +90,7 @@ function App() {
           <NavBar />
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
+        <ProtectedRoute path="/home" exact={true}>
           <NavBar />
           <Splash />
           {/* <MyBookings /> */}

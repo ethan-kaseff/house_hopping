@@ -22,7 +22,7 @@ function SpotForm() {
   const locations = useSelector(state => state.location.locations.locations)
 
   if (!user) {
-    history.push("/login");
+    history.push("/");
   }
 
   const onSubmit = async (ev) => {

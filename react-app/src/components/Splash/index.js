@@ -12,8 +12,8 @@ import { fetchAllSpots } from "../../store/spot"
 function Splash() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const randomSpot = useSelector(state => state.spot.randomSpot)
-
+  const randomSpot = useSelector(state => state.spot.randomSpot);
+  const current_user = useSelector(state => state.session.user);
   // let { id } = useParams();
   // if (!id) {
   //   id = 2;
@@ -23,9 +23,13 @@ function Splash() {
     // dispatch(fetchRandomSpot());
   }, [dispatch])
 
-  useEffect(()=> {
-    history.push('/')
-  }, [])
+  useEffect(() => {
+    if (!current_user) {
+      history.push('/')
+    }
+  }, [current_user])
+
+
   return (
     <div className="flex flex-col items-center justify-center m-5">
       <h1 className="text-7xl text-yellow-500">Welcome to House Hopping</h1>

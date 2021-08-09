@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { signUp } from "../../store/session";
 
 const SignUpForm = () => {
@@ -14,6 +14,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [errors,setErrors] = useState("")
+  const history = useHistory();
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -53,9 +54,11 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to="/" />;
-  }
+  useEffect(() => {
+    if (user) {
+      history.push('/home')
+    }
+  }, [user])
 
   return (
     <div className="bg-cover bg-center " style={{backgroundImage: "url(https://i.imgur.com/q8brc1T.jpeg)", minHeight: "100vh"}}>
