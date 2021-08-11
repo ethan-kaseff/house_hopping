@@ -56,11 +56,8 @@ export default function SpotDetailsPage() {
     return (
         <div>
             {!(id === "new") ? (
-            <div>
-                <div className='flex flex-row items-center justify-center'>
-                    {/* <Spot /> */}
-                    <BookSpotForm />
-                </div >
+            <div className="grid grid-cols-2">
+
                 <div className="grid grid-cols-1 items-center justify-center m-5">
                 <div className="max-w-sm rounded overflow-hidden shadow-lg">
                     <img
@@ -77,9 +74,11 @@ export default function SpotDetailsPage() {
                     </div>
                     </div>
                 </div>
-                <div className="flex flex-col items-center">
-                    <CreateReviewForm/>
-                </div>
+                <div className='flex flex-row items-center justify-center'>
+                    {/* <Spot /> */}
+                    <BookSpotForm />
+                </div >
+
                 <div className='flex flex-row items-center justify-center'>
                     {reviews && Object.values(reviews).map(review => {
                         return <div className="m-3 border rounded p-3">
@@ -93,6 +92,9 @@ export default function SpotDetailsPage() {
                             : null }
                         </div>
                     })}
+                </div>
+                <div className="flex flex-col items-center">
+                    <CreateReviewForm/>
                 </div>
             </div>
             ): null }
