@@ -7,7 +7,7 @@ import { fetchSpot } from "../../store/spot"
 function SearchResults() {
   const dispatch = useDispatch()
   const availableSpots = useSelector((state) => Object.values(state.spot.availableSpots));
-  console.log(availableSpots)
+  // console.log(availableSpots)
   const current_user = useSelector(state => state.session.user);
   const history = useHistory();
   const spotArr = [];
