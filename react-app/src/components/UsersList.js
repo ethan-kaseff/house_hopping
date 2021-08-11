@@ -11,14 +11,14 @@ export default function UsersList() {
   const user = useSelector(state => state.session.user);
   // const spots  = useSelector(state => state.spot.userReviewSpots)
   const spots  = useSelector(state => Object.values(state.spot.spots))
-  console.log('🙂 spots',spots);
+  // console.log('🙂 spots',spots);
 
 
   useEffect(() => {
     // console.log(user);
     // dispatch(fetchSpotReviewsByUser(user.id));
     dispatch(fetchSpotByUser(user.id));
-  }, [])
+  }, [dispatch])
 
 
   return (

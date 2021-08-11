@@ -2,15 +2,24 @@ import React,{useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams, useHistory} from 'react-router-dom';
 import { updateBooking, deleteBooking} from '../../store/booking'
+import { fetchSpot } from '../../store/spot'
 
 
 export default function EditBookSpotForm() {
     const [start_date,setStartDate] = useState('');
     const [end_date, setEndDate] = useState('');
     const bookingState = useSelector(state => state.booking.loaded_booking);
+    console.log(bookingState)
     const dispatch = useDispatch()
     const history = useHistory()
     const {id} = useParams();
+
+
+    useEffect(() => {
+        if (bookingState?.spot_id) {
+            dispatch(fetchSpot(bookingState?.spot_id))
+        }
+    }, [dispatch])
 
 
     const handleFormSubmit = (event) => {
