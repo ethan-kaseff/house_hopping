@@ -36,7 +36,7 @@ function Splash() {
       <br />
       <SearchBar />
       <p className="text-4xl text-center p-5 text-gray-500"> Book These Spots!</p>
-      <Spot spot={randomSpot} />
+      <Spot />
     </div>
   );
 }
