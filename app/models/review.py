@@ -22,4 +22,5 @@ class Review(db.Model):
             "content": self.content,
             "user_id": self.user_id,
             "spot_id": self.spot_id,
+            "user": [self.user.to_dict()]
         }

@@ -16,7 +16,7 @@ export default function SpotDetailsPage() {
     const spotState = useSelector(state => state.spot.loaded_spot)
     // console.log(spotState)
     const reviews = useSelector(state => state.review.loaded_reviews)
-    // console.log(reviews)
+    console.log(reviews)
     const user = useSelector(state => state.session.user)
     const newImage = useSelector(state => state.image.image)
     // console.log(newImage?.image_url)
@@ -79,11 +79,13 @@ export default function SpotDetailsPage() {
                     <BookSpotForm />
                 </div >
 
-                <div className='flex flex-row items-center justify-center'>
+                <div className='flex flex-col '>
+                    <h3>Reviews:</h3>
                     {reviews && Object.values(reviews).map(review => {
-                        return <div className="m-3 border rounded p-3">
-                            <p>{review?.content} </p>
+                        return <div className="m-3 border-double rounded p-3">
+                            <p>{review?.user[0]?.first_name} {review?.user[0]?.last_name}</p>
                             {generateStars(review.count)}
+                            <p>{review?.content} </p>
                             {review.user_id == user?.id ?
                             <div className='flex flex-row items-center justify-center' >
                                 <button id={'edit'+review?.id} onClick={handleReviewEdit}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Edit</button>
