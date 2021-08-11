@@ -7,6 +7,7 @@ import "./reviewEditForm.css"
 
 export default function ReviewEditForm() {
     const {review_id} = useParams();
+    console.log(review_id)
     const dispatch = useDispatch();
     const review = useSelector(state => state.review.selected_review)
     const [content,setContent] = useState('');
@@ -19,16 +20,16 @@ export default function ReviewEditForm() {
         history.push(`/spots/${review.spot_id}`)
     }
 
-    useEffect(() => {
-       setContent(review.content)
-    }, [review])
+    // useEffect(() => {
+    //    setContent(review.content)
+    // }, [review])
 
-    useEffect(() => {
-       dispatch(fetchReviewById(review_id));
-    //    if (review && review.content) {
-        //    setContent(review.content);
-    //    }
-    }, [dispatch])
+    // useEffect(() => {
+    //    dispatch(fetchReviewById(review_id));
+    // //    if (review && review.content) {
+    //     //    setContent(review.content);
+    // //    }
+    // }, [dispatch])
 
 
     return (
