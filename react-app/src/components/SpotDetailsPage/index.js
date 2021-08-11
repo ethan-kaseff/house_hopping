@@ -6,6 +6,7 @@ import BookSpotForm from "../../components/BookSpotForm"
 import CreateReviewForm from "../../components/CreateReviewForm"
 import { fetchSpot } from "../../store/spot"
 import { getImagesBySpotId } from "../../store/image"
+import ReviewEditForm from '../ReviewEditForm';
 import DeleteReview from '../DeleteReview';
 
 
@@ -90,8 +91,9 @@ export default function SpotDetailsPage() {
                             <p>{review?.content} </p>
                             {review.user_id == user?.id ?
                             <div className='flex flex-row' >
-                                <button id={'edit'+review?.id} onClick={handleReviewEdit}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Edit</button>
+                                {/* <button id={'edit'+review?.id} onClick={handleReviewEdit}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Edit</button> */}
                                 {/* <button id={'delete'+review?.id} onClick={handleReviewDelete}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Delete</button> */}
+                                <ReviewEditForm props={{review}}/>
                                 <DeleteReview props={{review}}/>
                             </div>
                             : null }

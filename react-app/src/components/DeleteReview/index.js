@@ -5,7 +5,7 @@ import { deleteReview } from '../../store/review';
 
 
 function DeleteReview({ props }) {
-    console.log(props.review)
+    // console.log(props.review)
     const dispatch = useDispatch();
     const history = useHistory()
 

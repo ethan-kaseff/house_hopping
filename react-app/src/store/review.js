@@ -70,7 +70,7 @@ export const fetchReviewById = (review_id) => async (dispatch) => {
 }
 
 export const createReview = (content,count, user_id, spot_id) => async (dispatch) => {
-  console.log("count😌", count)
+  // console.log("count😌", count)
     const response = await fetch(`/api/reviews/`,{
     method: "POST",
       headers: {
