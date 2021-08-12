@@ -9,16 +9,17 @@ function DeleteReview({ props }) {
     const dispatch = useDispatch();
     const history = useHistory()
 
-    async function handleOnSubmit() {
+    async function handleOnSubmit(e) {
+        e.preventDefault()
         if (props.review.id) {
             await dispatch(deleteReview(props.review.id));
         }
-        history.push('/')
+        history.push(`/spots/${props.review.spot_id}`)
     }
 
     return (
         <div>
-            <button onClick={handleOnSubmit} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">
+            <button type="submit" onClick={handleOnSubmit} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">
                 Delete Review
             </button>
         </div>

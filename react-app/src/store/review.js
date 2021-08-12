@@ -25,9 +25,9 @@ const updateReviewActionCreator = (review) => ({
     type:UPDATE_REVIEW,
     payload:review,
 });
-const deleteReviewActionCreator = (review) => ({
+const deleteReviewActionCreator = (id) => ({
     type:DELETE_REVIEW,
-    payload:review,
+    payload:id,
 });
 
 
@@ -102,12 +102,12 @@ export const updateReview = (review_id,content,count) => async (dispatch) => {
 
     dispatch(updateReviewActionCreator(responseObject));
 }
-export const deleteReview = (review_id) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${review_id}`,{
+export const deleteReview = (id) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${id}`,{
     method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      }
+      // headers: {
+      //   "Content-Type": "application/json",
+      // }
     });
     const responseObject = await response.json();
 
@@ -115,7 +115,7 @@ export const deleteReview = (review_id) => async (dispatch) => {
       return responseObject;
     }
 
-    dispatch(deleteReviewActionCreator(responseObject));
+    dispatch(deleteReviewActionCreator(responseObject.id));
 }
 
 // Reducer
