@@ -28,7 +28,7 @@ export default function CreateReviewForm() {
     }
     return (
         <div className="border rounded p-3">
-            <h1 className="text-2xl"> Post Review </h1>
+            <h1 className="text-2xl"> Post Your Review! </h1>
             <form onSubmit={handleCreateReviewFormSubmit}>
                 <label> Content: </label>
                 <textarea value={content}  onChange={(e) => setContent(e.target.value)} className="border" placeholder="Please write your review here"></textarea>

@@ -64,16 +64,15 @@ export default function SpotDetailsPage() {
                 <div className="grid grid-cols-1 items-center justify-center m-5">
                 <div className="max-w-sm rounded overflow-hidden shadow-lg">
                     <img
-                        className="w-full"
+                        className="w-full h-96"
                         src={newImage?.image_url}
                         alt="Sunset in the mountains"
                     />
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2">{spotState.name}</div>
                         <p className="text-gray-700 text-base">{spotState.description}</p>
-                        {/* <p>{pets}</p>
-                        <p>{privy}</p> */}
-                        {/* <p>Pet Friendly {spotState.pet_friendly}</p> */}
+                        <p>{spotState.private ? "Private Space" : "Shared Space"}</p>
+                        <p>{spotState.pet_friendly ? "Pet Friendly!" : "Sorry, no pets allowed 😢"}</p>
                     </div>
                     </div>
                 </div>

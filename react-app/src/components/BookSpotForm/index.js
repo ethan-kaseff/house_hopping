@@ -36,23 +36,8 @@ export default function BookSpotForm() {
 
   return (
     <div>
-      <form onSubmit={handleFormSubmit} className="flex flex-col pr-5">
-        {/* <div>
-          <label> Start Date</label>
-          <input
-            type="date"
-            value={start_date}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
-        </div>
-        <div>
-          <label> End Date</label>
-          <input
-            type="date"
-            value={end_date}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-        </div> */}
+      <form onSubmit={handleFormSubmit} className="flex flex-col justify-center pr-5">
+       <h2 className="text-4xl text-center pr-4 py-10">Book Your Vacation Today 😎</h2>
         <DateRangePicker
           startDate={startDate} // momentPropTypes.momentObj or null,
           startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
@@ -65,6 +50,7 @@ export default function BookSpotForm() {
           focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           onFocusChange={focusedInput => setfocusedInput(focusedInput)} // PropTypes.func.isRequired,
           showDefaultInputIcon
+          className="flex flex-wrap justify-center"
         />
 
         <button

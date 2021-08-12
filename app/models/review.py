@@ -10,7 +10,7 @@ class Review(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     spot_id = db.Column(db.Integer, db.ForeignKey("spots.id"), nullable=False)
 
-    user = db.relationship("User", back_populates="reviews")
+    user = db.relationship("User", lazy='subquery', back_populates="reviews")
     images = db.relationship(
         "Image", back_populates="review")
     spot = db.relationship("Spot", back_populates="reviews")
