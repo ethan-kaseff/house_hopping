@@ -81,9 +81,9 @@ export default function Spot({ spot }) {
                   <div className="font-bold text-xl mb-2">{spotObj.name}</div>
                 </Link>
                 <p className="text-gray-700 text-base">{spotObj.description}</p>
-                {/* <p>{pets}</p>
-                <p>{privy}</p> */}
-                {/* <p>Pet Friendly {spotState.pet_friendly}</p> */}
+                {/* <p>{pets}</p> */}
+                <p>{spotObj.private ? "Private Space" : "Shared Space"}</p>
+                <p>{spotObj.pet_friendly ? "Pet Friendly!" : "Sorry, no pets allowed 😢"}</p>
               </div>
             </div>
           </div>
