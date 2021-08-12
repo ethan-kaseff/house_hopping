@@ -9,12 +9,13 @@ function DeleteReview({ props }) {
     const dispatch = useDispatch();
     const history = useHistory()
 
-    async function handleOnSubmit(e) {
-        e.preventDefault()
+    async function handleOnSubmit() {
         if (props.review.id) {
             await dispatch(deleteReview(props.review.id));
         }
-        history.push(`/spots/${props.review.spot_id}`)
+        // history.push(`/`)
+        // history.push(`/spots/${props.review.spot_id}`)
+        window.location.reload(false);
     }
 
     return (
