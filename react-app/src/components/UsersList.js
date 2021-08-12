@@ -23,15 +23,16 @@ export default function UsersList() {
 
   return (
     <div>
+      <h1 className="font-bold text-3xl text-center p-5">Current Bookings: </h1>
         <MyBookings />
       <h1 className="font-bold text-3xl text-center p-5">Current Listings: </h1>
-      <div className="grid grid-flow-col grid-cols-3 grid-rows-3 gap-4">
+      <div className="flex flex-wrap overflow-hidden">
       {spots.map(spotObj => {
         return(
-            <div className="grid grid-cols-1 items-center justify-center m-5">
-              <div className="max-w-sm rounded overflow-hidden shadow-lg">
+            <div className="grid grid-cols box-content items-center justify-center m-5">
+              <div className="max-w-xs max-h-full rounded overflow-hidden shadow-lg">
                 <img
-                  className="w-full"
+                  className="w-96 h-60"
                   src={spotObj?.images[0]?.image_url}
                   alt="Sunset in the mountains"
                 />
@@ -40,9 +41,8 @@ export default function UsersList() {
                     <div className="font-bold text-xl mb-2">{spotObj?.name}</div>
                   </NavLink>
                   <p className="text-gray-700 text-base">{spotObj?.description}</p>
-                  {/* <p>{pets}</p>
-                  <p>{privy}</p> */}
-                  {/* <p>Pet Friendly {spotState.pet_friendly}</p> */}
+                  <p>{spotObj.private ? "Private Space" : "Shared Space"}</p>
+                  <p>{spotObj.pet_friendly ? "Pet Friendly!" : "Sorry, no pets allowed 😢"}</p>
                 </div>
               </div>
             </div>

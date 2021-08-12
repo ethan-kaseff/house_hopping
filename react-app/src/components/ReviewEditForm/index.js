@@ -16,8 +16,13 @@ export default function ReviewEditForm({props}) {
     const history = useHistory();
     const [show, setShow] = useState(true);
 
-    const handleClose = () => setShow(true);
-    const handleShow = () => setShow(false);
+    const handleShowAndClose = () => {
+        if (show) {
+            setShow(false)
+        } else {
+            setShow(true)
+        }
+    }
 
 
     const handleReviewEditFormSubmit = (event) => {
@@ -40,15 +45,14 @@ export default function ReviewEditForm({props}) {
 
     return (
         <div>
-            <button onClick={handleShow} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">
+            <button onClick={handleShowAndClose} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">
                 Edit
             </button>
             {/* <h1>Review Edit Form</h1> */}
             {review &&
-            <form onSubmit={handleReviewEditFormSubmit} hidden={show}
-            onHide={handleClose}>
+            <form onSubmit={handleReviewEditFormSubmit} hidden={show}>
                 <label> Content: </label>
-                <textarea value={content}  onChange={(e) => setContent(e.target.value)}></textarea>
+                <textarea value={content} className="border"  onChange={(e) => setContent(e.target.value)}></textarea>
                 <div>
                     <label htmlFor="count">Rating</label>
                     <select name="count" id="count" value={count} onChange={(e)=> setCount(e.target.value)}>
@@ -60,7 +64,7 @@ export default function ReviewEditForm({props}) {
                         <option>5</option>
                     </select>
                 </div>
-                <button type="submit" onclick={handleClose} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+                <button type="submit" onclick={handleShowAndClose} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
             </form>
             }
         </div>
