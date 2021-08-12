@@ -9,8 +9,8 @@ export default function MyBookings() {
     const dispatch = useDispatch();
     const bookingState = useSelector(state => state.booking.bookings);
     const spotState = useSelector(state => state.spot)
-    console.log(spotState, 'SPOTSTATE')
-    console.log('bookingState😎', bookingState['2']?.spot_id)
+    // console.log(spotState, 'SPOTSTATE')
+    // console.log('bookingState😎', bookingState['2']?.spot_id)
     const spotID = bookingState['2']?.spot_id
     // console.log(typeof bookingState['2'])
     const history = useHistory()

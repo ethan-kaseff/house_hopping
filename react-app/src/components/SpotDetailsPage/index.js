@@ -6,6 +6,8 @@ import BookSpotForm from "../../components/BookSpotForm"
 import CreateReviewForm from "../../components/CreateReviewForm"
 import { fetchSpot } from "../../store/spot"
 import { getImagesBySpotId } from "../../store/image"
+import ReviewEditForm from '../ReviewEditForm';
+import DeleteReview from '../DeleteReview';
 
 
 export default function SpotDetailsPage() {
@@ -39,6 +41,7 @@ export default function SpotDetailsPage() {
 
     const handleReviewEdit = (event) => {
         // const id =
+        // history.push(`/review/${event.target.id.substring(event.target.id.length-1)}`);
         history.push(`/review/${event.target.id.substring(event.target.id.length-1)}`);
     }
     const handleReviewDelete = (event) => {
@@ -56,11 +59,8 @@ export default function SpotDetailsPage() {
     return (
         <div>
             {!(id === "new") ? (
-            <div>
-                <div className='flex flex-row items-center justify-center'>
-                    {/* <Spot /> */}
-                    <BookSpotForm />
-                </div >
+            <div className="grid grid-cols-2">
+
                 <div className="grid grid-cols-1 items-center justify-center m-5">
                 <div className="max-w-sm rounded overflow-hidden shadow-lg">
                     <img
@@ -77,22 +77,31 @@ export default function SpotDetailsPage() {
                     </div>
                     </div>
                 </div>
-                <div className="flex flex-col items-center">
-                    <CreateReviewForm/>
-                </div>
                 <div className='flex flex-row items-center justify-center'>
+                    {/* <Spot /> */}
+                    <BookSpotForm />
+                </div >
+
+                <div className='flex flex-col '>
+                    <h3>Reviews:</h3>
                     {reviews && Object.values(reviews).map(review => {
-                        return <div className="m-3 border rounded p-3">
-                            <p>{review?.content} </p>
+                        return <div className="m-3 border-double p-3">
+                            <p>{review?.user[0]?.first_name} {review?.user[0]?.last_name}</p>
                             {generateStars(review.count)}
+                            <p>{review?.content} </p>
                             {review.user_id == user?.id ?
-                            <div className='flex flex-row items-center justify-center' >
-                                <button id={'edit'+review?.id} onClick={handleReviewEdit}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Edit</button>
-                                <button id={'delete'+review?.id} onClick={handleReviewDelete}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                            <div className='flex flex-row' >
+                                {/* <button id={'edit'+review?.id} onClick={handleReviewEdit}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Edit</button> */}
+                                {/* <button id={'delete'+review?.id} onClick={handleReviewDelete}className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded focus:outline-none focus:shadow-outline">Delete</button> */}
+                                <ReviewEditForm props={{review}}/>
+                                <DeleteReview props={{review}}/>
                             </div>
                             : null }
                         </div>
                     })}
+                </div>
+                <div className="flex flex-col items-center">
+                    <CreateReviewForm/>
                 </div>
             </div>
             ): null }

@@ -42,6 +42,39 @@ def seed_locations():
     location11 = Location(
         name='San Francisco'
     )
+    location12 = Location(
+        name='Atlanta'
+    )
+    location13 = Location(
+        name='Phoenix'
+    )
+    location14 = Location(
+        name='Springfield'
+    )
+    location15 = Location(
+        name='Carson City'
+    )
+    location16 = Location(
+        name='Raleigh'
+    )
+    location17 = Location(
+        name='Olympia'
+    )
+    location18 = Location(
+        name='Santa Fe'
+    )
+    location19 = Location(
+        name='Trenton'
+    )
+    location20 = Location(
+        name='New Orleans'
+    )
+    location21 = Location(
+        name='Denver'
+    )
+    location22 = Location(
+        name='Juneau'
+    )
 
     db.session.add(location1)
     db.session.add(location2)
@@ -54,6 +87,17 @@ def seed_locations():
     db.session.add(location9)
     db.session.add(location10)
     db.session.add(location11)
+    db.session.add(location12)
+    db.session.add(location13)
+    db.session.add(location14)
+    db.session.add(location15)
+    db.session.add(location16)
+    db.session.add(location17)
+    db.session.add(location18)
+    db.session.add(location19)
+    db.session.add(location20)
+    db.session.add(location21)
+    db.session.add(location22)
 
     db.session.commit()
 
