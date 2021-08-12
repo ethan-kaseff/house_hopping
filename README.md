@@ -1,13 +1,25 @@
-# Flask React Project
+# Welcome to House Hopping
+*by Alexandra Bouillon, Sylvia Onwuana, Ethan Kaseff, & Jonathan Salguero*
+#### [House Hopping](https://house-hopping.herokuapp.com/) is a [Couchsurfing](https://www.couchsurfing.com/) clone, that allows users to book a place to stay in certain cities or as a host, share your home/room to travelers.
 
-This is the backend for the Flask React project.
+![Screen Shot 2021-08-11 at 11 23 40 PM](https://user-images.githubusercontent.com/69067446/129133719-530bc690-b8a5-4d6b-b9c3-dc594dc93504.png)
+
+
+### Built With
+The project was built utilizing the following technologies:
+* [Python](https://www.python.org/)
+* [React](https://reactjs.org/)
+* [Docker](https://www.docker.com/)
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+* [Tailwind](https://tailwindcss.com/)
+#
 
 ## Getting started
 
 1. Clone this repository (only this branch)
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/ethan-kaseff/house_hopping.git
    ```
 
 2. Install dependencies
@@ -16,10 +28,9 @@ This is the backend for the Flask React project.
       pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
       ```
 
-3. Create a **.env** file based on the example with proper settings for your
+3. Create a `.env` file based on the `env.example` example with the proper settings for your
    development environment
 4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
-
 5. Get into your pipenv, migrate your database, seed your database, and run your flask app
 
    ```bash
@@ -38,9 +49,10 @@ This is the backend for the Flask React project.
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
+6. To run the React App in development, cd into the `react-app` directory and run:
+   ```
+   npm start
+   ```
 *IMPORTANT!*
    If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
    You can do this by running:
@@ -54,45 +66,15 @@ This is the backend for the Flask React project.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
 
-## Deploy to Heroku
 
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
+## Contact
 
-   ```bash
-   heroku login
-   ```
+* Alexandra Bouillon - [LinkedIn](https://www.linkedin.com/in/alexandrabouillon/) - 
+* Sylvia Onwuana - [LinkedIn](https://www.linkedin.com/in/sylvia-o/) - sonwuana1@gmail.com
+* Ethan Kaseff - [LinkedIn](https://www.linkedin.com/in/ethankaseff/) - 
+* Jonathan Salguero - [LinkedIn](https://www.linkedin.com/in/josalgue/) - 
 
-5. Login to the heroku container registry
+Project Link: [https://github.com/ethan-kaseff/house_hopping](https://github.com/ethan-kaseff/house_hopping)
 
-   ```bash
-   heroku container:login
-   ```
-
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-8. Release your docker container to heroku
-
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. set up your database:
-
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
-
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
-11. profit
+## Acknowledgements
+* [Font Awesome](https://fontawesome.com)
