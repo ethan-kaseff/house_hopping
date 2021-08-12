@@ -32,8 +32,8 @@ def update_delete_reviews(id):
 
         review.count = form.data['count']
         review.content = form.data['content']
-        review.user_id = form.data['user_id'],
-        review.spot_id = form.data['spot_id'],
+        # review.user_id = form.data['user_id'],
+        # review.spot_id = form.data['spot_id'],
 
         db.session.commit()
         return review.to_dict()

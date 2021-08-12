@@ -88,12 +88,13 @@ export const createReview = (content,count, user_id, spot_id) => async (dispatch
 
 export const updateReview = (review_id,content,count) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${review_id}`,{
-    method: "POST",
+      method: "POST",
       headers: {
-        "Content-Type": "application/json",
-      },
-      body:JSON.stringify({ content,count })
+          "Content-Type": "application/json",
+        },
+      body:JSON.stringify({content,count})
     });
+    // console.log(response)
     const responseObject = await response.json();
     if (responseObject.errors) {
       return responseObject;
