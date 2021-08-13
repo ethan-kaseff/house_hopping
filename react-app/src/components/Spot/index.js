@@ -62,11 +62,11 @@ export default function Spot({ spot }) {
     //   </div>
     // </div>
     <div className="flex flex-wrap overflow-hidden">
-      {allSpotState.map(spotObj => {
+      { allSpotState.map(spotObj => {
         return (
           <div className="grid grid-cols box-content items-center justify-center m-5">
             <div className="max-w-xs max-h-full rounded overflow-hidden shadow-lg">
-              {spotObj.images ? <img
+              {spotObj.images.length > 0 ? <img
                 className="w-96 h-60"
                 src={spotObj.images[0].image_url}
                 alt={spotObj.name}
