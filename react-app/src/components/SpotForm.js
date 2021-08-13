@@ -41,7 +41,7 @@ function SpotForm() {
       const data = await dispatch(
         createSpot(name, description, location, pet_friendly, pprivate, available)
       );
-      window.alert("submitted");
+      history.push("/");
     }
   };
 

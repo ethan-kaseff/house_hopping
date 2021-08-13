@@ -21,7 +21,7 @@ export default function SpotDetailsPage() {
     // console.log(reviews)
     const user = useSelector(state => state.session.user)
     const newImage = useSelector(state => state.image.image)
-    // console.log(newImage?.image_url)
+    // console.log(newImage)
 
     if (!user) {
         history.push("/");
@@ -63,11 +63,16 @@ export default function SpotDetailsPage() {
 
                 <div className="grid grid-cols-1 items-center justify-center m-5">
                 <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                    <img
+                    {newImage?.image_url ? <img
                         className="w-full h-96"
                         src={newImage?.image_url}
                         alt="Sunset in the mountains"
-                    />
+                    /> : <img
+                    className="w-96 h-60"
+                    src="https://i.imgur.com/d3OtztQ.jpeg"
+                    alt="default house"
+                    />}
+
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2">{spotState.name}</div>
                         <p className="text-gray-700 text-base">{spotState.description}</p>
