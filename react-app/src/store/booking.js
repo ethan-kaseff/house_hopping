@@ -20,9 +20,9 @@ const addUpdateBookingActionCreator = (booking) => ({
   payload: booking,
 });
 
-const deleteBookingActionCreator = (booking) => ({
+const deleteBookingActionCreator = (id) => ({
   type: DELETE_BOOKING,
-  payload: booking.id,
+  payload: id,
 });
 
 //thuunks
@@ -106,24 +106,16 @@ export const updateBooking = (start_date, end_date, id) => async (dispatch) => {
 };
 
 // Thunk for delete
-export function deleteBooking(id) {
-  return async function (dispatch) {
-    const res = await fetch(`/api/bookings/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id }),
-    });
-    if (res.ok) {
-      const responseObject = await res.json();
-      // console.log(responseObject, '🙂')
-      dispatch(deleteBookingActionCreator(responseObject));
-      return responseObject;
-    } else {
-      throw res;
-    }
-  };
+
+export const deleteBooking = (id) => async (dispatch) => {
+  const response = await fetch(`/api/bookings/${id}`,{
+  method: "DELETE",
+  });
+  const responseObject = await response.json();
+  if (responseObject.errors) {
+    return responseObject;
+  }
+  dispatch(deleteBookingActionCreator(responseObject.id));
 }
 
 // Reducer

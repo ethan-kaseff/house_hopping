@@ -44,7 +44,7 @@ export default function EditBookSpotForm() {
     const handleBookingDelete = (event) => {
         event.preventDefault();
         dispatch(deleteBooking(id));
-        history.push('/');
+        history.push(`/users`);
     }
     return (
         <div>
