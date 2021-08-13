@@ -9,7 +9,7 @@ export default function MyBookings() {
     const dispatch = useDispatch();
     const bookingState = useSelector(state => state.booking.bookings);
     const newBookState = bookingState
-    console.log(Object.values(newBookState))
+    // console.log(Object.values(newBookState))
     const spotState = useSelector(state => state.spot)
     // console.log(spotState, 'SPOTSTATE')
     // console.log('bookingState😎', bookingState['2']?.spot_id)
