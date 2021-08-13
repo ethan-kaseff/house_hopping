@@ -43,13 +43,14 @@ function SearchResults() {
                         <Spot />
                       </NavLink>
                     ); */}
-
-                  <div className="flex flex-col items-center justify-center m-5">
+                    {availableSpots.length > 0 ? availableSpots.map(spot => {
+                      return (
+                         <div className="flex flex-col items-center justify-center m-5">
                     <div className="max-w-xs rounded overflow-hidden shadow-lg">
-                      {availableSpots[0]?.images ? <img
+                      {spot?.images ? <img
                         className="w-full"
-                        src={availableSpots[0]?.images[0].image_url}
-                        alt={availableSpots[0]?.name} />
+                        src={spot?.images[0].image_url}
+                        alt={spot?.name} />
                        : <img
                         className="w-4 h-4"
                         src="https://www.goerie.com/storyimage/PA/20150718/LIFESTYLE/610129783/AR/0/AR-610129783.jpg"
@@ -57,22 +58,22 @@ function SearchResults() {
                       />}
 
                       <div className="px-6 py-4">
-                        <Link to={`spots/${availableSpots[0]?.id}`}>
-                          <div className="font-bold text-xl mb-2">{availableSpots[0]?.name}</div>
+                        <Link to={`spots/${spot?.id}`}>
+                          <div className="font-bold text-xl mb-2">{spot?.name}</div>
                         </Link>
-                        <p className="text-gray-700 text-base">{availableSpots[0]?.description}</p>
+                        <p className="text-gray-700 text-base">{spot?.description}</p>
                         {/* <p>{pets}</p>
                         <p>{privy}</p> */}
                         {/* <p>Pet Friendly {spotState.pet_friendly}</p> */}
                       </div>
                     </div>
                   </div>
-
-                  <div className="no-results">
+                      )}) :
+                    <div className="no-results">
                   <p className="text-2xl" >
                     Unfortunately, we currently don't have any spots in that location.
                   </p>
-                </div>
+                </div>}
                 </div>
               )}
             </div>
