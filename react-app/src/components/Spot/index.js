@@ -71,9 +71,9 @@ export default function Spot({ spot }) {
                 src={spotObj.images[0].image_url}
                 alt={spotObj.name}
               /> : <img
-                className="w-4 h-4"
-                src="https://www.goerie.com/storyimage/PA/20150718/LIFESTYLE/610129783/AR/0/AR-610129783.jpg"
-                alt="Sunset in the mountains"
+                className="w-96 h-60"
+                src="https://i.imgur.com/d3OtztQ.jpeg"
+                alt="default house"
               />}
 
               <div className="px-6 py-4">
