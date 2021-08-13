@@ -19,4 +19,5 @@ class Booking(db.Model):
                 "user_id": self.user_id,
                 "start_date": self.start_date,
                 "end_date": self.end_date,
+                "spot": [self.spot.to_dict()],
             }

@@ -31,11 +31,15 @@ export default function UsersList() {
         return(
             <div className="grid grid-cols box-content items-center justify-center m-5">
               <div className="max-w-xs max-h-full rounded overflow-hidden shadow-lg">
-                <img
-                  className="w-96 h-60"
-                  src={spotObj?.images[0]?.image_url}
-                  alt="Sunset in the mountains"
-                />
+              {spotObj.images.length > 0 ? <img
+                className="w-96 h-60"
+                src={spotObj.images[0].image_url}
+                alt={spotObj.name}
+              /> : <img
+                className="w-96 h-60"
+                src="https://i.imgur.com/d3OtztQ.jpeg"
+                alt="default house"
+              />}
                 <div className="px-6 py-4">
                   <NavLink to={`/spots/${spotObj?.id}`}>
                     <div className="font-bold text-xl mb-2">{spotObj?.name}</div>
