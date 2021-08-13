@@ -29,14 +29,15 @@ export default function MyBookings() {
 
     return (
         <div className="flex flex-col items-center justify-center m-3">
-            <div className="max-w-sm border rounded overflow-hidden shadow-lg p-3">
+            <div className="max-w-sm overflow-hidden shadow-lg p-3">
                 {bookingState && Object.values(bookingState).map(booking => {
                     return (
 
-                        <div className="border rounded p-1 m-1 bg-blue-500 text-white">
-                            {/* <h2>Start Date:{booking.start_date}</h2>
-                            <h2>End Date:{booking.end_date}</h2> */}
-                            <Link to={`bookings/${booking.id}`}>{booking.start_date.slice(0,17)}{}</Link>
+                        <div className="rounded p-1 m-1 text-blue-500">
+                            <Link to={`bookings/${booking.id}`}>
+                                <h2>{booking.spot[0].name}</h2>
+                                {booking.start_date.slice(0,17)}{}
+                            </Link>
                         </div>
                     )
                 })}
