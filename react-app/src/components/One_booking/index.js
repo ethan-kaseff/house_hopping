@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {fetchBooking} from '../../store/booking'
 
 
@@ -37,7 +37,11 @@ const newEndDate = currentBooking?.end_date?.slice(0,17)
 
           <div className="px-6 py-4">
             <h2 className="font-bold">Current Booking: </h2>
-            <div className="italic text-blue-400">{currentBooking?.spot && currentBooking?.spot[0]?.name}</div>
+            <div className="italic text-blue-400">
+              <Link to={`/spots/${currentBooking?.spot && currentBooking?.spot[0]?.id}`}>
+                {currentBooking?.spot && currentBooking?.spot[0]?.name}
+              </Link>
+            </div>
             <div className="text-gray-700">Check In: {newStartDate}</div>
             <div className="text-gray-700"> Check Out: {newEndDate}</div>
           </div>

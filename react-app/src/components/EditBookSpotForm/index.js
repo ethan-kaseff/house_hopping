@@ -38,7 +38,7 @@ export default function EditBookSpotForm() {
         const startDateFormatted = convert(start_date)
         const endDateFormatted = convert(end_date)
         dispatch( updateBooking(startDateFormatted, endDateFormatted, id));
-        history.push(`/bookings/${id}`);
+        history.push(`/users`);
     }
 
     const handleBookingDelete = (event) => {
