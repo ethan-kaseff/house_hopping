@@ -10,7 +10,7 @@ class Booking(db.Model):
     end_date = db.Column(db.Date, nullable = False)
 
     user = db.relationship("User", back_populates="bookings")
-    spot = db.relationship("Spot", back_populates="bookings")
+    spot = db.relationship("Spot", lazy='subquery', back_populates="bookings")
 
     def to_dict(self):
             return {
@@ -19,4 +19,5 @@ class Booking(db.Model):
                 "user_id": self.user_id,
                 "start_date": self.start_date,
                 "end_date": self.end_date,
+                "spot": [self.spot.to_dict()],
             }

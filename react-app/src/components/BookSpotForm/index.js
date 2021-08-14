@@ -31,7 +31,7 @@ export default function BookSpotForm() {
     const endDateFormatted = convert(endDate)
 
     dispatch(createBooking(startDateFormatted, endDateFormatted, id, user_id));
-    history.push("/");
+    history.push(`/users`);
   };
 
   return (
